@@ -784,8 +784,8 @@ export function createMCPServer(rootDir?: string): Server {
             );
           }
           if (queryText) {
-            const topicMatches = res.topic.toLowerCase().includes(queryText);
-            const summaryMatches = res.summary.toLowerCase().includes(queryText);
+            const topicMatches = res.topic ? res.topic.toLowerCase().includes(queryText) : false;
+            const summaryMatches = res.summary ? String(res.summary).toLowerCase().includes(queryText) : false;
             if (!topicMatches && !summaryMatches) {
               items = items.filter(
                 (i) =>
@@ -798,7 +798,7 @@ export function createMCPServer(rootDir?: string): Server {
 
           if (
             items.length > 0 ||
-            (queryText && (res.topic.toLowerCase().includes(queryText) || res.summary.toLowerCase().includes(queryText)))
+            (queryText && ((res.topic && res.topic.toLowerCase().includes(queryText)) || (res.summary && String(res.summary).toLowerCase().includes(queryText))))
           ) {
             matches.push({ research: res, matchingItems: items });
           }
@@ -823,7 +823,7 @@ export function createMCPServer(rootDir?: string): Server {
                   `  - [${item.type}:${item.classification}] ${item.title}\n    Content: ${item.content}\n    Provenance: ${JSON.stringify(item.provenance)}`
               )
               .join("\n\n");
-            return `### Research: ${research.id} - ${research.topic} (${research.category})\n**Summary:** ${research.summary}\n**Status:** ${research.status} | **Session:** ${research.sessionId} | **Related ADR**: ${research.relatedAdrId || "None"}\n**Knowledge Items:**\n${itemsStr || "  (No items matching filter)"}`;
+            return `### Research: ${research.id} - ${research.topic} (${research.category})\n**Summary:** ${research.summary || "None"}\n**Status:** ${research.status} | **Session:** ${research.sessionId} | **Related ADR**: ${research.relatedAdrId || "None"}\n**Knowledge Items:**\n${itemsStr || "  (No items matching filter)"}`;
           })
           .join("\n\n---\n\n");
 

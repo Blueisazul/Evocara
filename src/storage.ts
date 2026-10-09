@@ -1454,7 +1454,7 @@ ${adrsStr}
       id,
       topic: sanitizeSecrets(record.topic),
       category: record.category || "GENERAL",
-      summary: sanitizeSecrets(record.summary),
+      summary: sanitizeSecrets(record.summary || ""),
       status: record.status || "COMPLETED",
       createdAt: record.createdAt || now,
       updatedAt: now,
@@ -1940,9 +1940,9 @@ ${adrsStr}
         // Score Research Records
         const scoredResearches = researches.map(rec => {
           let score = 0;
-          const topicLower = rec.topic.toLowerCase();
-          const categoryLower = rec.category.toLowerCase();
-          const summaryLower = rec.summary.toLowerCase();
+          const topicLower = rec.topic ? rec.topic.toLowerCase() : "";
+          const categoryLower = rec.category ? rec.category.toLowerCase() : "";
+          const summaryLower = rec.summary ? String(rec.summary).toLowerCase() : "";
 
           for (const kw of keywords) {
             if (topicLower.includes(kw)) score += 3;
@@ -2016,7 +2016,7 @@ ${adrsStr}
         });
 
         if (activeItems.length > 0) {
-          markdownLines.push(`- **[${r.id}] ${r.topic}** (${r.category}) - ${r.summary.substring(0, 80)}...`);
+          markdownLines.push(`- **[${r.id}] ${r.topic}** (${r.category}) - ${r.summary ? r.summary.substring(0, 80) : ""}...`);
           for (const item of activeItems) {
             const tmsView = tmsAnalysis.items[item.id];
             let itemLine = `  - [${item.id}] ${item.title}`;
