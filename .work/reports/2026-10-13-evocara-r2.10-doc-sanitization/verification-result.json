@@ -1,0 +1,146 @@
+{
+  "mission": "Evocara R2.10 — saneamiento y commit documental",
+  "checkout": {
+    "root": ".",
+    "branch": "master",
+    "headBefore": "4ab1463446c72bd557f3a6d340285259743f23e9",
+    "preexistingTrackedModified": [
+      ".openmemory/spike/events.jsonl",
+      ".openmemory/spike/state.json",
+      ".work/evidence/opencode-compaction-payload.json",
+      ".work/evidence/phase-2-spike-results.json",
+      ".work/evidence/phase-3.5-e2e-test-results.json",
+      ".work/evidence/phase-4.3-installer-test-results.json",
+      ".work/evidence/phase-4.5-benchmark-test-results.json"
+    ]
+  },
+  "sanitization": {
+    "replacement": "absolute checkout path containing local profile -> .",
+    "ledger": "sanitization-ledger.md",
+    "affectedFileCount": 8,
+    "sha256BeforeAfterRecorded": true,
+    "remainingPersonalPathMatches": 0
+  },
+  "documents": [
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/continuation-prompt.md",
+      "sha256": "06047a434504c9f88d1481708c34ddf194a3d7d15d821b428fd7daf55cfe0f3c"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/dependency-review.md",
+      "sha256": "548973934d6d3a5e113377f628b07df176aae86662fb20eafc5a17e5df8276bf"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/next-actions.md",
+      "sha256": "ca2299be68fb95b5845652571e9758d7263ce7ba545e0c3aa61083cb613594fa"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/report.md",
+      "sha256": "cd4d6b80573d4b5065ccf272461c624ea11b0e17eb8a09c3d12c988f3ac5cfcc"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/traceability-matrix.md",
+      "sha256": "88fb81e85f12466723f60812f184a4544281dbfa320d0edf421b4376441e6b91"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/verification-result.json",
+      "sha256": "52348894067584f6f26ead2291db44cf417880541f381c8b8372f352c14384a5"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/continuation-prompt.md",
+      "sha256": "92a0e4e1efdea831b8cd24e8c74a85967ea15c8188752ac01e90680b5df45978"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/decision-register.md",
+      "sha256": "746eb50a4644cc9e02caba0ced77df0a1d4b5f00c4ad206d2bd1aab380198fd7"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/next-actions.md",
+      "sha256": "2dff850cc0e6322bc8e09610963e88ac069a8b82aa7f086739958ca69171208e"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/owner-decisions.md",
+      "sha256": "5653169225a3a6f5c833cdbaeaa904dbc930798b801a8049cb17ae77e42ca032"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/report.md",
+      "sha256": "451b382417623bcf34364a44b9772bfe4ab20ae19a628e7afcf23903e6fbe64d"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/traceability-matrix.md",
+      "sha256": "87392d2a8d60d68e2919cf2c70e730a3db0bf5a12c4f068965e8fb56205e56d2"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/verification-result.json",
+      "sha256": "eea353700eb2f5e66219e76c7cec8f1a98c99077b207431c353a5a6b43cf7bd9"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.9-continuation/continuation-prompt.md",
+      "sha256": "c7ed14d32d926cf411b6e8b9d0108256004ef4a86a6126512f36600cb6280ba9"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.9-continuation/decision-register.md",
+      "sha256": "6b51a2215f2e9b2f7f49d4a28ffb2419950402770c92319a6d5376a26ddf4860"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.9-continuation/next-actions.md",
+      "sha256": "eeaf52b25b3692d611372ffb2b38fa8c8f83acdc6243c4352a6dcd67bef8076c"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.9-continuation/owner-decisions.md",
+      "sha256": "d7ac946eaabfaeddbb9b4ffa2931610646badeb1abdc9ec48230dd6549d07466"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.9-continuation/report.md",
+      "sha256": "29720da9406c06c920da068bd5d072bcd63280a0e793aa4547641982b45f1121"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.9-continuation/traceability-matrix.md",
+      "sha256": "fd095b93edd598331ecd503c33042e82055546607806fe35c8f894e73a9baa1c"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.9-continuation/validation-results.md",
+      "sha256": "944b0c2c52558b2aaa2454052d578bc15b60a2afd97a65b9e74dc24386cb761e"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.9-continuation/verification-result.json",
+      "sha256": "e2c02c7007029462e959fec8ed61d6418de77d0e568da55568e7b29a02aa64db"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.10-doc-sanitization/report.md",
+      "sha256": "cb325c9c6e693bc10184059150da01d4a6a3d47892bbfd450e85fb498cbe71ea"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.10-doc-sanitization/sanitization-ledger.md",
+      "sha256": "3cb882b362ea6db9127a20d6720d3efee419971b3df527394cc6d17ddba8f28b"
+    }
+  ],
+  "validation": {
+    "R27Manifest": "JSON valid; 5/5 hashes match",
+    "R28Manifest": "JSON valid; 6/6 hashes match",
+    "R29Manifest": "JSON valid; 7/7 hashes match",
+    "R210Manifest": "JSON valid",
+    "markdownRelativeLinks": "0 broken",
+    "secretPatternScan": "0 matches",
+    "restrictedDataAccess": "none",
+    "productTests": "NOT RUN",
+    "persistentTests": "NOT RUN",
+    "builds": "NOT RUN",
+    "installations": "NOT RUN",
+    "migrations": "NOT RUN",
+    "backupRestore": "NOT RUN",
+    "benchmarks": "NOT RUN"
+  },
+  "decisions": {
+    "D02": "PENDING_OWNER_APPROVAL",
+    "D04": "PENDING_OWNER_APPROVAL",
+    "D09": "PENDING_OWNER_APPROVAL",
+    "pilot": "DENIED",
+    "P01_P12": "NOT RUN"
+  },
+  "commit": {
+    "status": "created after successful staged review; no push",
+    "message": "docs(evocara): sanitize and add R2.7-R2.10 continuation reports",
+    "push": "NOT RUN"
+  }
+}

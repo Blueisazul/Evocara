@@ -1,0 +1,136 @@
+{
+  "mission": "Evocara R2.8",
+  "date": "2026-10-13",
+  "status": "COMPLETED_DOCUMENTAL",
+  "checkout": {
+    "root": ".",
+    "branch": "master",
+    "head": "4ab1463446c72bd557f3a6d340285259743f23e9",
+    "expectedBranch": "master",
+    "expectedHead": "4ab1463446c72bd557f3a6d340285259743f23e9",
+    "matchesReference": true,
+    "preexistingTrackedModified": [
+      ".openmemory/spike/events.jsonl",
+      ".openmemory/spike/state.json",
+      ".work/evidence/opencode-compaction-payload.json",
+      ".work/evidence/phase-2-spike-results.json",
+      ".work/evidence/phase-3.5-e2e-test-results.json",
+      ".work/evidence/phase-4.3-installer-test-results.json",
+      ".work/evidence/phase-4.5-benchmark-test-results.json"
+    ],
+    "productFilesModified": 0
+  },
+  "approvals": {
+    "newExplicitOwnerReplyFound": false,
+    "D02": "PENDING_OWNER_APPROVAL",
+    "D04": "PENDING_OWNER_APPROVAL",
+    "D07": "APPROVED_WITH_LIMITS (CAS requirement only)",
+    "D09": "PENDING_OWNER_APPROVAL",
+    "D10": "APPROVED_WITH_LIMITS (target policy only)",
+    "pilot": "DENIED"
+  },
+  "commands": [
+    {
+      "command": "Get-Location; git rev-parse --show-toplevel/--abbrev-ref HEAD/HEAD; git status --short",
+      "result": "Read-only preflight; expected checkout and seven preexisting tracked modifications observed",
+      "exitCode": 0
+    },
+    {
+      "command": "Test-Path requested R2.7 docs and R2.8 target",
+      "result": "R2.7 report/matrix/next-actions/dependency-review/prompt/manifest exist; target absent",
+      "exitCode": 0
+    },
+    {
+      "command": "Get-Content selected R2.7 documents and R2.4.2 owner-decisions.md",
+      "result": "No new approval; an attempted Get-Content of R2.7 decision-register.md reported missing path; R2.7 statuses are in matrix/report",
+      "exitCode": "UNKNOWN_NONTERMINATING_POWERSHELL_ERROR"
+    },
+    {
+      "command": "Recalculate hashes against five R2.7 manifest artifact entries",
+      "result": "5/5 match",
+      "exitCode": 0
+    },
+    {
+      "command": "Create seven R2.8 additive artifacts; parse verification JSON and recalculate new Markdown hashes",
+      "result": "Document-only; JSON valid and hashes match",
+      "exitCode": 0
+    },
+    {
+      "command": "Tests/install/build/database/persistent P01-P12/migration/backup-restore/benchmark",
+      "result": "NOT RUN by explicit restriction",
+      "exitCode": null
+    }
+  ],
+  "sources": [
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/report.md",
+      "sha256": "00c0954271f6be0d23937299bdcc4a604d84dae49bef3f4f020dc14bc458c883",
+      "basis": "R2.7 verification-result.json; recalculated this mission and matched"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/traceability-matrix.md",
+      "sha256": "88fb81e85f12466723f60812f184a4544281dbfa320d0edf421b4376441e6b91",
+      "basis": "R2.7 verification-result.json; recalculated this mission and matched"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/dependency-review.md",
+      "sha256": "548973934d6d3a5e113377f628b07df176aae86662fb20eafc5a17e5df8276bf",
+      "basis": "R2.7 verification-result.json; recalculated this mission and matched"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/next-actions.md",
+      "sha256": "ca2299be68fb95b5845652571e9758d7263ce7ba545e0c3aa61083cb613594fa",
+      "basis": "R2.7 verification-result.json; recalculated this mission and matched"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/continuation-prompt.md",
+      "sha256": "b27c9e05d76e4f16ed015a38ce3937bb412f13582489777e827b95d86ff47615",
+      "basis": "R2.7 verification-result.json; recalculated this mission and matched"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.4.2-decision-contracts/owner-decisions.md",
+      "sha256": "30cfc280c554ff0367efdea2445da39ad969f425ab2b23202327dae419f57cc9",
+      "basis": "Read this mission; current hash"
+    }
+  ],
+  "newArtifactHashes": [
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/report.md",
+      "sha256": "451b382417623bcf34364a44b9772bfe4ab20ae19a628e7afcf23903e6fbe64d"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/decision-register.md",
+      "sha256": "746eb50a4644cc9e02caba0ced77df0a1d4b5f00c4ad206d2bd1aab380198fd7"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/traceability-matrix.md",
+      "sha256": "87392d2a8d60d68e2919cf2c70e730a3db0bf5a12c4f068965e8fb56205e56d2"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/next-actions.md",
+      "sha256": "2dff850cc0e6322bc8e09610963e88ac069a8b82aa7f086739958ca69171208e"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/owner-decisions.md",
+      "sha256": "5653169225a3a6f5c833cdbaeaa904dbc930798b801a8049cb17ae77e42ca032"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.8-continuation/continuation-prompt.md",
+      "sha256": "92a0e4e1efdea831b8cd24e8c74a85967ea15c8188752ac01e90680b5df45978"
+    }
+  ],
+  "limitations": [
+    "Static implementation facts reused from R2.6; no code reinspection.",
+    "No content read from .openmemory/, InventoryHub or the five excluded historical evidence files.",
+    "R2.7 prompt references decision-register.md absent from that directory; statuses are present in report and matrix; R2.8 adds a register without editing history.",
+    "No product tests, installations, builds, database creation, persistent operations, migration, backup/restore or benchmarks.",
+    "R2.7 hashes used as source of truth and recalculated for its five listed artifacts; all matched."
+  ],
+  "finalState": {
+    "documentary": "COMPLETED_DOCUMENTAL",
+    "driver": "BLOCKED_BY_AUTHORIZATION",
+    "pilot": "BLOCKED_BY_AUTHORIZATION",
+    "functionalAcceptance": "NOT RUN",
+    "nextOwnerAction": "Complete owner-decisions.md and explicitly authorize each separate gate."
+  }
+}

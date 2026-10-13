@@ -1,0 +1,116 @@
+{
+  "mission": "Evocara R2.7 continuation",
+  "date": "2026-10-13",
+  "status": "COMPLETED_DOCUMENTAL",
+  "checkout": {
+    "root": ".",
+    "branch": "master",
+    "head": "4ab1463446c72bd557f3a6d340285259743f23e9",
+    "matchesReference": true,
+    "preexistingTrackedModified": [
+      ".openmemory/spike/events.jsonl",
+      ".openmemory/spike/state.json",
+      ".work/evidence/opencode-compaction-payload.json",
+      ".work/evidence/phase-2-spike-results.json",
+      ".work/evidence/phase-3.5-e2e-test-results.json",
+      ".work/evidence/phase-4.3-installer-test-results.json",
+      ".work/evidence/phase-4.5-benchmark-test-results.json"
+    ],
+    "productFilesModified": 0
+  },
+  "approvals": {
+    "newOwnerResponseFound": false,
+    "D02": "PENDING_OWNER_APPROVAL",
+    "D04": "PENDING_OWNER_APPROVAL",
+    "D09": "PENDING_OWNER_APPROVAL",
+    "pilot": "DENIED"
+  },
+  "execution": [
+    {
+      "command": "Get-Location; git rev-parse --show-toplevel/--abbrev-ref HEAD/HEAD; git status --short",
+      "result": "Read-only preflight; expected checkout confirmed; dirty/untracked paths recorded",
+      "exitCode": 0
+    },
+    {
+      "command": "Test-Path four R2.6 continuity files and R2.7 destination",
+      "result": "All four source docs exist; new destination absent before creation",
+      "exitCode": 0
+    },
+    {
+      "command": "Get-Content only the four requested R2.6 docs",
+      "result": "No explicit new owner approval found; no excluded data opened",
+      "exitCode": 0
+    },
+    {
+      "command": "Create six add-only R2.7 docs and calculate hashes",
+      "result": "Completed",
+      "exitCode": 0
+    },
+    {
+      "command": "Product tests/build/install/DB/persistent cases/migration/backup-restore/benchmark",
+      "result": "NOT RUN by instruction",
+      "exitCode": null
+    }
+  ],
+  "sources": [
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.6-continuation/continuation-prompt.md",
+      "sha256": "94c701a6e4c1f41ea235f1e83f4adc064876ebcbbe2d80b3b592606e4c82b986",
+      "basis": "R2.6 final verification"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.6-continuation/decision-register.md",
+      "sha256": "566741c3951556f5fcf9235c8ced3221866a24f5379911e17bc15eb2a522f279",
+      "basis": "R2.6 final verification"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.6-continuation/implementation-design.md",
+      "sha256": "08d043988bdf3891c03c956c7852d142962da8f3a1ad9f3ca6b0e12789c6940f",
+      "basis": "R2.6 final verification"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.6-continuation/report.md",
+      "sha256": "e52d554041cf9fb435333d9787224c156e209b83427ca3f7c92ad3503b7e2ce0",
+      "basis": "R2.6 final verification"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.4.1-pilot-gate/pilot-acceptance-gate.md",
+      "sha256": "bd5424677aa6c7d71b0b83da3e922432482d2f5422f3fe27056e4bbdc7fc0413",
+      "basis": "R2.5 recorded hash"
+    }
+  ],
+  "newArtifactHashes": [
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/report.md",
+      "sha256": "cd4d6b80573d4b5065ccf272461c624ea11b0e17eb8a09c3d12c988f3ac5cfcc"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/traceability-matrix.md",
+      "sha256": "88fb81e85f12466723f60812f184a4544281dbfa320d0edf421b4376441e6b91"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/dependency-review.md",
+      "sha256": "548973934d6d3a5e113377f628b07df176aae86662fb20eafc5a17e5df8276bf"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/next-actions.md",
+      "sha256": "ca2299be68fb95b5845652571e9758d7263ce7ba545e0c3aa61083cb613594fa"
+    },
+    {
+      "path": ".work/reports/2026-10-13-evocara-r2.7-continuation/continuation-prompt.md",
+      "sha256": "06047a434504c9f88d1481708c34ddf194a3d7d15d821b428fd7daf55cfe0f3c"
+    }
+  ],
+  "verification": {
+    "jsonSyntax": "PASS",
+    "newArtifactHashes": "PASS",
+    "productBehavior": "NOT RUN",
+    "functionalAcceptance": "NOT CLAIMED",
+    "limitations": [
+      "Hashes of R2.6 sources reused from their final verification; not recalculated.",
+      "No code reinspection; symbols and evidence reused from R2.6.",
+      "No access to .openmemory content, InventoryHub or historical evidence content.",
+      "No tests, builds, installations or persistent operations executed."
+    ]
+  }
+}
