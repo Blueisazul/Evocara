@@ -6,10 +6,18 @@ import { EventLogger } from "./storage/core/event-logger";
 import { SessionRegistry } from "./storage/domains/session-registry";
 import { TaskDAG } from "./storage/domains/task-dag";
 import { ADRGovernance } from "./storage/domains/adr-governance";
+import { BackupManager, RestoreRecoveryManifest, RestoreResult } from "./storage/domains/backup-manager";
 import { HandoffContinuity } from "./storage/domains/handoff-continuity";
 import { KnowledgeTMS } from "./storage/domains/knowledge-tms";
 
 export * from "./storage/types";
+export * from "./storage/core/path-security";
+import {
+  validateDomainId,
+  resolveSecurePath,
+  assertSecureFileName,
+  PathSecurityError,
+} from "./storage/core/path-security";
 import {
   OpenMemoryManifest,
   TaskState,
@@ -82,6 +90,7 @@ export class StorageEngine {
   private adrGovernance: ADRGovernance;
   private handoffContinuity: HandoffContinuity;
   private knowledgeTMS: KnowledgeTMS;
+  private backupManager: BackupManager;
 
   constructor(baseDir?: string) {
     this.baseDir = baseDir || process.cwd();
@@ -116,6 +125,18 @@ export class StorageEngine {
     this.adrGovernance = new ADRGovernance();
     this.handoffContinuity = new HandoffContinuity();
     this.knowledgeTMS = new KnowledgeTMS();
+    this.backupManager = new BackupManager(
+      {
+        backupsDir: this.backupsDir,
+        openmemoryDir: this.openmemoryDir,
+        adrsDir: this.adrsDir,
+        manifestPath: this.manifestPath,
+        projectStatePath: this.projectStatePath,
+        handoffPath: this.handoffPath,
+      },
+      this.persistenceEngine,
+      this.eventLogger
+    );
   }
 
   /**
@@ -867,7 +888,7 @@ export class StorageEngine {
     };
 
     const markdown = this.adrGovernance.formatADRMarkdown(record);
-    const filePath = path.join(this.adrsDir, `${record.id}.md`);
+    const filePath = assertSecureFileName(this.adrsDir, `${record.id}.md`);
     this.atomicWriteFileSync(filePath, markdown);
 
     return record;
@@ -945,8 +966,20 @@ export class StorageEngine {
   /**
    * Execute state mutation within inter-process transaction lock with reentrancy support (F12.3-E)
    */
-  public withStateLock<T>(fn: () => T, agentId: string = "system"): T {
-    return this.persistenceEngine.withStateLock(fn, agentId);
+  public withStateLock<T>(
+    fn: () => T,
+    agentId: string = "system",
+    options?: { maxWaitMs?: number; lockTimeoutMs?: number; staleThresholdMs?: number }
+  ): T {
+    return this.persistenceEngine.withStateLock(fn, agentId, options);
+  }
+
+  public async withStateLockAsync<T>(
+    fn: () => Promise<T> | T,
+    agentId: string = "system",
+    options?: { maxWaitMs?: number; lockTimeoutMs?: number; staleThresholdMs?: number }
+  ): Promise<T> {
+    return this.persistenceEngine.withStateLockAsync(fn, agentId, options);
   }
 
   /**
@@ -1043,8 +1076,8 @@ export class StorageEngine {
    */
   public getADR(id: string): ADRRecord | null {
     this.ensureStorageStructure();
-    const normalizedId = id.startsWith("ADR-") ? id : `ADR-${id.padStart(3, "0")}`;
-    const filePath = path.join(this.adrsDir, `${normalizedId}.md`);
+    const normalizedId = validateDomainId(id, "adr");
+    const filePath = assertSecureFileName(this.adrsDir, `${normalizedId}.md`);
     if (!fs.existsSync(filePath)) {
       return null;
     }
@@ -1181,52 +1214,9 @@ ${adrsStr}
    */
   public createBackup(label: string = "manual"): BackupMetadata {
     this.ensureStorageStructure();
-    const timestamp = new Date().toISOString();
-    const sanitizedTs = timestamp.replace(/[:.]/g, "-");
-    const id = `backup-${sanitizedTs}`;
-    const targetDir = path.join(this.backupsDir, id);
-
-    fs.mkdirSync(targetDir, { recursive: true });
-
-    let filesCount = 0;
-    const stageStatePath = path.join(this.openmemoryDir, "stage-state.json");
-    const filesToCopy = [
-      { name: "openmemory.json", path: this.manifestPath },
-      { name: "project-state.json", path: this.projectStatePath },
-      { name: "stage-state.json", path: stageStatePath },
-      { name: "handoff.md", path: this.handoffPath },
-    ];
-
-    for (const file of filesToCopy) {
-      if (fs.existsSync(file.path)) {
-        fs.copyFileSync(file.path, path.join(targetDir, file.name));
-        filesCount++;
-      }
-    }
-
-    // Copy ADR files if any exist
-    if (fs.existsSync(this.adrsDir)) {
-      const adrFiles = fs.readdirSync(this.adrsDir).filter((f: string) => f.endsWith(".md"));
-      if (adrFiles.length > 0) {
-        const adrTargetDir = path.join(targetDir, "adrs");
-        fs.mkdirSync(adrTargetDir, { recursive: true });
-        for (const adrFile of adrFiles) {
-          fs.copyFileSync(path.join(this.adrsDir, adrFile), path.join(adrTargetDir, adrFile));
-          filesCount++;
-        }
-      }
-    }
-
-    const metadata: BackupMetadata = {
-      id,
-      timestamp,
-      label,
-      filesCount,
-      backupPath: targetDir,
-    };
-
-    this.atomicWriteFileSync(path.join(targetDir, "backup-metadata.json"), JSON.stringify(metadata, null, 2));
-    return metadata;
+    return this.withStateLock(() => {
+      return this.backupManager.createBackup(label);
+    }, "storage-create-backup");
   }
 
   /**
@@ -1234,73 +1224,35 @@ ${adrsStr}
    */
   public listBackups(): BackupMetadata[] {
     this.ensureStorageStructure();
-    if (!fs.existsSync(this.backupsDir)) {
-      return [];
-    }
-
-    const entries = fs.readdirSync(this.backupsDir, { withFileTypes: true });
-    const backups: BackupMetadata[] = [];
-
-    for (const entry of entries) {
-      if (entry.isDirectory()) {
-        const metaPath = path.join(this.backupsDir, entry.name, "backup-metadata.json");
-        if (fs.existsSync(metaPath)) {
-          try {
-            const raw = fs.readFileSync(metaPath, "utf-8");
-            backups.push(JSON.parse(raw) as BackupMetadata);
-          } catch (_) {}
-        }
-      }
-    }
-
-    return backups.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+    return this.backupManager.listBackups();
   }
 
   /**
-   * Restore state files from specified backup snapshot (F3.5-004)
+   * Restore state files from specified backup snapshot with transactional staging & rollback (F3.5 / R2-R3 Reconciled)
    */
   public restoreBackup(backupId: string): boolean {
     this.ensureStorageStructure();
-    let backupDir = path.join(this.backupsDir, backupId);
-    if (!fs.existsSync(backupDir) && path.isAbsolute(backupId) && fs.existsSync(backupId)) {
-      backupDir = backupId;
-    }
-    if (!fs.existsSync(backupDir)) {
-      throw new Error(`Backup snapshot '${backupId}' not found`);
-    }
+    return this.withStateLock(() => {
+      const result = this.backupManager.restoreBackup(backupId);
 
-    const stageStatePath = path.join(this.openmemoryDir, "stage-state.json");
-    const filesToRestore = [
-      { name: "openmemory.json", path: this.manifestPath },
-      { name: "project-state.json", path: this.projectStatePath },
-      { name: "stage-state.json", path: stageStatePath },
-      { name: "handoff.md", path: this.handoffPath },
-    ];
+      // Single Writer Invariant post-restore:
+      // Arbitrate canonical state and project stage-state immediately.
+      const canonicalState = this.getOrInitProjectState();
+      this.projectStageState(canonicalState);
 
-    for (const file of filesToRestore) {
-      const srcPath = path.join(backupDir, file.name);
-      if (fs.existsSync(srcPath)) {
-        const content = fs.readFileSync(srcPath, "utf-8");
-        this.atomicWriteFileSync(file.path, content);
-      }
-    }
+      return result.success;
+    }, "storage-restore-backup");
+  }
 
-    // Restore ADRs if backup contains them
-    const adrSrcDir = path.join(backupDir, "adrs");
-    if (fs.existsSync(adrSrcDir)) {
-      const adrFiles = fs.readdirSync(adrSrcDir).filter((f: string) => f.endsWith(".md"));
-      for (const adrFile of adrFiles) {
-        const content = fs.readFileSync(path.join(adrSrcDir, adrFile), "utf-8");
-        this.atomicWriteFileSync(path.join(this.adrsDir, adrFile), content);
-      }
-    }
+  public getBackupManager(): BackupManager {
+    return this.backupManager;
+  }
 
-    // Single Writer Invariant post-restore:
-    // Arbitrate canonical state and project stage-state immediately.
-    const canonicalState = this.getOrInitProjectState();
-    this.projectStageState(canonicalState);
-
-    return true;
+  public recoverInterruptedRestore(): { recovered: boolean; operationsRolledBack: number; details: string[]; quarantined?: number } {
+    this.ensureStorageStructure();
+    return this.withStateLock(() => {
+      return this.backupManager.recoverInterruptedRestore();
+    }, "storage-crash-recovery");
   }
 
   /**
@@ -1472,7 +1424,7 @@ ${adrsStr}
       throw new Error(`Research record payload exceeds maximum size limit of 10 KB (got ${(byteSize / 1024).toFixed(2)} KB)`);
     }
 
-    const targetPath = path.join(this.researchesDir, `${id}.json`);
+    const targetPath = assertSecureFileName(this.researchesDir, `${id}.json`);
     this.atomicWriteFileSync(targetPath, payloadStr);
 
     try {
@@ -1506,8 +1458,8 @@ ${adrsStr}
    */
   public getResearch(id: string): ResearchRecord | null {
     this.ensureStorageStructure();
-    const cleanId = id.endsWith(".json") ? id.replace(/\.json$/, "") : id;
-    const targetPath = path.join(this.researchesDir, `${cleanId}.json`);
+    const cleanId = validateDomainId(id, "research");
+    const targetPath = assertSecureFileName(this.researchesDir, `${cleanId}.json`);
     if (!fs.existsSync(targetPath)) {
       this.researchCache.delete(cleanId);
       return null;
@@ -1629,9 +1581,9 @@ ${adrsStr}
    */
   public deleteResearch(id: string): boolean {
     this.ensureStorageStructure();
-    const cleanId = id.endsWith(".json") ? id.replace(/\.json$/, "") : id;
+    const cleanId = validateDomainId(id, "research");
     this.researchCache.delete(cleanId);
-    const targetPath = path.join(this.researchesDir, `${cleanId}.json`);
+    const targetPath = assertSecureFileName(this.researchesDir, `${cleanId}.json`);
     if (fs.existsSync(targetPath)) {
       fs.unlinkSync(targetPath);
       return true;
@@ -1682,7 +1634,8 @@ ${adrsStr}
     this.ensureStorageStructure();
     const existing = this.listOSSEvaluations();
     const now = new Date().toISOString();
-    const id = evalRecord.id || `OSS-${String(existing.length + 1).padStart(3, "0")}`;
+    const rawId = evalRecord.id || `OSS-${String(existing.length + 1).padStart(3, "0")}`;
+    const id = validateDomainId(rawId, "ossEval");
 
     const record: OSSEvaluationRecord = {
       id,
@@ -1698,7 +1651,7 @@ ${adrsStr}
       relatedAdrId: evalRecord.relatedAdrId,
     };
 
-    const targetPath = path.join(this.ossEvaluationsDir, `${id}.json`);
+    const targetPath = assertSecureFileName(this.ossEvaluationsDir, `${id}.json`);
     this.atomicWriteFileSync(targetPath, JSON.stringify(record, null, 2));
     return record;
   }
@@ -1727,8 +1680,8 @@ ${adrsStr}
    */
   public getOSSEvaluation(id: string): OSSEvaluationRecord | null {
     this.ensureStorageStructure();
-    const cleanId = id.endsWith(".json") ? id.replace(/\.json$/, "") : id;
-    const targetPath = path.join(this.ossEvaluationsDir, `${cleanId}.json`);
+    const cleanId = validateDomainId(id, "ossEval");
+    const targetPath = assertSecureFileName(this.ossEvaluationsDir, `${cleanId}.json`);
     if (fs.existsSync(targetPath)) {
       try {
         const raw = fs.readFileSync(targetPath, "utf-8");
@@ -2575,3 +2528,5 @@ ${adrsStr}
     return result;
   }
 }
+
+export { BackupManager, RestoreRecoveryManifest, RestoreResult } from "./storage/domains/backup-manager";
