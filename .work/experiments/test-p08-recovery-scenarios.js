@@ -21,6 +21,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const { execSync } = require('child_process');
 const { compareAudits, normalizeAdvisoryId } = require('../../scripts/compare-audit-advisories.js');
+const { resolveSecurePath, PathSecurityError } = require('../../dist/storage/core/path-security.js');
 
 console.log('========================================================================');
 console.log('=== P0.8 ADVERSARIAL RECOVERY & PROMOTION SECURITY SUITE ===');
@@ -206,13 +207,7 @@ try {
   for (const payload of traversalPayloads) {
     let trapped = false;
     try {
-      // Robust path confinement check
-      if (payload.includes('\0')) throw new Error('Null byte forbidden');
-      const resolved = path.resolve(root, payload);
-      const canonicalRoot = path.resolve(root);
-      if (!resolved.startsWith(canonicalRoot + path.sep) && resolved !== canonicalRoot) {
-        throw new Error(`Path security violation: ${payload} escapes ${canonicalRoot}`);
-      }
+      resolveSecurePath(root, payload);
     } catch (e) {
       trapped = true;
     }
