@@ -4,18 +4,18 @@
 
 [![Release Status](https://img.shields.io/badge/Release%20Status-Consumer--Ready%20Verified-blue.svg)](#-release-status)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-0.3.1-informational.svg)](package.json)
+[![Version](https://img.shields.io/badge/Version-0.3.2-informational.svg)](package.json)
 
 ---
 
 ## 📌 Release Status
 
-* **OpenMemory Version:** `0.3.1`
+* **OpenMemory Version:** `0.3.2`
 * **Status:** `Consumer-Ready Verified`
-* **Packaged Artifact:** `openmemory-0.3.1.tgz`
+* **Packaged Artifact:** `openmemory-0.3.2.tgz`
 * **Target Environment:** OpenCode 1.18.34, Node.js v22.15.0+, local Git repositories.
 
-OpenMemory v0.3.1 has completed formal empirical end-to-end release verification in clean consumer laboratories (`OpenMemory-v0.3.1-Release-Lab`) using the compiled release tarball (`openmemory-0.3.1.tgz`).
+OpenMemory v0.3.2 has completed formal empirical end-to-end release verification in clean consumer laboratories (`OpenMemory-v0.3.1-Release-Lab`) using the compiled release tarball (`openmemory-0.3.2.tgz`).
 
 ---
 
@@ -152,7 +152,7 @@ npm install openmemory
 npx openmemory install
 ```
 
-### Mode B: Packaged Tarball (`openmemory-0.3.1.tgz`)
+### Mode B: Packaged Tarball (`openmemory-0.3.2.tgz`)
 
 Install directly from the compiled release tarball:
 
@@ -272,7 +272,7 @@ OpenMemory exposes **29 MCP tools** over STDIO when configured in OpenCode, Curs
 
 ## ⚠️ Known Limitations
 
-1. **Local Repository Scope:** OpenMemory v0.3.1 stores memory locally within `.openmemory/`. Remote multi-repository cloud sync is deferred to future releases.
+1. **Local Repository Scope:** OpenMemory v0.3.2 stores memory locally within `.openmemory/`. Remote multi-repository cloud sync is deferred to future releases.
 2. **Process Concurrency Boundaries:** Advisory file locks protect concurrent local processes on the same machine. High-frequency network-distributed multi-region writes require a centralized database.
 3. **Soft Governance Boundaries:** Stage governance enforces rules via prompt engineering and protocol responses. File system write permissions depend on the host IDE.
 

@@ -1,7 +1,7 @@
-# OpenMemory Architecture (v0.3.1)
+# OpenMemory Architecture (v0.3.2)
 
 > **Status:** Consumer-Ready Verified<br>
-> **Package Version:** `0.3.1`<br>
+> **Package Version:** `0.3.2`<br>
 > **License:** MIT
 
 OpenMemory is a host-independent, zero-dependency operational memory and stage governance framework designed for OpenCode, AI developer agents, and multi-agent workflows.

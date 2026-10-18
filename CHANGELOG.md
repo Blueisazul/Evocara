@@ -5,6 +5,11 @@ All notable changes to OpenMemory are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.2] - 2026-10-09
+
+### Fixed
+* **MCP Knowledge Query `summary` Robustness**: Added defensive check (`res.summary ? String(res.summary).toLowerCase().includes(queryText) : false`) in `src/mcp.ts`, `src/cli.ts`, and `src/storage.ts` when filtering knowledge items by query text. Prevents `TypeError: Cannot read properties of undefined (reading 'toLowerCase')` when stored knowledge records omit the optional `summary` field.
+
 ## [0.3.1] - 2026-10-05
 
 ### Release Status

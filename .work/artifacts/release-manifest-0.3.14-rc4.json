@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.5.0",
+  "manifestType": "OpenMemory-Release-Provenance-Manifest",
+  "generatedAt": "2026-10-17T22:52:50.457Z",
+  "package": {
+    "name": "openmemory",
+    "version": "0.3.14-rc4",
+    "license": "MIT",
+    "description": "Zero-dependency operational memory & stage governance framework for OpenCode and AI developer agents"
+  },
+  "source": {
+    "repository": "https://github.com/Evocara/OpenMemory",
+    "canonicalLocalPath": "C:\\Users\\sant1\\Downloads\\OpenMemory",
+    "commit": "1ef6a7cb9f3aa87566c3e0eaf576770e2f19b09e",
+    "branch": "fix/p0-security-concurrency-hardening",
+    "cleanCheckout": false
+  },
+  "artifacts": {
+    "tarball": {
+      "filename": "openmemory-0.3.14-rc4.tgz",
+      "sizeBytes": 167133,
+      "sha256": "af88fae90107dfda797c7f6bcc982cf6bbd7ef53fd9a5d887c9bf77185a35f6e",
+      "verifiedFormat": "application/gzip (npm tarball)"
+    },
+    "sbom": {
+      "filename": "openmemory-0.3.14-rc4.cdx.json",
+      "sizeBytes": 42007,
+      "sha256": "6e2fe99308eca85cf88ab9652ccb68e94b35e4999f586aee47637b50f86c676a",
+      "specVersion": "1.5",
+      "format": "CycloneDX JSON",
+      "componentsTracked": 96
+    }
+  },
+  "buildEnvironment": {
+    "nodeVersion": "v22.15.0",
+    "npmVersion": "10.9.2",
+    "platform": "win32",
+    "arch": "x64",
+    "osRelease": "10.0.26300",
+    "hostname": "LAPTOP-VCPJCDF3"
+  },
+  "verifications": {
+    "typescriptCompilation": "npm run build (Exit Code: 0)",
+    "safeTestRunner": "npm run test:safe (14 suites, 100% PASS, 0 working tree pollution)",
+    "packageIntegrity": "node scripts/ci-verify-package.js (6 Checks PASS, Whitelist 21 Core, Consumer Runtime OK)",
+    "sbomValidation": "node scripts/generate-sbom.js --validate (CycloneDX 1.5 PASS, Bound to Tarball)",
+    "releaseManifestValidation": "node scripts/generate-release-manifest.js --validate (PASS)",
+    "promotionRehearsal": "test-p13-promotion-rehearsal.js (10 Scenarios PASS)",
+    "adversarialHardening": "test-p14-engine-security-hardening.js (10 Scenarios PASS)",
+    "deepAdversarialHardening": "test-p15-transactional-deep-adversarial.js (10 Scenarios PASS)"
+  },
+  "provenance": {
+    "attestationStatus": "LOCAL_PREPARATION_ONLY",
+    "slsaBuildLevel": "SLSA_BUILD_LEVEL_1_CANDIDATE",
+    "predicateType": "https://slsa.dev/provenance/v1",
+    "buildDefinition": {
+      "buildType": "https://actions.github.io/buildtypes/workflow/v1",
+      "externalParameters": {
+        "workflow": ".github/workflows/ci.yml",
+        "repository": "https://github.com/Evocara/OpenMemory",
+        "ref": "refs/heads/fix/p0-security-concurrency-hardening"
+      },
+      "internalParameters": {
+        "nodeVersion": "v22.15.0",
+        "npmVersion": "10.9.2"
+      }
+    },
+    "notes": [
+      "Source commit, reproducible build scripts, and cryptographic hashes captured locally.",
+      "No remote OIDC token or external signature generated in local offline environment.",
+      "SLSA Level 2/3 signed provenance configured for remote GitHub Actions runner via actions/attest-build-provenance@v2."
+    ],
+    "cryptographicSignatures": []
+  }
+}

@@ -1,0 +1,113 @@
+﻿{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifestVersion": "1.0.0",
+  "iteration": "P1.7",
+  "title": "OpenMemory P1.7 Empirical Evidence & Release Qualification Manifest",
+  "generatedAt": "2026-10-18T01:22:00Z",
+  "environment": {
+    "os": "Windows_NT 10.0.26200 win32-x64",
+    "nodeVersion": "v22.15.0",
+    "npmVersion": "10.9.2",
+    "canonicalRepository": "C:\\Users\\sant1\\Downloads\\OpenMemory",
+    "protectedConsumer": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub"
+  },
+  "git": {
+    "localBranch": "fix/p0-security-concurrency-hardening",
+    "localHeadCommit": "1ef6a7cb9f3aa87566c3e0eaf576770e2f19b09e",
+    "remoteUrl": "https://github.com/Blueisazul/OpenMemory.git",
+    "remoteHeadCommit": "1ae1a48cff866ec8cb57371d530009c9162a56cf",
+    "remoteBranchExists": false,
+    "remoteWorkflowRunsCount": 0
+  },
+  "candidateArtifact": {
+    "name": "openmemory",
+    "version": "0.3.14-rc4",
+    "tarballPath": ".work/artifacts/openmemory-0.3.14-rc4.tgz",
+    "tarballSize": 167133,
+    "tarballSha256": "af88fae90107dfda797c7f6bcc982cf6bbd7ef53fd9a5d887c9bf77185a35f6e",
+    "unpackedEntriesCount": 69,
+    "unpackedSizeBytes": 862135,
+    "sourceCodeLeaks": 0,
+    "mcpToolsCount": 29,
+    "mcpToolsSchemaPass": true
+  },
+  "artifactsInventory": [
+    {
+      "name": "openmemory-0.3.14-rc1.tgz",
+      "size": 160896,
+      "sha256": "cd6d5b621c2a451e142f505fb08b891affd3f187662bca8a08d9b891bc26f8eb"
+    },
+    {
+      "name": "openmemory-0.3.14-rc2.tgz",
+      "size": 164153,
+      "sha256": "1a2ff6de243e80518c7939df2e7033c5e25d4d4226395d1adc2a9b8df29f24b3"
+    },
+    {
+      "name": "openmemory-0.3.14-rc3.tgz",
+      "size": 166375,
+      "sha256": "9261e85a7f7394bbdab2ec1b19bdbbc5e5bf573475b22d66ac5576342c5771c6"
+    },
+    {
+      "name": "openmemory-0.3.14-rc4.tgz",
+      "size": 167133,
+      "sha256": "af88fae90107dfda797c7f6bcc982cf6bbd7ef53fd9a5d887c9bf77185a35f6e"
+    },
+    {
+      "name": "openmemory-0.3.14-rc4.cdx.json",
+      "size": 42007,
+      "sha256": "6e2fe99308eca85cf88ab9652ccb68e94b35e4999f586aee47637b50f86c676a"
+    },
+    {
+      "name": "release-manifest-0.3.14-rc4.json",
+      "size": 3111,
+      "sha256": "71f7753648d314d1f79e86fac50015cf378022f0ba880f0fb461a25a7a394fa3"
+    },
+    {
+      "name": "openmemory-0.3.1.tgz",
+      "path": "InventoryHub/scratch/exp2_10/fase4_5/dist/openmemory-0.3.1.tgz",
+      "size": 147676,
+      "sha256": "48d022f8ef35914769ef2df423a39a1c391cb383686e6a2575ca6906a115b1ef"
+    }
+  ],
+  "supplyChain": {
+    "sbomSpec": "CycloneDX 1.5",
+    "sbomValidation": "PASSED",
+    "trackedComponents": 96,
+    "releaseManifestSpec": "in-toto v0.2 / SLSA v0.2",
+    "releaseManifestValidation": "PASSED",
+    "npmAuditVulnerabilities": 0,
+    "githubActionPinning": "100% commit SHA pinned (v4.2.2, v4.1.0, v4.4.3, v2.2.0)"
+  },
+  "validationSuites": {
+    "runner": "scripts/safe-test-runner.js",
+    "totalSuites": 15,
+    "passedSuites": 15,
+    "failedSuites": 0,
+    "executionTimeMs": 19007,
+    "workingTreePollution": 0,
+    "syntheticPromotionRehearsal": {
+      "runner": "scripts/rehearse-synthetic-promotion.js",
+      "totalStages": 8,
+      "passedStages": 8,
+      "failedStages": 0
+    }
+  },
+  "protectedConsumer": {
+    "name": "InventoryHub",
+    "declaredVersion": "file:scratch/exp2_10/fase4_5/dist/openmemory-0.3.1.tgz",
+    "activeLocks": 0,
+    "sqliteWalShmFiles": 0,
+    "quiescent": true,
+    "mutationsPerformed": 0
+  },
+  "qualityGates": {
+    "G0": { "name": "Baseline Reconciliation", "status": "PASSED" },
+    "G1": { "name": "Clean Compilation", "status": "PASSED" },
+    "G2": { "name": "Regression & Concurrency Suites", "status": "PASSED" },
+    "G3": { "name": "Security & Dependency Audit", "status": "PASSED" },
+    "G4": { "name": "Packaging Reproducibility", "status": "PASSED" },
+    "G5": { "name": "Multiplatform Remote CI", "status": "PENDING_AUTHORIZATION" },
+    "G6": { "name": "Consumer Promotion Readiness", "status": "READY_FOR_AUTHORIZATION" },
+    "G7": { "name": "Final Release Publication", "status": "BLOCKED" }
+  }
+}

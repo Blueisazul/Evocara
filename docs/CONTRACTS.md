@@ -1,7 +1,7 @@
-# OpenMemory Conceptual & Domain Contracts (v0.3.1)
+# OpenMemory Conceptual & Domain Contracts (v0.3.2)
 
 > **Status:** Consumer-Ready Verified<br>
-> **Package Version:** `0.3.1`
+> **Package Version:** `0.3.2`
 
 This document formalizes the domain contracts, structural distinctions, authority principles, and conflict resolution models governing OpenMemory v0.3.1.
 

@@ -21,7 +21,7 @@
     "id": "SPIKE-003",
     "name": "session.idle Event",
     "status": "PASSED",
-    "details": "session.idle captured successfully and saved checkpoint timestamp at 2026-10-05T22:23:00.265Z"
+    "details": "session.idle captured successfully and saved checkpoint timestamp at 2026-10-17T16:52:18.821Z"
   },
   {
     "id": "SPIKE-004",
