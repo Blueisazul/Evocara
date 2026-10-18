@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Safe Test Runner for OpenMemory / Evocara (P1.5)
  *
  * Ensures:
@@ -140,7 +140,7 @@ function runSuite(suite) {
   let result;
   if (suite.usesTsx) {
     const cmd = process.platform === "win32" ? "npx.cmd" : "npx";
-    result = spawnSync(cmd, ["tsx", targetScript], {
+    result = spawnSync(cmd, ["--yes", "tsx", targetScript], {
       cwd: projectRoot,
       env,
       stdio: "inherit",
