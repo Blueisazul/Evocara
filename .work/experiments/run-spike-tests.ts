@@ -11,7 +11,7 @@ async function runSpikeTests() {
   console.log("   OpenMemory Phase 2 Empirical Plugin Spike Test   ");
   console.log("=================================================\n");
 
-  const workspaceDir = process.cwd();
+  const workspaceDir = process.env.OPENMEMORY_TEST_DIR || process.cwd();
   const spikeDir = path.join(workspaceDir, ".openmemory", "spike");
   const stateFile = path.join(spikeDir, "state.json");
   const eventsFile = path.join(spikeDir, "events.jsonl");
@@ -180,7 +180,11 @@ async function runSpikeTests() {
   // -------------------------------------------------------------
   // Summary Evidence Generation
   // -------------------------------------------------------------
-  const summaryEvidenceFile = path.join(workspaceDir, ".work", "evidence", "phase-2-spike-results.json");
+  const evidenceDir = path.join(workspaceDir, ".work", "evidence");
+  if (!fs.existsSync(evidenceDir)) {
+    fs.mkdirSync(evidenceDir, { recursive: true });
+  }
+  const summaryEvidenceFile = path.join(evidenceDir, "phase-2-spike-results.json");
   fs.writeFileSync(summaryEvidenceFile, JSON.stringify(testResults, null, 2), "utf-8");
 
   console.log("=================================================");
