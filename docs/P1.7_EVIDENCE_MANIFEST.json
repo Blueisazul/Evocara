@@ -1,9 +1,9 @@
 ﻿{
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "manifestVersion": "1.0.0",
+  "manifestVersion": "1.1.0",
   "iteration": "P1.7",
   "title": "OpenMemory P1.7 Empirical Evidence & Release Qualification Manifest",
-  "generatedAt": "2026-10-18T01:22:00Z",
+  "generatedAt": "2026-10-18T01:45:00Z",
   "environment": {
     "os": "Windows_NT 10.0.26200 win32-x64",
     "nodeVersion": "v22.15.0",
@@ -13,11 +13,13 @@
   },
   "git": {
     "localBranch": "fix/p0-security-concurrency-hardening",
-    "localHeadCommit": "1ef6a7cb9f3aa87566c3e0eaf576770e2f19b09e",
+    "baselineHeadCommit": "1ef6a7cb9f3aa87566c3e0eaf576770e2f19b09e",
+    "reconciledHeadCommit": "15997cd5f126f5d8122d4f828a1be5bdf48386f6",
     "remoteUrl": "https://github.com/Blueisazul/OpenMemory.git",
-    "remoteHeadCommit": "1ae1a48cff866ec8cb57371d530009c9162a56cf",
+    "remoteBaseCommit": "1ae1a48db8cfe88e4371fe6ca58c488b2433c2ab",
     "remoteBranchExists": false,
-    "remoteWorkflowRunsCount": 0
+    "remoteWorkflowRunsCount": 0,
+    "commitsAheadOfOriginMaster": 6
   },
   "candidateArtifact": {
     "name": "openmemory",
@@ -83,7 +85,7 @@
     "totalSuites": 15,
     "passedSuites": 15,
     "failedSuites": 0,
-    "executionTimeMs": 19007,
+    "executionTimeMs": 19820,
     "workingTreePollution": 0,
     "syntheticPromotionRehearsal": {
       "runner": "scripts/rehearse-synthetic-promotion.js",
