@@ -1,6 +1,6 @@
 {
   "name": "openmemory",
-  "version": "0.3.1",
+  "version": "0.3.14-rc4",
   "description": "Zero-dependency operational memory & stage governance framework for OpenCode and AI developer agents",
   "license": "MIT",
   "main": "./dist/index.js",
@@ -93,7 +93,10 @@
     "test:consumer-e2e": "npx tsx .work/experiments/run-consumer-e2e-tests.ts",
     "test:all": "npx tsx .work/experiments/run-spike-tests.ts && npx tsx .work/experiments/run-master-prompt-governance-tests.ts && npx tsx .work/experiments/run-governance-additional-tests.ts && npx tsx .work/experiments/run-f31-storage-tests.ts && npx tsx .work/experiments/run-f32-plugin-tests.ts && npx tsx .work/experiments/run-f33-handoff-tests.ts && npx tsx .work/experiments/run-f34-context-tests.ts && npx tsx .work/experiments/run-f35-e2e-tests.ts && npx tsx .work/experiments/run-f41-skills-tests.ts && npx tsx .work/experiments/run-f42-mcp-tests.ts && npx tsx .work/experiments/run-f43-installer-tests.ts && npx tsx .work/experiments/run-f44-packaging-tests.ts && npx tsx .work/experiments/run-f45-benchmark-tests.ts && npx tsx .work/experiments/run-f52-storage-tests.ts && npx tsx .work/experiments/run-f53-mcp-knowledge-tests.ts && npx tsx .work/experiments/run-f54-cli-knowledge-tests.ts && npx tsx .work/experiments/run-f61-roadmap-governance-tests.ts && npx tsx .work/experiments/run-f62-invariants-audit-tests.ts && npx tsx .work/experiments/run-f71-single-writer-facade-tests.ts && npx tsx .work/experiments/run-f72-hardening-tests.ts && npx tsx .work/experiments/run-f73-migration-tests.ts && npx tsx .work/experiments/run-f74-final-v02-tests.ts && npx tsx .work/experiments/run-f75-post-v02-audit-tests.ts && npx tsx .work/experiments/run-f81-continuity-compaction-tests.ts && npx tsx .work/experiments/run-f82-disaster-recovery-tests.ts && npx tsx .work/experiments/run-f91-multi-agent-knowledge-tests.ts && npx tsx .work/experiments/run-f92-consensus-lock-tests.ts && npx tsx .work/experiments/run-f93-governance-telemetry-tests.ts && npx tsx .work/experiments/run-f10-orchestration-tests.ts && npx tsx .work/experiments/run-f111-init-interactive-tests.ts && npx tsx .work/experiments/run-f112-context-relevance-tests.ts && npx tsx .work/experiments/run-f121-nomenclature-migration-tests.ts && npx tsx .work/experiments/run-f122-session-contract-tests.ts && npx tsx .work/experiments/run-f123-cli-reconciliation-tests.ts && npx tsx .work/experiments/run-f123-mcp-reconciliation-tests.ts && npx tsx .work/experiments/run-f123d-opencode-lifecycle-tests.ts && npx tsx .work/experiments/run-f123e-concurrency-tests.ts && npx tsx .work/experiments/run-f124a-task-reconciliation-tests.ts && npx tsx .work/experiments/run-f124b-handoff-ownership-tests.ts && npx tsx .work/experiments/run-f125-contract-tests.ts && npx tsx .work/experiments/run-f126-contract-tests.ts && npx tsx .work/experiments/run-f131b-knowledge-lifecycle-tests.ts && npx tsx .work/experiments/run-f1331-persistence-characterization-tests.ts && npx tsx .work/experiments/run-f1332a-session-registry-tests.ts && npx tsx .work/experiments/run-f1332b-task-dag-tests.ts && npx tsx .work/experiments/run-f1333-adr-governance-tests.ts && npx tsx .work/experiments/run-f1334-handoff-continuity-tests.ts && npx tsx .work/experiments/run-f1336-knowledge-tms-tests.ts && npx tsx .work/experiments/run-f14-installer-adapters-tests.ts && npx tsx .work/experiments/run-consumer-e2e-tests.ts",
     "test:coverage": "npx c8 --reporter=text --reporter=html --all --include=src/** npm run test:all",
-    "pack:dry-run": "npm pack --dry-run"
+    "pack:dry-run": "npm pack --dry-run",
+    "test:safe": "node scripts/safe-test-runner.js",
+    "test:security": "node scripts/safe-test-runner.js security",
+    "test:concurrency": "node scripts/safe-test-runner.js concurrency"
   },
   "devDependencies": {
     "@opencode-ai/plugin": "^1.18.32",

@@ -3,7 +3,6 @@
 # Node.js & Bun dependencies
 node_modules/
 bun.lockb
-package-lock.json
 
 # Build outputs
 dist/
@@ -31,3 +30,4 @@ coverage/
 # OS files
 .DS_Store
 Thumbs.db
+
