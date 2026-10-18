@@ -1,9 +1,9 @@
-﻿{
+{
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "manifestVersion": "1.1.0",
+  "manifestVersion": "1.2.0",
   "iteration": "P1.7",
   "title": "OpenMemory P1.7 Empirical Evidence & Release Qualification Manifest",
-  "generatedAt": "2026-10-18T01:45:00Z",
+  "generatedAt": "2026-10-18T02:19:51.526Z",
   "environment": {
     "os": "Windows_NT 10.0.26200 win32-x64",
     "nodeVersion": "v22.15.0",
@@ -17,9 +17,11 @@
     "reconciledHeadCommit": "15997cd5f126f5d8122d4f828a1be5bdf48386f6",
     "remoteUrl": "https://github.com/Blueisazul/OpenMemory.git",
     "remoteBaseCommit": "1ae1a48db8cfe88e4371fe6ca58c488b2433c2ab",
-    "remoteBranchExists": false,
-    "remoteWorkflowRunsCount": 0,
-    "commitsAheadOfOriginMaster": 6
+    "remoteBranchExists": true,
+    "remoteWorkflowRunsCount": 3,
+    "commitsAheadOfOriginMaster": 11,
+    "pushedHeadCommit": "c2fd94c82773a7513e9b69f81cda17eefe00cb21",
+    "remoteCanonicalRepo": "https://github.com/Blueisazul/Evocara.git"
   },
   "candidateArtifact": {
     "name": "openmemory",
@@ -103,13 +105,123 @@
     "mutationsPerformed": 0
   },
   "qualityGates": {
-    "G0": { "name": "Baseline Reconciliation", "status": "PASSED" },
-    "G1": { "name": "Clean Compilation", "status": "PASSED" },
-    "G2": { "name": "Regression & Concurrency Suites", "status": "PASSED" },
-    "G3": { "name": "Security & Dependency Audit", "status": "PASSED" },
-    "G4": { "name": "Packaging Reproducibility", "status": "PASSED" },
-    "G5": { "name": "Multiplatform Remote CI", "status": "PENDING_AUTHORIZATION" },
-    "G6": { "name": "Consumer Promotion Readiness", "status": "READY_FOR_AUTHORIZATION" },
-    "G7": { "name": "Final Release Publication", "status": "BLOCKED" }
+    "G0": {
+      "name": "Baseline Reconciliation",
+      "status": "PASSED"
+    },
+    "G1": {
+      "name": "Clean Compilation",
+      "status": "PASSED"
+    },
+    "G2": {
+      "name": "Regression & Concurrency Suites",
+      "status": "PASSED"
+    },
+    "G3": {
+      "name": "Security & Dependency Audit",
+      "status": "PASSED"
+    },
+    "G4": {
+      "name": "Packaging Reproducibility",
+      "status": "PASSED"
+    },
+    "G5": {
+      "name": "Multiplatform Remote CI",
+      "status": "PASSED",
+      "runId": 39089378899,
+      "headCommit": "c2fd94c82773a7513e9b69f81cda17eefe00cb21",
+      "matrixConclusion": "9/9 PASS"
+    },
+    "G6": {
+      "name": "Consumer Promotion Readiness",
+      "status": "READY_FOR_AUTHORIZATION"
+    },
+    "G7": {
+      "name": "Final Release Publication",
+      "status": "BLOCKED"
+    }
+  },
+  "remoteCI": {
+    "gate": "G5",
+    "status": "PASSED",
+    "workflowName": "OpenMemory Production CI & Release Attestation",
+    "workflowRunId": 39089378899,
+    "workflowRunUrl": "https://github.com/Blueisazul/Evocara/actions/runs/39089378899",
+    "workflowConclusion": "success",
+    "matrixRunnersCount": 9,
+    "matrixPassedCount": 9,
+    "matrixFailedCount": 0,
+    "runners": [
+      {
+        "os": "ubuntu-latest",
+        "node": "18.x",
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 117562635824
+      },
+      {
+        "os": "ubuntu-latest",
+        "node": "20.x",
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 117562635949
+      },
+      {
+        "os": "ubuntu-latest",
+        "node": "22.x",
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 117562635765
+      },
+      {
+        "os": "macos-latest",
+        "node": "18.x",
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 117562635746
+      },
+      {
+        "os": "macos-latest",
+        "node": "20.x",
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 117562635832
+      },
+      {
+        "os": "macos-latest",
+        "node": "22.x",
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 117562635810
+      },
+      {
+        "os": "windows-latest",
+        "node": "18.x",
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 117562635745
+      },
+      {
+        "os": "windows-latest",
+        "node": "20.x",
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 117562635715
+      },
+      {
+        "os": "windows-latest",
+        "node": "22.x",
+        "status": "completed",
+        "conclusion": "success",
+        "jobId": 117562635547
+      }
+    ],
+    "releaseAttestationJob": {
+      "name": "Generate SLSA Build Provenance Attestation",
+      "jobId": 117563156750,
+      "status": "completed",
+      "conclusion": "skipped",
+      "rationale": "SLSA provenance attestation is strictly configured to execute only on push to protected branches (main, master) or version tags (v*), guaranteeing supply chain integrity without emitting unverified attestations from feature/fix branches."
+    }
   }
 }
