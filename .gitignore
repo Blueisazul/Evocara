@@ -1,4 +1,4 @@
-# OpenMemory Git Policy
+﻿# OpenMemory Git Policy
 
 # Node.js & Bun dependencies
 node_modules/
@@ -24,6 +24,7 @@ scratch/
 *.log
 *.tmp
 *.tgz
+!.work/artifacts/openmemory-0.3.14-rc4.tgz
 coverage/
 .c8data/
 
