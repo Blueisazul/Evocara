@@ -1,0 +1,124 @@
+﻿name: OpenMemory Production CI & Release Attestation
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - 'fix/**'
+      - 'feature/**'
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - main
+      - master
+      - 'fix/**'
+
+# Least-privilege top-level permissions (OpenSSF Scorecard compliance)
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Build & Test (${{ matrix.os }} - Node ${{ matrix.node-version }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        # Node 18 maintained for legacy compatibility validation; Node 20 & 22 are active LTS
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies (clean reproducible)
+        shell: bash
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "Installing via npm ci (lockfile detected)..."
+            npm ci --prefer-offline
+          else
+            echo "Installing via npm install (no lockfile in checkout)..."
+            npm install --prefer-offline
+          fi
+
+      - name: TypeScript Compilation & Type Checking
+        run: npm run build
+
+      - name: Execute Full Safe Test Runner (15 Isolated Suites)
+        run: npm run test:safe
+
+      - name: Cross-Platform Package & Distribution Bundle Verification
+        run: node scripts/ci-verify-package.js
+
+      - name: Software Bill of Materials (SBOM) Generation & Verification
+        run: node scripts/generate-sbom.js --generate-if-missing && node scripts/generate-sbom.js --validate
+
+      - name: Release Manifest & Provenance Verification
+        run: node scripts/generate-release-manifest.js --generate-if-missing && node scripts/generate-release-manifest.js --validate
+
+      - name: Upload Test and Diagnostic Evidence on Failure
+        if: failure()
+        uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882 # v4.4.3
+        with:
+          name: ci-diagnostic-evidence-${{ matrix.os }}-node-${{ matrix.node-version }}
+          path: |
+            .work/evidence/
+            *.log
+            promotion_abort_evidence.json
+          if-no-files-found: ignore
+
+  release-attestation:
+    name: Generate SLSA Build Provenance Attestation
+    needs: test
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/v'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js 22.x
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+        with:
+          node-version: 22.x
+
+      - name: Install dependencies & Build
+        run: |
+          npm install --prefer-offline
+          npm run build
+
+      - name: Verify Release Artifact & Manifest
+        run: |
+          node scripts/ci-verify-package.js
+          node scripts/generate-sbom.js --validate
+          node scripts/generate-release-manifest.js --validate
+
+      - name: Attest Build Provenance (SLSA v0.2 / Sigstore)
+        uses: actions/attest-build-provenance@c074443f1a5fb4aee83904b71123799736ad970e # v2.2.0
+        with:
+          subject-path: '.work/artifacts/openmemory-*.tgz'
