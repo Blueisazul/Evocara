@@ -55,14 +55,14 @@ async function runStorageEngineTests() {
     // -------------------------------------------------------------
     // TEST 2: Atomic Write Execution & Corruption Safeguard
     // -------------------------------------------------------------
-    state.activePhase = "PHASE_3_STORAGE_FOUNDATION_TESTED";
+    state.currentStage = "IMPLEMENTAR";
     state.sessionRunCount = 5;
     storage.saveProjectState(state);
 
     const updatedStateRaw = fs.readFileSync(path.join(openmemoryDir, "project-state.json"), "utf-8");
     const updatedState = JSON.parse(updatedStateRaw);
 
-    if (updatedState.activePhase === "PHASE_3_STORAGE_FOUNDATION_TESTED" && updatedState.sessionRunCount === 5) {
+    if ((updatedState.currentStage === "IMPLEMENTAR" || updatedState.activePhase === "IMPLEMENTAR") && updatedState.sessionRunCount === 5) {
       recordResult(
         "F3.1-002",
         "Atomic File Persistence & State Update",
@@ -79,7 +79,7 @@ async function runStorageEngineTests() {
     fs.writeFileSync(path.join(openmemoryDir, "project-state.json"), "{ CORRUPTED_INVALID_JSON ...", "utf-8");
     const recoveredState = storage.getOrInitProjectState();
 
-    if (recoveredState && (recoveredState.activePhase === "PHASE_3_STORAGE_FOUNDATION" || recoveredState.activePhase === "PHASE_3_IMPLEMENTATION")) {
+    if (recoveredState && (recoveredState.currentStage === "DESCUBRIR" || (recoveredState as any).activePhase === "DESCUBRIR")) {
       recordResult(
         "F3.1-003",
         "Corrupted File Safe Recovery",

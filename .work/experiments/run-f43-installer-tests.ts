@@ -229,7 +229,7 @@ async function runF43InstallerTests() {
     const testDir = path.join(scratchRoot, "test-f43-006");
     fs.mkdirSync(testDir, { recursive: true });
 
-    const cliOutput = runCLI(["install"], testDir);
+    const cliOutput = await runCLI(["install"], testDir);
 
     if (!cliOutput.includes("[OpenMemory CLI] Installation complete:")) {
       throw new Error(`Unexpected CLI output: ${cliOutput}`);

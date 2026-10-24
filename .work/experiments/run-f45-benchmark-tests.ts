@@ -75,13 +75,13 @@ async function runF45BenchmarkTests() {
     }
 
     // 2. session.created
-    await pluginInstance.event({ event: { type: "session.created", session: { id: "sess-f45-002" } } });
+    await pluginInstance.event({ event: { type: "session.created", properties: { info: { id: "sess-f45-002" } } } });
 
     // 3. session.idle
-    await pluginInstance.event({ event: { type: "session.idle", session: { id: "sess-f45-002" } } });
+    await pluginInstance.event({ event: { type: "session.idle", properties: { sessionID: "sess-f45-002" } } });
 
     // 4. session.compacted
-    await pluginInstance.event({ event: { type: "session.compacted", session: { id: "sess-f45-002" } } });
+    await pluginInstance.event({ event: { type: "session.compacted", properties: { sessionID: "sess-f45-002" } } });
 
     // 5. experimental.session.compacting
     const compactingPayload = { prompt: "Context compacting test prompt" };
@@ -123,10 +123,12 @@ async function runF45BenchmarkTests() {
       throw new Error("MCP tools/call handler missing");
     }
 
+    const storageBench = new StorageEngine(testDir);
+    const sessBench = storageBench.registerSession({ agentId: "agent-bench", status: "ACTIVE" });
     const toolsToTest = [
       { name: "openmemory_status", args: {} },
       { name: "openmemory_get_handoff", args: {} },
-      { name: "openmemory_save_adr", args: { title: "F4.5 Test ADR", context: "Context", decision: "Decision" } },
+      { name: "openmemory_save_adr", args: { title: "F4.5 Test ADR", context: "Context", decision: "Decision", agentId: "agent-bench", sessionId: sessBench.id } },
       { name: "openmemory_create_backup", args: { label: "f45-mcp-backup" } },
       { name: "openmemory_run_diagnostics", args: {} },
     ];
@@ -208,17 +210,22 @@ async function runF45BenchmarkTests() {
     const totalOps = 100;
     const startTime = performance.now();
 
+    const sess = storage.registerSession({ agentId: "agent-bench", status: "ACTIVE" });
     for (let i = 0; i < totalOps; i++) {
       if (i % 3 === 0) {
         storage.addTask(`Benchmark Task ${i}`, "COMPLETED");
       } else if (i % 3 === 1) {
         storage.saveHandoff(`# Handoff Iteration ${i}\nProgress item ${i}`);
       } else {
-        storage.saveADR({
-          title: `Benchmark ADR ${i}`,
-          context: `Context ${i}`,
-          decision: `Decision ${i}`,
-        });
+        storage.saveADR(
+          {
+            title: `Benchmark ADR ${i}`,
+            context: `Context ${i}`,
+            decision: `Decision ${i}`,
+          },
+          "agent-bench",
+          sess.id
+        );
       }
     }
 

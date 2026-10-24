@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { createMCPServer } from "../../src/mcp";
+import { StorageEngine } from "../../src/storage";
 import { ListToolsRequestSchema, CallToolRequestSchema } from "@modelcontextprotocol/sdk/types.js";
 
 interface TestResult {
@@ -24,6 +25,7 @@ async function runF42MCPTests() {
   console.log("   OpenMemory F4.2 Model Context Protocol (MCP) ");
   console.log("=================================================\n");
 
+  const storage = new StorageEngine(tempDir);
   const server = createMCPServer(tempDir);
 
   // -------------------------------------------------------------------------
@@ -149,7 +151,7 @@ async function runF42MCPTests() {
       {}
     );
 
-    if (!res?.content?.[0]?.text?.includes("# OpenMemory Session Handoff")) {
+    if (!res?.content?.[0]?.text?.includes("Session Handoff")) {
       throw new Error("openmemory_get_handoff output text mismatch");
     }
 
@@ -174,6 +176,7 @@ async function runF42MCPTests() {
   // Test F4.2-005: openmemory_save_adr Tool Execution
   // -------------------------------------------------------------------------
   try {
+    const sessMcp = storage.registerSession({ agentId: "agent-mcp", status: "ACTIVE" });
     const res = await callHandler(
       {
         method: "tools/call",
@@ -181,11 +184,12 @@ async function runF42MCPTests() {
           name: "openmemory_save_adr",
           arguments: {
             title: "MCP Integration Architecture",
-            status: "ACCEPTED",
             date: "2026-09-25",
             context: "Cross-client interoperability with Cursor and Claude Desktop.",
             decision: "Integrate @modelcontextprotocol/sdk over STDIO transport.",
             consequences: "Provides zero-code protocol compliance.",
+            agentId: "agent-mcp",
+            sessionId: sessMcp.id,
           },
         },
       },

@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import { createMCPServer } from "../../src/mcp";
+import { StorageEngine } from "../../src/storage";
 import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
 
 async function runF53MCPKnowledgeTests() {
@@ -27,6 +28,7 @@ async function runF53MCPKnowledgeTests() {
   }
 
   try {
+    const storage = new StorageEngine(tmpDir);
     const mcpServer = createMCPServer(tmpDir);
 
     // Helper to simulate calling tool via MCP CallToolRequestSchema handler
@@ -52,6 +54,8 @@ async function runF53MCPKnowledgeTests() {
       const handler = (mcpServer as any)._requestHandlers.get(ListToolsRequestSchema.shape.method.value);
       return await handler({ method: "tools/list" }, {});
     }
+
+    storage.registerSession({ id: "session-mcp-100", agentId: "primary-agent", status: "ACTIVE" });
 
     // -------------------------------------------------------------------------
     // Test 1: Record ResearchRecord via openmemory_record_knowledge
@@ -110,6 +114,8 @@ async function runF53MCPKnowledgeTests() {
       category: "REPOSITORY",
       summary: "Analysis of OpenMemory open source codebase structure",
       status: "COMPLETED",
+      sessionId: "session-mcp-100",
+      agentId: "primary-agent",
       items: [
         {
           id: "ITEM-REPO-1",
@@ -144,6 +150,8 @@ async function runF53MCPKnowledgeTests() {
       category: "ARCHITECTURE",
       summary: "Verification of tool.execute.after vs openmemory_record_knowledge boundary",
       status: "COMPLETED",
+      sessionId: "session-mcp-100",
+      agentId: "primary-agent",
       items: [
         {
           id: "ITEM-FIND-1",
@@ -200,6 +208,8 @@ async function runF53MCPKnowledgeTests() {
       await callTool("openmemory_record_knowledge", {
         topic: "Huge Payload Topic",
         summary: "A".repeat(12000),
+        sessionId: "session-mcp-100",
+        agentId: "primary-agent",
         items: [],
       });
     } catch (err) {
@@ -215,6 +225,8 @@ async function runF53MCPKnowledgeTests() {
       topic: "Secret Scrubbing Test",
       category: "SECURITY",
       summary: "Found key sk-proj-123456789012345678901234 and bearer secret_token_value_xyz123",
+      sessionId: "session-mcp-100",
+      agentId: "primary-agent",
       items: [
         {
           type: "FINDING",
@@ -320,6 +332,8 @@ async function runF53MCPKnowledgeTests() {
       title: "ADR 005 MCP Integration",
       context: "MCP integration test context",
       decision: "MCP integration decision",
+      sessionId: "session-mcp-100",
+      agentId: "primary-agent",
     });
     const backupRes = await callTool("openmemory_create_backup", { label: "f53-test" });
     const diagRes = await callTool("openmemory_run_diagnostics", {});
@@ -333,7 +347,7 @@ async function runF53MCPKnowledgeTests() {
         toolNames.includes("openmemory_record_knowledge") &&
         toolNames.includes("openmemory_query_knowledge") &&
         statusRes.content[0].text.includes("OpenMemory Project Context Summary") &&
-        handoffRes.content[0].text.includes("OpenMemory Session Handoff") &&
+        handoffRes.content[0].text.includes("Session Handoff") &&
         adrRes.content[0].text.includes("ADR created/updated successfully") &&
         backupRes.content[0].text.includes("Backup created successfully") &&
         diagRes.content[0].text.includes("Diagnostics Status: HEALTHY"),

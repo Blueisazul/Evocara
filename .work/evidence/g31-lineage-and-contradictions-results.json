@@ -1,7 +1,7 @@
 {
   "milestone": "G31",
   "suite": "Causal Decision Lineage, Active Temporal Contradictions & Contextual Synthesis Suite",
-  "timestamp": "2026-10-24T16:23:56.615Z",
+  "timestamp": "2026-10-24T17:23:51.305Z",
   "totalScenarios": 18,
   "passedScenarios": 18,
   "passRate": "100.0%",
@@ -10,61 +10,61 @@
       "scenarioId": 1,
       "name": "Simple lineage reconstruction (predecessor & successor)",
       "status": "PASS",
-      "durationMs": 58
+      "durationMs": 13
     },
     {
       "scenarioId": 2,
       "name": "Multi-step sequential supersession chain (C -> B -> A)",
       "status": "PASS",
-      "durationMs": 90
+      "durationMs": 14
     },
     {
       "scenarioId": 3,
       "name": "Branching derivations and multi-parent lineages",
       "status": "PASS",
-      "durationMs": 82
+      "durationMs": 18
     },
     {
       "scenarioId": 4,
       "name": "Isolated decision with zero lineage relations",
       "status": "PASS",
-      "durationMs": 22
+      "durationMs": 5
     },
     {
       "scenarioId": 5,
       "name": "Cyclic relation detection and safe bounded termination",
       "status": "PASS",
-      "durationMs": 1
+      "durationMs": 0
     },
     {
       "scenarioId": 6,
       "name": "Broken references and missing items resilience",
       "status": "PASS",
-      "durationMs": 1
+      "durationMs": 0
     },
     {
       "scenarioId": 7,
       "name": "Multi-project boundary isolation on lineage queries",
       "status": "PASS",
-      "durationMs": 9
+      "durationMs": 1
     },
     {
       "scenarioId": 8,
       "name": "Explicit CONTRADICTS relation active at target valid time",
       "status": "PASS",
-      "durationMs": 53
+      "durationMs": 12
     },
     {
       "scenarioId": 9,
       "name": "Explicit CONTRADICTS relation outside valid window (historical/resolved)",
       "status": "PASS",
-      "durationMs": 2
+      "durationMs": 1
     },
     {
       "scenarioId": 10,
       "name": "Non-contradictory temporal overlap (preserves uncertainty without hallucinated conflict)",
       "status": "PASS",
-      "durationMs": 21
+      "durationMs": 5
     },
     {
       "scenarioId": 11,
@@ -76,43 +76,43 @@
       "scenarioId": 12,
       "name": "Open-ended validity intervals and untimed legacy records",
       "status": "PASS",
-      "durationMs": 20
+      "durationMs": 5
     },
     {
       "scenarioId": 13,
       "name": "Point-in-time query surfacing active contradictions with calibrated confidence",
       "status": "PASS",
-      "durationMs": 15
+      "durationMs": 3
     },
     {
       "scenarioId": 14,
       "name": "Non-existent target item unanswerable report without fabricated nodes",
       "status": "PASS",
-      "durationMs": 2
+      "durationMs": 1
     },
     {
       "scenarioId": 15,
       "name": "Dual MCP alias compatibility (openmemory_explain_lineage & evocara_explain_lineage)",
       "status": "PASS",
-      "durationMs": 61
+      "durationMs": 18
     },
     {
       "scenarioId": 16,
       "name": "Project boundary isolation and authorization fail-closed enforcement via MCP",
       "status": "PASS",
-      "durationMs": 18
+      "durationMs": 4
     },
     {
       "scenarioId": 17,
       "name": "Lineage queries perform strictly zero mutations on disk state",
       "status": "PASS",
-      "durationMs": 15
+      "durationMs": 3
     },
     {
       "scenarioId": 18,
       "name": "Preservation of supersession invariants and terminal state protection",
       "status": "PASS",
-      "durationMs": 12
+      "durationMs": 3
     }
   ]
 }

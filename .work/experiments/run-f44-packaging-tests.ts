@@ -27,7 +27,7 @@ async function runF44PackagingTests() {
     }
 
     // Execute build
-    execSync("npm run build", { cwd: rootDir, stdio: "pipe" });
+    execSync("npx tsc", { cwd: rootDir, encoding: "utf-8" });
 
     const distDir = path.join(rootDir, "dist");
     const requiredFiles = [
@@ -64,7 +64,9 @@ async function runF44PackagingTests() {
       status: "FAILED",
       details: (err as Error).message,
     });
-    console.error("[FAILED] F4.4-001:", (err as Error).message);
+    console.error("[FAILED] F4.4-001:", (err as any).message);
+    if ((err as any).stdout) console.error("STDOUT:", (err as any).stdout.toString());
+    if ((err as any).stderr) console.error("STDERR:", (err as any).stderr.toString());
   }
 
   // -------------------------------------------------------------------------
@@ -180,9 +182,16 @@ async function runF44PackagingTests() {
   // Test F4.4-005: npm pack --dry-run Tarball Contents Validation
   // -------------------------------------------------------------------------
   try {
-    const output = execSync("npm pack --dry-run 2>&1", { cwd: rootDir, encoding: "utf-8" });
+    let output = "";
+    try {
+      output = execSync("npm pack --dry-run 2>&1", { cwd: rootDir, encoding: "utf-8", shell: true });
+    } catch (e: any) {
+      output = (e.stdout || "") + "\n" + (e.stderr || "") + "\n" + (e.message || "");
+    }
 
-    if (!output.includes("dist/index.js") || !output.includes("dist/cli.js")) {
+    const hasIndex = output.includes("dist/index.js") || output.includes("dist\\index.js");
+    const hasCli = output.includes("dist/cli.js") || output.includes("dist\\cli.js");
+    if (!hasIndex || !hasCli) {
       throw new Error("npm pack output missing dist build artifacts");
     }
     if (!output.includes("AGENTS.md") || !output.includes("LICENSE") || !output.includes("README.md")) {
@@ -230,7 +239,7 @@ async function runF44PackagingTests() {
 
     // Test running compiled dist/cli.js
     const { runCLI } = require(path.join(rootDir, "dist", "cli.js"));
-    const cliOutput = runCLI(["status"], tempDir);
+    const cliOutput = await runCLI(["status"], tempDir);
     if (!cliOutput.includes("# OpenMemory Project Context Summary")) {
       throw new Error("Compiled runCLI from dist/cli.js failed execution");
     }

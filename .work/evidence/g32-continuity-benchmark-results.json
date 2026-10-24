@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-24T16:32:34.030Z",
+  "timestamp": "2026-10-24T16:35:27.756Z",
   "milestone": "G32",
   "targetConsumer": "InventoryHub",
   "consumerVersionUnderEvaluation": "openmemory-0.3.14-rc4 (protected)",
@@ -43,7 +43,7 @@
       "description": "Identify canonical storage driver and architectural justification over better-sqlite3",
       "conditionOn": {
         "passed": true,
-        "durationMs": 32.5331,
+        "durationMs": 14.6214,
         "matchesCount": 3,
         "topItem": "INVENTORYHUB_SQLITE_DRIVER",
         "topScore": 1.88,
@@ -80,7 +80,7 @@
       "description": "Retrieve FIFO valuation policy, integer cent precision, and deficit rollback constraints",
       "conditionOn": {
         "passed": true,
-        "durationMs": 3.638,
+        "durationMs": 2.1739,
         "matchesCount": 3,
         "topItem": "Propósito del Dominio",
         "topScore": 0.41,
@@ -111,7 +111,7 @@
       "description": "Confirm inventory-data.json legacy retirement status and ensure file remains ABSENT",
       "conditionOn": {
         "passed": true,
-        "durationMs": 2.6407,
+        "durationMs": 1.8858,
         "matchesCount": 5,
         "topItem": "INVENTORYHUB_JSON_LEGACY_STATUS",
         "topScore": 1.61,
@@ -147,7 +147,7 @@
       "description": "Identify that CommonJS single-module was superseded by ES Modules multi-file architecture",
       "conditionOn": {
         "passed": true,
-        "durationMs": 4.0073,
+        "durationMs": 2.6031,
         "matchesCount": 3,
         "topItem": "INVENTORYHUB_CONFLICT_ARCHITECTURE_20261008",
         "topScore": 1.93,
@@ -181,7 +181,7 @@
       "description": "Evaluate an unverified Redis/MySQL PR proposal against Local_File_Storage_Only constraint",
       "conditionOn": {
         "passed": true,
-        "durationMs": 2.6181,
+        "durationMs": 1.7889,
         "matchesCount": 0,
         "activeConstraint": "Constraint: Local_File_Storage_Only",
         "contentSample": "Redis/MySQL matches: 0 (K=0). Active constraint confirmed: Local_File_Storage_Only.",
@@ -214,7 +214,7 @@
       "description": "Retrieve prior investigation proving 12.8ms floor is due to withStateLock loop, not OS timer",
       "conditionOn": {
         "passed": true,
-        "durationMs": 0.1997,
+        "durationMs": 0.1388,
         "hasHistoricalReport": true,
         "contentSample": "Fase 4.8.35 WINDOWS-TIMER-HYPOTHESIS.md: Date.now() resolution is 1.18ms; delay is internal polling.",
         "tokensUsedEstimated": 80,
@@ -246,7 +246,7 @@
       "description": "Handle query for nonexistent Shopify ERP integration without hallucinating secrets or endpoints",
       "conditionOn": {
         "passed": true,
-        "durationMs": 3.5619,
+        "durationMs": 2.3354,
         "matchesCount": 0,
         "contentSample": "Matches: 0 (Strict K=0 calibrated threshold). Zero hallucinated endpoints.",
         "tokensUsedEstimated": 45,
