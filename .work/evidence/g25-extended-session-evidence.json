@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-10-22T16:03:14.076Z",
+  "durationMs": 553,
+  "totalInteractions": 89,
+  "averageInteractionLatencyMs": 12.245317647058817,
+  "criteriaResults": {
+    "pluginStartupAndMcpConnection": "PASSED",
+    "noInterfaceBlockagesOrDegradations": "PASSED",
+    "sessionEventCapture": "PASSED",
+    "knowledgeAndAdrRetrieval": "PASSED",
+    "handoffUpdateAndPersistence": "PASSED",
+    "coldRestartPersistenceFidelity": "PASSED",
+    "compaction1MbBoundaryEnforcement": "PASSED",
+    "essentialEventsPreservation100Pct": "PASSED",
+    "absenceOfCorruptionOrTornWrites": "PASSED",
+    "handoffRetrievalSub50ms": "PASSED",
+    "crossSessionContinuity": "PASSED"
+  },
+  "evidence": {
+    "adrsPreserved": 5,
+    "knowledgeItemsPreserved": 10,
+    "eventsBeforeCompaction": 2040,
+    "eventsAfterCompaction": 513,
+    "sizeBeforeBytes": 1116393,
+    "sizeAfterBytes": 298693,
+    "essentialPreservedCount": 10,
+    "handoffRetrievalStats": {
+      "p50": 0.4940000000000282,
+      "p95": 0.6603999999999814,
+      "max": 0.8122000000000753
+    }
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "timestamp": "2026-10-22T15:59:13.128Z",
+  "benchmarkSummary": {
+    "totalCategories": 9,
+    "passedCategories": 7,
+    "passRate": "78%",
+    "openMemoryAverages": {
+      "meanPrecision": 0.667,
+      "meanRecall": 0.778,
+      "meanLatencyMs": 2.661
+    },
+    "baselineAverages": {
+      "meanPrecision": 0.509,
+      "meanRecall": 1,
+      "meanLatencyMs": 0.036
+    },
+    "precisionAdvantage": "+16%"
+  },
+  "results": [
+    {
+      "category": "1. Exact Term Matching",
+      "query": "checkLowStockItems",
+      "expectedItems": [
+        "ITEM-TASK-102"
+      ],
+      "retrievedOm": [
+        "ITEM-TASK-102"
+      ],
+      "retrievedBaseline": [
+        "ITEM-TASK-102"
+      ],
+      "metrics": {
+        "openMemory": {
+          "precision": 1,
+          "recall": 1,
+          "obsoleteCount": 0,
+          "latencyMs": 3.534
+        },
+        "baseline": {
+          "precision": 1,
+          "recall": 1,
+          "latencyMs": 0.094
+        }
+      },
+      "passed": true
+    },
+    {
+      "category": "2. Title & Tags Hierarchy Weighting",
+      "query": "database persistence",
+      "expectedItems": [
+        "ITEM-ADR-001",
+        "ITEM-ADR-002"
+      ],
+      "retrievedOm": [
+        "ITEM-ADR-001",
+        "ITEM-ADR-002"
+      ],
+      "retrievedBaseline": [
+        "ITEM-ADR-001",
+        "ITEM-ADR-002",
+        "ITEM-PROP-MONGO",
+        "ITEM-DRAFT-POSTGRES"
+      ],
+      "metrics": {
+        "openMemory": {
+          "precision": 1,
+          "recall": 1,
+          "obsoleteCount": 0,
+          "latencyMs": 2.368
+        },
+        "baseline": {
+          "precision": 0.5,
+          "recall": 1,
+          "latencyMs": 0.075
+        }
+      },
+      "passed": true
+    },
+    {
+      "category": "3. Accepted Architectural Decision Priority",
+      "query": "sqlite database persistence",
+      "expectedItems": [
+        "ITEM-ADR-001"
+      ],
+      "retrievedOm": [
+        "ITEM-ADR-001",
+        "ITEM-ADR-002"
+      ],
+      "retrievedBaseline": [
+        "ITEM-ADR-001",
+        "ITEM-PROP-MONGO",
+        "ITEM-DRAFT-POSTGRES",
+        "ITEM-ADR-002"
+      ],
+      "metrics": {
+        "openMemory": {
+          "precision": 0.5,
+          "recall": 1,
+          "obsoleteCount": 0,
+          "latencyMs": 2.347
+        },
+        "baseline": {
+          "precision": 0.25,
+          "recall": 1,
+          "latencyMs": 0.031
+        }
+      },
+      "passed": true
+    },
+    {
+      "category": "4. Superseded Knowledge Penalty",
+      "query": "mongodb cloud cluster migration",
+      "expectedItems": [
+        "ITEM-PROP-MONGO"
+      ],
+      "retrievedOm": [
+        "ITEM-ADR-002",
+        "ITEM-ADR-001",
+        "ITEM-TASK-102"
+      ],
+      "retrievedBaseline": [
+        "ITEM-PROP-MONGO",
+        "ITEM-ADR-002"
+      ],
+      "metrics": {
+        "openMemory": {
+          "precision": 0,
+          "recall": 0,
+          "obsoleteCount": 0,
+          "latencyMs": 2.438
+        },
+        "baseline": {
+          "precision": 0.5,
+          "recall": 1,
+          "latencyMs": 0.036
+        }
+      },
+      "passed": false
+    },
+    {
+      "category": "5. Contradictory Knowledge Inspection",
+      "query": "postgresql database server",
+      "expectedItems": [
+        "ITEM-DRAFT-POSTGRES"
+      ],
+      "retrievedOm": [
+        "ITEM-ADR-001"
+      ],
+      "retrievedBaseline": [
+        "ITEM-DRAFT-POSTGRES",
+        "ITEM-ADR-001",
+        "ITEM-PROP-MONGO"
+      ],
+      "metrics": {
+        "openMemory": {
+          "precision": 0,
+          "recall": 0,
+          "obsoleteCount": 0,
+          "latencyMs": 2.429
+        },
+        "baseline": {
+          "precision": 0.333,
+          "recall": 1,
+          "latencyMs": 0.014
+        }
+      },
+      "passed": false
+    },
+    {
+      "category": "6. Irrelevant Term Filtering",
+      "query": "quantum superposition cryogenic blockchain",
+      "expectedItems": [],
+      "retrievedOm": [],
+      "retrievedBaseline": [],
+      "metrics": {
+        "openMemory": {
+          "precision": 1,
+          "recall": 1,
+          "obsoleteCount": 0,
+          "latencyMs": 2.162
+        },
+        "baseline": {
+          "precision": 0,
+          "recall": 1,
+          "latencyMs": 0.019
+        }
+      },
+      "passed": true
+    },
+    {
+      "category": "7. Multi-Project Scope Isolation",
+      "query": "database architecture persistence",
+      "expectedItems": [
+        "ITEM-ADR-001",
+        "ITEM-ADR-002"
+      ],
+      "retrievedOm": [
+        "ITEM-ADR-001",
+        "ITEM-ADR-002"
+      ],
+      "retrievedBaseline": [
+        "ITEM-ADR-001",
+        "ITEM-ADR-002",
+        "ITEM-PROP-MONGO",
+        "ITEM-DRAFT-POSTGRES"
+      ],
+      "metrics": {
+        "openMemory": {
+          "precision": 1,
+          "recall": 1,
+          "obsoleteCount": 0,
+          "latencyMs": 2.427
+        },
+        "baseline": {
+          "precision": 0.5,
+          "recall": 1,
+          "latencyMs": 0.015
+        }
+      },
+      "passed": true
+    },
+    {
+      "category": "8. State & Quality Discrimination",
+      "query": "database",
+      "expectedItems": [
+        "ITEM-ADR-001"
+      ],
+      "retrievedOm": [
+        "ITEM-ADR-001"
+      ],
+      "retrievedBaseline": [
+        "ITEM-ADR-001"
+      ],
+      "metrics": {
+        "openMemory": {
+          "precision": 1,
+          "recall": 1,
+          "obsoleteCount": 0,
+          "latencyMs": 1.61
+        },
+        "baseline": {
+          "precision": 1,
+          "recall": 1,
+          "latencyMs": 0.012
+        }
+      },
+      "passed": true
+    },
+    {
+      "category": "9. Cold-Restart Engine Reload Fidelity",
+      "query": "checkLowStockItems telemetry threshold",
+      "expectedItems": [
+        "ITEM-TASK-102"
+      ],
+      "retrievedOm": [
+        "ITEM-TASK-102",
+        "ITEM-TASK-103"
+      ],
+      "retrievedBaseline": [
+        "ITEM-TASK-102",
+        "ITEM-TASK-103"
+      ],
+      "metrics": {
+        "openMemory": {
+          "precision": 0.5,
+          "recall": 1,
+          "obsoleteCount": 0,
+          "latencyMs": 4.631
+        },
+        "baseline": {
+          "precision": 0.5,
+          "recall": 1,
+          "latencyMs": 0.027
+        }
+      },
+      "passed": true
+    }
+  ]
+}

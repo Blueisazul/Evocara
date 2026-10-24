@@ -1,0 +1,24 @@
+{
+  "milestone": "G25",
+  "bloque": "Bloque F - Promotion Decision",
+  "timestamp": "2026-10-22T03:51:57.937Z",
+  "candidateTarball": "openmemory-0.3.15-rc8.tgz",
+  "candidateSha256": "f9ae68496811377d27fc793ce7c109bfb8a3d3b2327e4a24a4c6187cbae47125",
+  "liveConsumer": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+  "liveConsumerVersion": "0.3.14-rc4",
+  "stagingSandbox": "C:\\Users\\sant1\\AppData\\Local\\Temp\\g25-staging-inventoryhub-jMZVeU",
+  "businessTests": {
+    "test_inventory_manager": "PASS",
+    "test_phase_2c2_full": "24/24 PASS",
+    "test_phase_2c4_post_cleanup": "10/10 PASS",
+    "totalChecks": 34,
+    "passedChecks": 34
+  },
+  "rollbackDrill": {
+    "faultInjection": "CORRUPTED_TARBALL",
+    "resultState": "ROLLED_BACK",
+    "postRollbackTestsPass": true
+  },
+  "promotionReadiness": "READY_CONTROLLED",
+  "liveConsumerPolicy": "PROTECTED_IN_RC4_UNTIL_EXPLICIT_DEPLOYMENT"
+}

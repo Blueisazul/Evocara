@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "manifestVersion": "1.0.0",
+  "iteration": "G24",
+  "generationTimestamp": "2026-10-21T19:30:00.000Z",
+  "governance": {
+    "repository": "https://github.com/Blueisazul/OpenMemory.git",
+    "gitBranch": "fix/p0-security-concurrency-hardening",
+    "gitHeadCommit": "bc7d66a46e16a9fa34f0f12bf688c0c4068e79f1",
+    "historicalBaseline": "v0.3.1 (commit 8c8a43081e5e7a7fbd0aa5919074f4ff7cd437c8)",
+    "activeConsumerTarget": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+    "activeConsumerCurrentVersion": "0.3.14-rc4",
+    "activeConsumerTarballHash": "af88fae90107dfda797c7f6bcc982cf6bbd7ef53fd9a5d887c9bf77185a35f6e",
+    "activeConsumerProtectionStatus": "UNTOUCHED_ZERO_MUTATIONS"
+  },
+  "candidateUnderEvaluation": {
+    "candidate": "openmemory-0.3.15-rc7.tgz",
+    "version": "0.3.15-rc7",
+    "checksumSha256": "06862A82B82FF4CBA972A077C58817AAA986D7296A92DC1FDB18596B4DA2C206",
+    "sizeBytes": 208015,
+    "status": "FROZEN_STAGE_ACCEPTED"
+  },
+  "newConsolidatedCandidate": {
+    "candidate": "openmemory-0.3.15-rc8.tgz",
+    "version": "0.3.15-rc8",
+    "checksumSha256": "F9AE68496811377D27FC793CE7C109BFB8A3D3B2327E4A24A4C6187CBAE47125",
+    "sizeBytes": 208910,
+    "manifestPath": ".work/artifacts/openmemory-0.3.15-rc8-manifest.json",
+    "manifestSha256": "EB90299F8DE510F1BC1C0E5796206E3036F0D5198CCE0F2595218A550B8178D4",
+    "status": "PACKAGED_AND_QUALIFIED"
+  },
+  "validationSummary": {
+    "stagingAcceptance": {
+      "suite": ".work/experiments/g24/staging-controlled-promotion.js",
+      "totalPhases": 11,
+      "passedPhases": 11,
+      "verdict": "PASS",
+      "evidencePath": ".work/evidence/g24-staging-acceptance-results.json",
+      "mcpToolsCount": 40,
+      "rollbackDrillParity": 1.0
+    },
+    "consumerBusinessTests": {
+      "consumer": "InventoryHub",
+      "totalAssertions": 34,
+      "passedAssertions": 34,
+      "breakdown": {
+        "test_inventory_manager.js": "PASS",
+        "test_phase_2c2_full.js": "24/24 PASS",
+        "test_phase_2c4_post_cleanup.mjs": "10/10 PASS"
+      },
+      "verdict": "PASS"
+    },
+    "spanishMultilingualRetrieval": {
+      "suite": ".work/experiments/test-g24-multilingual-spanish.js",
+      "totalTests": 7,
+      "passedTests": 7,
+      "diacriticNormalization": "NFD_VERIFIED",
+      "stopwordsFilteredCount": 38,
+      "adversarialFalsePositives": 0,
+      "avgLatencyMs": 0.28,
+      "verdict": "PASS"
+    },
+    "benchmark105Scenarios": {
+      "totalScenarios": 105,
+      "passedScenarios": 88,
+      "failedScenarios": 17,
+      "precisionAt1": 0.8381,
+      "successAt1": 0.8381,
+      "recallAt3": 0.9667,
+      "precisionAt3": 0.3968,
+      "mrr": 0.8611,
+      "obsoleteInTop1": 0.0095,
+      "obsoleteInTop3": 0.0381,
+      "latencyP50Ms": 1.48,
+      "latencyP95Ms": 1.87,
+      "evidencePath": ".work/evidence/g23-expanded-benchmark-results.json",
+      "verdict": "PASS_STAGE_ACCEPTED"
+    },
+    "rankingInvariants": {
+      "suite": ".work/experiments/test-g23-robustness-invariants.js",
+      "totalInvariants": 10,
+      "passedInvariants": 10,
+      "verdict": "PASS"
+    }
+  },
+  "promotionDecision": {
+    "verdict": "PASS",
+    "qualificationLevel": "STAGING_ACCEPTED_QUALIFIED_FOR_CONTROLLED_PRODUCTION_PROMOTION",
+    "livePromotionAuthorized": false,
+    "humanApprovalRequired": true,
+    "residualRisks": [
+      {
+        "riskId": "RISK-G24-01",
+        "description": "Cross-project queries in a shared single-tenant database may leak titles if project_id is omitted",
+        "mitigation": "Physical project directory isolation is enforced; project_id parameter will be injected automatically in MCP facade",
+        "severity": "LOW"
+      },
+      {
+        "riskId": "RISK-G24-02",
+        "description": "Pure semantic paraphrasing without shared lexical stems relies on domain vocabulary coverage",
+        "mitigation": "Spanish diacritic normalization and cognate stemmer deployed; latency remains sub-2ms without heavy ML dependencies",
+        "severity": "LOW"
+      }
+    ]
+  }
+}

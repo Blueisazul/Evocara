@@ -1,0 +1,97 @@
+{
+  "manifestVersion": "2.0.0",
+  "milestone": "G8-RELEASE-ASSURANCE",
+  "timestamp": "2026-10-18T18:33:24.413Z",
+  "targetArtifact": {
+    "package": "openmemory",
+    "version": "0.3.15-rc1",
+    "path": ".work/artifacts/openmemory-0.3.15-rc1.tgz",
+    "sizeBytes": 184295,
+    "sha256": "8b3df7e15222cfcce93d33044efc817e2c10564aa996af389a9603b66595d716",
+    "sha512Base64": "8q24rROste0KEoAO39ZcFJMvzhKEFsrTOlFv0e12zI2qIh/kpVcLwYT1tEWomwSGyf4KG1N9KzUM90IJ8f9rvQ==",
+    "declaredSha256Match": true,
+    "declaredSizeMatch": true,
+    "contents": {
+      "totalFiles": 75,
+      "leaksDetected": 0,
+      "inspectionPassed": true
+    }
+  },
+  "gitState": {
+    "branch": "fix/p0-security-concurrency-hardening",
+    "headCommit": "bdbf41f",
+    "status": "CLEAN",
+    "originBase": "d8b416b"
+  },
+  "environment": {
+    "nodeVersion": "v22.15.0",
+    "npmVersion": "10.9.2",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "regressionSuiteResults": [
+    {
+      "id": "G7.2-LIFECYCLE",
+      "testsCount": 8,
+      "passed": 8,
+      "status": "PASSED",
+      "exitCode": 0
+    },
+    {
+      "id": "G7-DIAGNOSTICS",
+      "testsCount": 8,
+      "passed": 8,
+      "status": "PASSED",
+      "exitCode": 0
+    },
+    {
+      "id": "SEC-001",
+      "testsCount": 60,
+      "passed": 60,
+      "status": "PASSED",
+      "exitCode": 0
+    },
+    {
+      "id": "PERSIST-001",
+      "testsCount": 7,
+      "passed": 7,
+      "status": "PASSED",
+      "exitCode": 0
+    },
+    {
+      "id": "AUDIT-P16",
+      "testsCount": 6,
+      "passed": 6,
+      "status": "PASSED",
+      "exitCode": 0
+    },
+    {
+      "id": "ADVERSARIAL-P15",
+      "testsCount": 10,
+      "passed": 10,
+      "status": "PASSED",
+      "exitCode": 0
+    },
+    {
+      "id": "RC-VERIFY-SANDBOX",
+      "testsCount": 5,
+      "passed": 5,
+      "status": "PASSED",
+      "exitCode": 0
+    }
+  ],
+  "consumerReference": {
+    "name": "InventoryHub",
+    "path": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+    "installedVersion": "openmemory@0.3.14-rc4",
+    "status": "UNTOUCHED_AND_VERIFIED",
+    "assertionsPassing": "34/34"
+  },
+  "governanceCompliance": {
+    "npmPublish": "FORBIDDEN (NOT EXECUTED)",
+    "remotePush": "FORBIDDEN (NOT EXECUTED)",
+    "officialGitTags": "FORBIDDEN (NOT EXECUTED)",
+    "consumerProductionMutation": "FORBIDDEN (NOT EXECUTED)"
+  },
+  "verdict": "ASSURANCE_VERIFIED"
+}

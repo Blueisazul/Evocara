@@ -1,0 +1,150 @@
+{
+  "manifestVersion": "1.0.0",
+  "gate": "G6",
+  "status": "G6_PASSED",
+  "timestamp": "2026-10-18T16:15:00.000Z",
+  "verdict": {
+    "gateResult": "G6_PASSED",
+    "certifiedAt": "2026-10-18T16:15:00.000Z",
+    "certificationAuthority": "Blueisazul / OpenMemory Engineering",
+    "summary": "Controlled promotion of openmemory@0.3.14-rc4 to InventoryHub executed with zero unintended mutations, verified rollback capability, 100% consumer acceptance test pass rate, and full preservation of consumer persistent SQLite state."
+  },
+  "repository": {
+    "canonicalPath": "C:\\Users\\sant1\\Downloads\\OpenMemory",
+    "branch": "fix/p0-security-concurrency-hardening",
+    "remote": "https://github.com/Blueisazul/OpenMemory.git",
+    "upstreamUrl": "https://github.com/Blueisazul/Evocara.git",
+    "headCommit": "0b877ad"
+  },
+  "candidateArtifact": {
+    "name": "openmemory",
+    "version": "0.3.14-rc4",
+    "tarballPath": ".work/artifacts/openmemory-0.3.14-rc4.tgz",
+    "tarballSha256": "af88fae90107dfda797c7f6bcc982cf6bbd7ef53fd9a5d887c9bf77185a35f6e",
+    "tarballSize": 167133,
+    "unpackedEntriesCount": 69,
+    "unpackedSizeBytes": 862135,
+    "provenanceGateG5": {
+      "verdict": "G5_PASSED",
+      "remoteCiRunId": "39089378899",
+      "platformMatrix": "9/9 pass (ubuntu-latest, windows-latest, macos-latest across Node 18, 20, 22)"
+    }
+  },
+  "consumer": {
+    "name": "InventoryHub",
+    "path": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+    "moduleType": "module (ESM)",
+    "prePromotionSpecifier": "file:scratch/exp2_10/fase4_5/dist/openmemory-0.3.1.tgz",
+    "prePromotionInstalledVersion": "0.3.1",
+    "prePromotionTarballSha256": "48d022f8ef35914769ef2df423a39a1c391cb383686e6a2575ca6906a115b1ef",
+    "prePromotionTarballSize": 147676,
+    "postPromotionSpecifier": "file:../../../../../Downloads/OpenMemory/.work/artifacts/openmemory-0.3.14-rc4.tgz",
+    "postPromotionInstalledVersion": "0.3.14-rc4",
+    "status": "PROMOTED_AND_VERIFIED"
+  },
+  "livePromotionOperation": {
+    "operationId": "promo_1792339148814_0243972d",
+    "state": "COMMITTED",
+    "committedAt": "2026-10-18T15:59:16.035Z",
+    "backupPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\backups\\backup_promo_1792339148814_0243972d",
+    "backupContents": [
+      "package.json.bak",
+      "package-lock.json.bak",
+      "original-package.tgz",
+      "openmemory/"
+    ],
+    "originalTarballPreserved": {
+      "path": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\scratch\\exp2_10\\fase4_5\\dist\\openmemory-0.3.1.tgz",
+      "sha256": "48d022f8ef35914769ef2df423a39a1c391cb383686e6a2575ca6906a115b1ef",
+      "size": 147676,
+      "verifiedIntactPostPromotion": true
+    },
+    "quiescenceVerification": {
+      "sqliteDatabasesChecked": 1,
+      "activeWalCount": 0,
+      "activeShmCount": 0,
+      "quiescent": true
+    }
+  },
+  "consumerAcceptanceValidation": {
+    "status": "100%_PASS",
+    "activeInstalledVersion": "0.3.14-rc4",
+    "mcpToolsAvailable": 29,
+    "suites": [
+      {
+        "command": "node test_inventory_manager.js",
+        "result": "PASS",
+        "exitCode": 0,
+        "details": "E2E verification of ESM + SQLite lot creation, FIFO stock consumption, and valuation"
+      },
+      {
+        "command": "node test_phase_2c2_full.js",
+        "result": "PASS",
+        "exitCode": 0,
+        "details": "24/24 tests passed (FIFO, COGS, Rollback on Deficit, Monetary Precision, JSON Migration, Independent Process Reopening)"
+      },
+      {
+        "command": "node test_phase_2c4_post_cleanup.mjs",
+        "result": "PASS",
+        "exitCode": 0,
+        "details": "10/10 checks passed (Absence of inventory-data.json, direct SQLite DB creation, FIFO removal, rollback protection, independent process reopening)"
+      }
+    ]
+  },
+  "rehearsalResults": {
+    "suite": ".work/experiments/test-g6-inventoryhub-promotion-rehearsal.js",
+    "safeTestRunnerId": "G6-REHEARSAL",
+    "verdict": "PASSED (8/8 steps)",
+    "executionTimeMs": 74642,
+    "steps": [
+      {
+        "step": 1,
+        "name": "Candidate Artifact Integrity Check",
+        "result": "PASS",
+        "details": "openmemory-0.3.14-rc4.tgz validated (167133 B, SHA256 af88fae90107dfda797c7f6bcc982cf6bbd7ef53fd9a5d887c9bf77185a35f6e)"
+      },
+      {
+        "step": 2,
+        "name": "Preflight Tamper Rejection",
+        "result": "PASS",
+        "details": "Corrupted tarball rejected in preflight with PREFLIGHT_ERROR"
+      },
+      {
+        "step": 3,
+        "name": "Live Consumer Fingerprinting",
+        "result": "PASS",
+        "details": "Live InventoryHub indexed (73 files tracked, scratch excluded from mutation count)"
+      },
+      {
+        "step": 4,
+        "name": "Zero-Mutation Dry-Run Execution",
+        "result": "PASS",
+        "details": "Dry-run completed with state COMMITTED and zero package or live file changes"
+      },
+      {
+        "step": 5,
+        "name": "Live Promotion on Isolated Sandbox & Consumer Acceptance",
+        "result": "PASS",
+        "details": "openmemory@0.3.14-rc4 promoted; 29 MCP tools verified; test_inventory_manager (pass), test_phase_2c2_full (24/24 pass), test_phase_2c4_post_cleanup (10/10 pass)"
+      },
+      {
+        "step": 6,
+        "name": "Fault Injection & Verified Transactional Rollback",
+        "result": "PASS",
+        "details": "Simulated smoke failure triggered automatic rollback; .openmemory restored with 100% hash parity; openmemory@0.3.1 reinstalled; consumer test passes post-recovery"
+      },
+      {
+        "step": 7,
+        "name": "Rollback Idempotency",
+        "result": "PASS",
+        "details": "Repeated rollback calls handled cleanly with zero side-effects"
+      },
+      {
+        "step": 8,
+        "name": "Live Consumer Immunity Verification",
+        "result": "PASS",
+        "details": "Live InventoryHub verified 100% byte-for-byte identical with zero modifications"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "milestone": "G28",
+  "phase": "Bloque E - InventoryHub Staging Qualification & Rollback Drill",
+  "evaluatedCandidate": "evocara-0.4.0.tgz",
+  "evaluatedCandidateSha256": "70f31da7e822bfa8ece60395212e009cac9d39761d02af0325d6c3ee3b8a730a",
+  "evaluatedCandidateSizeBytes": 209910,
+  "manifestSha256": "5edeb88fd07cffa85c803fe1bd347205c019a91c6dbdca83d0e8859d76ed5108",
+  "activeConsumerLocation": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+  "activeConsumerVersionPreCheck": "0.3.14-rc4",
+  "activeConsumerVersionPostCheck": "0.3.14-rc4",
+  "stagingPromotionState": "COMMITTED",
+  "stagingBusinessTestsPassed": "34/34 (100%)",
+  "rollbackDrillState": "ROLLED_BACK",
+  "rollbackByteParity": "100% byte-for-byte package.json match",
+  "rollbackBusinessTestsPassed": "34/34 (100%)",
+  "activeConsumerIntegrity": "STRICTLY_PROTECTED_UNTOUCHED",
+  "timestamp": "2026-10-22T18:51:01.980Z"
+}

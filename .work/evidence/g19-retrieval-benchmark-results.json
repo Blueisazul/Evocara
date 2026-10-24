@@ -1,0 +1,1595 @@
+{
+  "benchmarkVersion": "G19-SCALED-DETERMINISTIC-BENCHMARK-V2",
+  "timestamp": "2026-10-22T16:00:24.693Z",
+  "methodologyNotes": {
+    "formulaPrecision": "Retrieved relevant items / Total retrieved items",
+    "formulaRecall": "Retrieved relevant items / Expected relevant items",
+    "formulaMRR": "1 / Rank of first relevant item in retrieved set",
+    "absoluteGainDefinition": "Difference in percentage points (OM Precision - Baseline Precision) * 100",
+    "relativeGainDefinition": "((OM Precision - Baseline Precision) / Baseline Precision) * 100",
+    "warmup": "3 warmup passes executed prior to measurement",
+    "runsPerQuery": 5
+  },
+  "scales": [
+    {
+      "scale": "Scale-S (Small)",
+      "totalItems": 12,
+      "totalRecords": 2,
+      "passedQueries": 8,
+      "totalQueries": 10,
+      "passRate": "80%",
+      "openMemory": {
+        "precision": 0.55,
+        "recall": 0.85,
+        "mrr": 0.8,
+        "precisionAt3": 0.567,
+        "precisionAt5": 0.55,
+        "recallAt3": 0.85,
+        "recallAt5": 0.85,
+        "obsoleteRateAt3": 0.05,
+        "meanLatencyMs": 1.74,
+        "p95LatencyMs": 2.562
+      },
+      "baseline": {
+        "precision": 0.503,
+        "recall": 0.95,
+        "mrr": 0.95,
+        "precisionAt3": 0.567,
+        "precisionAt5": 0.51,
+        "recallAt3": 0.95,
+        "recallAt5": 0.95,
+        "obsoleteRateAt3": 0.033,
+        "meanLatencyMs": 0.012
+      },
+      "gain": {
+        "absolutePointsPP": 4.7,
+        "relativePercent": 9.3
+      },
+      "queries": [
+        {
+          "id": "Q1_EXACT_MATCH",
+          "name": "1. Exact Term Matching",
+          "query": "node:sqlite embedded storage engine",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 2.059,
+              "p50": 2.041,
+              "p95": 2.22
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.015,
+              "p50": 0.012,
+              "p95": 0.024
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q2_FIELD_WEIGHTING",
+          "name": "2. Title & Tags Hierarchy Weighting",
+          "query": "telemetry lowstock alerts",
+          "expected": [
+            "ITEM-TASK-102"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-TASK-102"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 1.757,
+              "p50": 1.763,
+              "p95": 2.169
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-TASK-102"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.014,
+              "p50": 0.014,
+              "p95": 0.021
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q3_ACTIVE_ADR_PRIORITY",
+          "name": "3. Active ADR Priority Over Superseded",
+          "query": "database persistence engine",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ADR-002",
+              "ITEM-DECOY-001",
+              "ITEM-ZENITH-01"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 1.884,
+              "p50": 1.73,
+              "p95": 2.433
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-002",
+              "ITEM-PROP-MONGO",
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.167,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.2,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.013,
+              "p50": 0.012,
+              "p95": 0.018
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q4_OBSOLETE_PENALTY",
+          "name": "4. Superseded Knowledge Penalty",
+          "query": "mongodb cloud cluster migration",
+          "expected": [
+            "ITEM-PROP-MONGO"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ZENITH-01",
+              "ITEM-PROP-MONGO"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 0.5,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0.5,
+            "obsoleteCount": 1,
+            "latency": {
+              "mean": 1.789,
+              "p50": 1.793,
+              "p95": 1.881
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-PROP-MONGO",
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-002",
+              "ITEM-REPLICA-NOTE"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0.333,
+            "latency": {
+              "mean": 0.013,
+              "p50": 0.012,
+              "p95": 0.019
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q5_CONTRADICTION",
+          "name": "5. Contradictory Knowledge Inspection",
+          "query": "postgresql database server",
+          "expected": [
+            "ITEM-DRAFT-POSTGRES"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0,
+            "recall": 0,
+            "mrr": 0,
+            "precisionAt3": 0,
+            "precisionAt5": 0,
+            "recallAt3": 0,
+            "recallAt5": 0,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 1.772,
+              "p50": 1.776,
+              "p95": 1.869
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-ADR-001",
+              "ITEM-REPLICA-NOTE",
+              "ITEM-ZENITH-01",
+              "ITEM-PROP-MONGO",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.167,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.2,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.012,
+              "p50": 0.011,
+              "p95": 0.019
+            }
+          },
+          "passed": false
+        },
+        {
+          "id": "Q6_ZERO_RESULT",
+          "name": "6. False Positive Resistance (Zero-Result)",
+          "query": "quantum cryogenic blockchain ledger",
+          "expected": [],
+          "openMemory": {
+            "retrieved": [],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 1.821,
+              "p50": 1.831,
+              "p95": 1.981
+            }
+          },
+          "baseline": {
+            "retrieved": [],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.012,
+              "p50": 0.01,
+              "p95": 0.018
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q7_DECOY_REJECTION",
+          "name": "7. Hard Negative / Decoy Ranking",
+          "query": "database storage architecture",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-002",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 1.765,
+              "p50": 1.779,
+              "p95": 1.851
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-PROP-MONGO",
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.2,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.2,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.013,
+              "p50": 0.01,
+              "p95": 0.024
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q8_SCOPE_ISOLATION",
+          "name": "8. Multi-Project Scope Isolation",
+          "query": "database architecture",
+          "expected": [
+            "ITEM-ADR-001",
+            "ITEM-ADR-002"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.5,
+            "recall": 0.5,
+            "mrr": 1,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 0.5,
+            "recallAt5": 0.5,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 1.653,
+              "p50": 1.612,
+              "p95": 1.889
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-PROP-MONGO",
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.25,
+            "recall": 0.5,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 0.5,
+            "recallAt5": 0.5,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.009,
+              "p50": 0.008,
+              "p95": 0.013
+            }
+          },
+          "passed": false
+        },
+        {
+          "id": "Q9_STATE_FILTER",
+          "name": "9. Lifecycle State Filtering (ACCEPTED Only)",
+          "query": "database",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-001"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 0.5,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 1.004,
+              "p50": 0.994,
+              "p95": 1.167
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-001"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 0.5,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.004,
+              "p50": 0.003,
+              "p95": 0.007
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q10_COLD_RELOAD",
+          "name": "10. Cold-Restart Engine Reload Fidelity",
+          "query": "checkLowStockItems telemetry threshold",
+          "expected": [
+            "ITEM-TASK-102"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-TASK-102",
+              "ITEM-CLEANUP-POLICY"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 1.892,
+              "p50": 1.825,
+              "p95": 2.562
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-TASK-102",
+              "ITEM-CLEANUP-POLICY"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.012,
+              "p50": 0.012,
+              "p95": 0.02
+            }
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "scale": "Scale-M (Medium)",
+      "totalItems": 92,
+      "totalRecords": 10,
+      "passedQueries": 9,
+      "totalQueries": 10,
+      "passRate": "90%",
+      "openMemory": {
+        "precision": 0.575,
+        "recall": 0.95,
+        "mrr": 0.825,
+        "precisionAt3": 0.567,
+        "precisionAt5": 0.575,
+        "recallAt3": 0.85,
+        "recallAt5": 0.95,
+        "obsoleteRateAt3": 0.05,
+        "meanLatencyMs": 4.773,
+        "p95LatencyMs": 9.145
+      },
+      "baseline": {
+        "precision": 0.503,
+        "recall": 0.95,
+        "mrr": 0.95,
+        "precisionAt3": 0.567,
+        "precisionAt5": 0.51,
+        "recallAt3": 0.95,
+        "recallAt5": 0.95,
+        "obsoleteRateAt3": 0.033,
+        "meanLatencyMs": 0.037
+      },
+      "gain": {
+        "absolutePointsPP": 7.2,
+        "relativePercent": 14.3
+      },
+      "queries": [
+        {
+          "id": "Q1_EXACT_MATCH",
+          "name": "1. Exact Term Matching",
+          "query": "node:sqlite embedded storage engine",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 7.195,
+              "p50": 7.118,
+              "p95": 7.368
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.054,
+              "p50": 0.048,
+              "p95": 0.074
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q2_FIELD_WEIGHTING",
+          "name": "2. Title & Tags Hierarchy Weighting",
+          "query": "telemetry lowstock alerts",
+          "expected": [
+            "ITEM-TASK-102"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-TASK-102"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 4.682,
+              "p50": 4.714,
+              "p95": 4.799
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-TASK-102"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.042,
+              "p50": 0.041,
+              "p95": 0.05
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q3_ACTIVE_ADR_PRIORITY",
+          "name": "3. Active ADR Priority Over Superseded",
+          "query": "database persistence engine",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ADR-002",
+              "ITEM-DECOY-001",
+              "ITEM-ZENITH-01"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 4.964,
+              "p50": 4.893,
+              "p95": 5.408
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-002",
+              "ITEM-PROP-MONGO",
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.167,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.2,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.04,
+              "p50": 0.037,
+              "p95": 0.045
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q4_OBSOLETE_PENALTY",
+          "name": "4. Superseded Knowledge Penalty",
+          "query": "mongodb cloud cluster migration",
+          "expected": [
+            "ITEM-PROP-MONGO"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ZENITH-01",
+              "ITEM-PROP-MONGO"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 0.5,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0.5,
+            "obsoleteCount": 1,
+            "latency": {
+              "mean": 5.644,
+              "p50": 5.651,
+              "p95": 5.823
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-PROP-MONGO",
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-002",
+              "ITEM-REPLICA-NOTE"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0.333,
+            "latency": {
+              "mean": 0.041,
+              "p50": 0.04,
+              "p95": 0.048
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q5_CONTRADICTION",
+          "name": "5. Contradictory Knowledge Inspection",
+          "query": "postgresql database server",
+          "expected": [
+            "ITEM-DRAFT-POSTGRES"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-DECOY-001",
+              "ITEM-DRAFT-POSTGRES"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 0.25,
+            "precisionAt3": 0,
+            "precisionAt5": 0.25,
+            "recallAt3": 0,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 4.548,
+              "p50": 4.54,
+              "p95": 4.967
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-ADR-001",
+              "ITEM-REPLICA-NOTE",
+              "ITEM-ZENITH-01",
+              "ITEM-PROP-MONGO",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.167,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.2,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.037,
+              "p50": 0.036,
+              "p95": 0.045
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q6_ZERO_RESULT",
+          "name": "6. False Positive Resistance (Zero-Result)",
+          "query": "quantum cryogenic blockchain ledger",
+          "expected": [],
+          "openMemory": {
+            "retrieved": [],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 5.163,
+              "p50": 5.073,
+              "p95": 5.363
+            }
+          },
+          "baseline": {
+            "retrieved": [],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.038,
+              "p50": 0.036,
+              "p95": 0.045
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q7_DECOY_REJECTION",
+          "name": "7. Hard Negative / Decoy Ranking",
+          "query": "database storage architecture",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-002",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 4.844,
+              "p50": 4.838,
+              "p95": 5.052
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-PROP-MONGO",
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.2,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.2,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.041,
+              "p50": 0.037,
+              "p95": 0.05
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q8_SCOPE_ISOLATION",
+          "name": "8. Multi-Project Scope Isolation",
+          "query": "database architecture",
+          "expected": [
+            "ITEM-ADR-001",
+            "ITEM-ADR-002"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.5,
+            "recall": 0.5,
+            "mrr": 1,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 0.5,
+            "recallAt5": 0.5,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 3.078,
+              "p50": 2.955,
+              "p95": 3.452
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-PROP-MONGO",
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.25,
+            "recall": 0.5,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 0.5,
+            "recallAt5": 0.5,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.006,
+              "p50": 0.005,
+              "p95": 0.009
+            }
+          },
+          "passed": false
+        },
+        {
+          "id": "Q9_STATE_FILTER",
+          "name": "9. Lifecycle State Filtering (ACCEPTED Only)",
+          "query": "database",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-001"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 0.5,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 1.911,
+              "p50": 1.892,
+              "p95": 2.043
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-001"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 0.5,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.011,
+              "p50": 0.01,
+              "p95": 0.014
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q10_COLD_RELOAD",
+          "name": "10. Cold-Restart Engine Reload Fidelity",
+          "query": "checkLowStockItems telemetry threshold",
+          "expected": [
+            "ITEM-TASK-102"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-TASK-102",
+              "ITEM-CLEANUP-POLICY"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 5.7,
+              "p50": 4.928,
+              "p95": 9.145
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-TASK-102",
+              "ITEM-CLEANUP-POLICY"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.059,
+              "p50": 0.043,
+              "p95": 0.126
+            }
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "scale": "Scale-L (Large)",
+      "totalItems": 992,
+      "totalRecords": 100,
+      "passedQueries": 9,
+      "totalQueries": 10,
+      "passRate": "90%",
+      "openMemory": {
+        "precision": 0.575,
+        "recall": 0.95,
+        "mrr": 0.825,
+        "precisionAt3": 0.567,
+        "precisionAt5": 0.575,
+        "recallAt3": 0.85,
+        "recallAt5": 0.95,
+        "obsoleteRateAt3": 0.05,
+        "meanLatencyMs": 35.481,
+        "p95LatencyMs": 67.817
+      },
+      "baseline": {
+        "precision": 0.503,
+        "recall": 0.95,
+        "mrr": 0.95,
+        "precisionAt3": 0.567,
+        "precisionAt5": 0.51,
+        "recallAt3": 0.95,
+        "recallAt5": 0.95,
+        "obsoleteRateAt3": 0.033,
+        "meanLatencyMs": 0.323
+      },
+      "gain": {
+        "absolutePointsPP": 7.2,
+        "relativePercent": 14.3
+      },
+      "queries": [
+        {
+          "id": "Q1_EXACT_MATCH",
+          "name": "1. Exact Term Matching",
+          "query": "node:sqlite embedded storage engine",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 55.774,
+              "p50": 55.333,
+              "p95": 56.878
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.446,
+              "p50": 0.424,
+              "p95": 0.545
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q2_FIELD_WEIGHTING",
+          "name": "2. Title & Tags Hierarchy Weighting",
+          "query": "telemetry lowstock alerts",
+          "expected": [
+            "ITEM-TASK-102"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-TASK-102"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 33.774,
+              "p50": 34.129,
+              "p95": 34.475
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-TASK-102"
+            ],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.349,
+              "p50": 0.326,
+              "p95": 0.395
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q3_ACTIVE_ADR_PRIORITY",
+          "name": "3. Active ADR Priority Over Superseded",
+          "query": "database persistence engine",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ADR-002",
+              "ITEM-ZENITH-01",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 37.362,
+              "p50": 36.913,
+              "p95": 41.746
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-002",
+              "ITEM-PROP-MONGO",
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.167,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.2,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.363,
+              "p50": 0.352,
+              "p95": 0.41
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q4_OBSOLETE_PENALTY",
+          "name": "4. Superseded Knowledge Penalty",
+          "query": "mongodb cloud cluster migration",
+          "expected": [
+            "ITEM-PROP-MONGO"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ZENITH-01",
+              "ITEM-PROP-MONGO"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 0.5,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0.5,
+            "obsoleteCount": 1,
+            "latency": {
+              "mean": 44.422,
+              "p50": 44.227,
+              "p95": 44.936
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-PROP-MONGO",
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-002",
+              "ITEM-REPLICA-NOTE"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0.333,
+            "latency": {
+              "mean": 0.411,
+              "p50": 0.391,
+              "p95": 0.523
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q5_CONTRADICTION",
+          "name": "5. Contradictory Knowledge Inspection",
+          "query": "postgresql database server",
+          "expected": [
+            "ITEM-DRAFT-POSTGRES"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-DECOY-001",
+              "ITEM-DRAFT-POSTGRES"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 0.25,
+            "precisionAt3": 0,
+            "precisionAt5": 0.25,
+            "recallAt3": 0,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 33.608,
+              "p50": 33.544,
+              "p95": 34.99
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-ADR-001",
+              "ITEM-REPLICA-NOTE",
+              "ITEM-ZENITH-01",
+              "ITEM-PROP-MONGO",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.167,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.2,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.32,
+              "p50": 0.318,
+              "p95": 0.341
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q6_ZERO_RESULT",
+          "name": "6. False Positive Resistance (Zero-Result)",
+          "query": "quantum cryogenic blockchain ledger",
+          "expected": [],
+          "openMemory": {
+            "retrieved": [],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 44.216,
+              "p50": 43.864,
+              "p95": 46.954
+            }
+          },
+          "baseline": {
+            "retrieved": [],
+            "precision": 1,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 1,
+            "precisionAt5": 1,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.431,
+              "p50": 0.401,
+              "p95": 0.534
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q7_DECOY_REJECTION",
+          "name": "7. Hard Negative / Decoy Ranking",
+          "query": "database storage architecture",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-002",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.25,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 41.384,
+              "p50": 41.187,
+              "p95": 42.993
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-ZENITH-01",
+              "ITEM-PROP-MONGO",
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.2,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.2,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.381,
+              "p50": 0.379,
+              "p95": 0.4
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q8_SCOPE_ISOLATION",
+          "name": "8. Multi-Project Scope Isolation",
+          "query": "database architecture",
+          "expected": [
+            "ITEM-ADR-001",
+            "ITEM-ADR-002"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.5,
+            "recall": 0.5,
+            "mrr": 1,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 0.5,
+            "recallAt5": 0.5,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 13.438,
+              "p50": 13.446,
+              "p95": 13.859
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ADR-001",
+              "ITEM-PROP-MONGO",
+              "ITEM-DRAFT-POSTGRES",
+              "ITEM-DECOY-001"
+            ],
+            "precision": 0.25,
+            "recall": 0.5,
+            "mrr": 1,
+            "precisionAt3": 0.333,
+            "precisionAt5": 0.25,
+            "recallAt3": 0.5,
+            "recallAt5": 0.5,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.006,
+              "p50": 0.005,
+              "p95": 0.01
+            }
+          },
+          "passed": false
+        },
+        {
+          "id": "Q9_STATE_FILTER",
+          "name": "9. Lifecycle State Filtering (ACCEPTED Only)",
+          "query": "database",
+          "expected": [
+            "ITEM-ADR-001"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-001"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 0.5,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 10.515,
+              "p50": 10.567,
+              "p95": 11.077
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-ZENITH-01",
+              "ITEM-ADR-001"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 0.5,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.114,
+              "p50": 0.099,
+              "p95": 0.146
+            }
+          },
+          "passed": true
+        },
+        {
+          "id": "Q10_COLD_RELOAD",
+          "name": "10. Cold-Restart Engine Reload Fidelity",
+          "query": "checkLowStockItems telemetry threshold",
+          "expected": [
+            "ITEM-TASK-102"
+          ],
+          "openMemory": {
+            "retrieved": [
+              "ITEM-TASK-102",
+              "ITEM-CLEANUP-POLICY"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "obsoleteCount": 0,
+            "latency": {
+              "mean": 40.317,
+              "p50": 33.57,
+              "p95": 67.817
+            }
+          },
+          "baseline": {
+            "retrieved": [
+              "ITEM-TASK-102",
+              "ITEM-CLEANUP-POLICY"
+            ],
+            "precision": 0.5,
+            "recall": 1,
+            "mrr": 1,
+            "precisionAt3": 0.5,
+            "precisionAt5": 0.5,
+            "recallAt3": 1,
+            "recallAt5": 1,
+            "obsoleteRateAt3": 0,
+            "latency": {
+              "mean": 0.411,
+              "p50": 0.403,
+              "p95": 0.5
+            }
+          },
+          "passed": true
+        }
+      ]
+    }
+  ]
+}

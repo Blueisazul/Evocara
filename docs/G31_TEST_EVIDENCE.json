@@ -1,0 +1,150 @@
+{
+  "milestone": "G31",
+  "title": "Causal Decision Lineage, Active Temporal Contradictions & Contextual Synthesis Evidence",
+  "timestamp": "2026-10-23T19:15:00.000Z",
+  "executionSummary": {
+    "totalSuites": 8,
+    "passedSuites": 8,
+    "failedSuites": 0,
+    "overallStatus": "PASSED",
+    "g31AcceptanceScenarios": "18 / 18 (100.0%)",
+    "regressionScenarios": "179 / 179 (100.0%)",
+    "inventoryHubTests": "34 / 34 (100.0%)"
+  },
+  "protectedArtifacts": {
+    "gaTarball": {
+      "path": ".work/artifacts/evocara-0.4.0.tgz",
+      "sizeBytes": 209910,
+      "sha256": "70f31da7e822bfa8ece60395212e009cac9d39761d02af0325d6c3ee3b8a730a",
+      "status": "UNTOUCHED_VERIFIED"
+    },
+    "gaSbom": {
+      "path": ".work/artifacts/evocara-0.4.0.cdx.json",
+      "sizeBytes": 41973,
+      "sha256": "6621e53a415cc7406c02bfcbf55a769c19e5591c338656baa876e23fe23bb0dc",
+      "status": "UNTOUCHED_VERIFIED"
+    },
+    "inventoryHub": {
+      "activeDependency": "file:../../../../../Downloads/OpenMemory/.work/artifacts/openmemory-0.3.14-rc4.tgz",
+      "status": "UNTOUCHED_VERIFIED",
+      "testsPassed": 34,
+      "testsTotal": 34
+    }
+  },
+  "suites": [
+    {
+      "suiteName": "G31 Decision Lineage & Temporal Contradictions Suite",
+      "script": ".work/experiments/test-g31-lineage-and-contradictions-suite.js",
+      "totalScenarios": 18,
+      "passedScenarios": 18,
+      "passRate": "100.0%",
+      "scenarios": [
+        { "id": 1, "name": "Simple lineage reconstruction (predecessor & successor)", "status": "PASS", "durationMs": 15 },
+        { "id": 2, "name": "Multi-step sequential supersession chain (C -> B -> A)", "status": "PASS", "durationMs": 14 },
+        { "id": 3, "name": "Branching derivations and multi-parent lineages", "status": "PASS", "durationMs": 20 },
+        { "id": 4, "name": "Isolated decision with zero lineage relations", "status": "PASS", "durationMs": 6 },
+        { "id": 5, "name": "Cyclic relation detection and safe bounded termination", "status": "PASS", "durationMs": 0 },
+        { "id": 6, "name": "Broken references and missing items resilience", "status": "PASS", "durationMs": 0 },
+        { "id": 7, "name": "Multi-project boundary isolation on lineage queries", "status": "PASS", "durationMs": 2 },
+        { "id": 8, "name": "Explicit CONTRADICTS relation active at target valid time", "status": "PASS", "durationMs": 11 },
+        { "id": 9, "name": "Explicit CONTRADICTS relation outside valid window (historical/resolved)", "status": "PASS", "durationMs": 1 },
+        { "id": 10, "name": "Non-contradictory temporal overlap (preserves uncertainty without hallucinated conflict)", "status": "PASS", "durationMs": 6 },
+        { "id": 11, "name": "Semi-open intervals [validFrom, validUntil) and exact boundary transitions", "status": "PASS", "durationMs": 0 },
+        { "id": 12, "name": "Open-ended validity intervals and untimed legacy records", "status": "PASS", "durationMs": 5 },
+        { "id": 13, "name": "Point-in-time query surfacing active contradictions with calibrated confidence", "status": "PASS", "durationMs": 3 },
+        { "id": 14, "name": "Non-existent target item unanswerable report without fabricated nodes", "status": "PASS", "durationMs": 1 },
+        { "id": 15, "name": "Dual MCP alias compatibility (openmemory_explain_lineage & evocara_explain_lineage)", "status": "PASS", "durationMs": 16 },
+        { "id": 16, "name": "Project boundary isolation and authorization fail-closed enforcement via MCP", "status": "PASS", "durationMs": 5 },
+        { "id": 17, "name": "Lineage queries perform strictly zero mutations on disk state", "status": "PASS", "durationMs": 4 },
+        { "id": 18, "name": "Preservation of supersession invariants and terminal state protection", "status": "PASS", "durationMs": 3 }
+      ]
+    },
+    {
+      "suiteName": "G30 Bi-Temporal & Point-In-Time Evaluation Suite",
+      "script": ".work/experiments/test-g30-bitemporal-suite.js",
+      "totalScenarios": 15,
+      "passedScenarios": 15,
+      "passRate": "100.0%"
+    },
+    {
+      "suiteName": "G29 Knowledge Lifecycle & Epistemic Quality Suite",
+      "script": ".work/experiments/test-g29-knowledge-lifecycle-suite.js",
+      "totalScenarios": 7,
+      "passedScenarios": 7,
+      "passRate": "100.0%"
+    },
+    {
+      "suiteName": "G25 BM25Engine Pure Unit Test Suite",
+      "script": ".work/experiments/test-g25-bm25-unit.js",
+      "totalScenarios": 9,
+      "passedScenarios": 9,
+      "passRate": "100.0%"
+    },
+    {
+      "suiteName": "G27 Evocara Transition Compatibility Suite",
+      "script": ".work/experiments/test-g27-evocara-compatibility.js",
+      "totalScenarios": 9,
+      "passedScenarios": 9,
+      "passRate": "100.0%"
+    },
+    {
+      "suiteName": "G25 Curated MCP Surface & Project Isolation Suite",
+      "script": ".work/experiments/test-g25-mcp-curated-surface.js",
+      "totalScenarios": 9,
+      "passedScenarios": 9,
+      "passRate": "100.0%"
+    },
+    {
+      "suiteName": "G23 Expanded 105-Scenario Canonical Retrieval Benchmark",
+      "script": ".work/experiments/test-g23-expanded-100-benchmark.js",
+      "totalScenarios": 105,
+      "passedScenarios": 105,
+      "passRate": "100.0%",
+      "metrics": {
+        "precisionAt1": 1.0,
+        "mrr": 1.0,
+        "falseDiscoveryRate": 0.0
+      }
+    },
+    {
+      "suiteName": "InventoryHub Active Consumer Business Verification Suites",
+      "scripts": ["../InventoryHub/test_phase_2c4_post_cleanup.mjs", "../InventoryHub/test_phase_2c2_full.js"],
+      "totalScenarios": 34,
+      "passedScenarios": 34,
+      "passRate": "100.0%"
+    }
+  ],
+  "performanceBenchmark": {
+    "corpus": {
+      "totalItems": 486,
+      "totalRelations": 74
+    },
+    "measurements": {
+      "deepLinearChain50Nodes": {
+        "p50_ms": 0.930,
+        "p95_ms": 1.477,
+        "avg_ms": 1.205,
+        "traversedNodes": 50,
+        "traversedEdges": 49
+      },
+      "branchingTree16Nodes": {
+        "p50_ms": 0.834,
+        "p95_ms": 1.007,
+        "avg_ms": 0.846,
+        "traversedNodes": 16,
+        "traversedEdges": 15
+      },
+      "pointInTimeContradictionQuery": {
+        "p50_ms": 9.525,
+        "p95_ms": 10.775,
+        "avg_ms": 9.773,
+        "activeContradictionsDetected": 20
+      }
+    },
+    "memoryFootprint": {
+      "heapUsed_MB": 20.92,
+      "heapTotal_MB": 50.42,
+      "rss_MB": 85.84
+    }
+  }
+}

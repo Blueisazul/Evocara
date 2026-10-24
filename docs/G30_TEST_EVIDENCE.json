@@ -1,0 +1,97 @@
+{
+  "milestone": "G30",
+  "title": "Bi-Temporal Knowledge & Point-In-Time Evaluation Evidence",
+  "timestamp": "2026-10-23T12:20:58.000Z",
+  "executionSummary": {
+    "totalSuites": 6,
+    "passedSuites": 6,
+    "failedSuites": 0,
+    "overallStatus": "PASSED"
+  },
+  "protectedArtifacts": {
+    "gaTarball": {
+      "path": ".work/artifacts/evocara-0.4.0.tgz",
+      "sizeBytes": 209910,
+      "sha256": "70f31da7e822bfa8ece60395212e009cac9d39761d02af0325d6c3ee3b8a730a",
+      "status": "UNTOUCHED_VERIFIED"
+    },
+    "inventoryHub": {
+      "activeDependency": "file:../../../../../Downloads/OpenMemory/.work/artifacts/openmemory-0.3.14-rc4.tgz",
+      "status": "UNTOUCHED_VERIFIED",
+      "testsPassed": 34,
+      "testsTotal": 34
+    }
+  },
+  "suites": [
+    {
+      "suiteName": "G30 Bi-Temporal & Point-In-Time Evaluation Suite",
+      "script": ".work/experiments/test-g30-bitemporal-suite.js",
+      "totalScenarios": 15,
+      "passedScenarios": 15,
+      "passRate": "100.0%",
+      "scenarios": [
+        { "id": 1, "name": "Creation of a decision with explicit validity interval", "status": "PASS", "durationMs": 9 },
+        { "id": 2, "name": "Decision supersession without loss of historical record", "status": "PASS", "durationMs": 10 },
+        { "id": 3, "name": "Point-in-time query before supersession (historical state recovery)", "status": "PASS", "durationMs": 3 },
+        { "id": 4, "name": "Point-in-time query after supersession", "status": "PASS", "durationMs": 2 },
+        { "id": 5, "name": "Differentiation between domain valid time and system transaction time", "status": "PASS", "durationMs": 16 },
+        { "id": 6, "name": "Non-destructive retroactive correction", "status": "PASS", "durationMs": 7 },
+        { "id": 7, "name": "Open-ended intervals, exact boundaries, and consecutive transitions", "status": "PASS", "durationMs": 2 },
+        { "id": 8, "name": "Invalid dates, inverted intervals, and missing temporal data", "status": "PASS", "durationMs": 3 },
+        { "id": 9, "name": "Persistence durability and reconstruction after cold restart", "status": "PASS", "durationMs": 5 },
+        { "id": 10, "name": "Concurrent writes and atomic state lock protection", "status": "PASS", "durationMs": 8 },
+        { "id": 11, "name": "Cycle prevention and terminal state protection", "status": "PASS", "durationMs": 3 },
+        { "id": 12, "name": "Cross-project isolation boundary on point-in-time queries", "status": "PASS", "durationMs": 8 },
+        { "id": 13, "name": "Explicit historical retrieval vs standard operational retrieval", "status": "PASS", "durationMs": 3 },
+        { "id": 14, "name": "Legacy record backward compatibility and MCP presentation", "status": "PASS", "durationMs": 26 },
+        { "id": 15, "name": "Unanswerable cases with zero fabricated historical facts", "status": "PASS", "durationMs": 1 }
+      ]
+    },
+    {
+      "suiteName": "G29 Knowledge Lifecycle & Epistemic Quality Suite",
+      "script": ".work/experiments/test-g29-knowledge-lifecycle-suite.js",
+      "totalScenarios": 7,
+      "passedScenarios": 7,
+      "passRate": "100.0%"
+    },
+    {
+      "suiteName": "G25 BM25 Engine Unit Suite",
+      "script": ".work/experiments/test-g25-bm25-unit.js",
+      "totalScenarios": 9,
+      "passedScenarios": 9,
+      "passRate": "100.0%"
+    },
+    {
+      "suiteName": "G27 Evocara Transition Compatibility Suite",
+      "script": ".work/experiments/test-g27-evocara-compatibility.js",
+      "totalScenarios": 9,
+      "passedScenarios": 9,
+      "passRate": "100.0%"
+    },
+    {
+      "suiteName": "G23 Expanded 105-Scenario Canonical Retrieval Benchmark",
+      "script": ".work/experiments/test-g23-expanded-100-benchmark.js",
+      "totalScenarios": 105,
+      "passedScenarios": 105,
+      "passRate": "100.0%",
+      "metrics": {
+        "precisionAt1": "100.0%",
+        "precisionAt3": "73.0%",
+        "recallAt3": "97.6%",
+        "mrr": 1.000,
+        "obsoleteInTop1": "0.0%",
+        "obsoleteInTop3": "5.7%",
+        "falseDiscoveryUnanswerable": "0.0%",
+        "latencyP50Ms": 3.84,
+        "latencyP95Ms": 6.15
+      }
+    },
+    {
+      "suiteName": "InventoryHub Active Consumer Post-Cleanup & Persistence Verification",
+      "scripts": ["test_phase_2c4_post_cleanup.mjs", "test_phase_2c2_full.js"],
+      "totalScenarios": 34,
+      "passedScenarios": 34,
+      "passRate": "100.0%"
+    }
+  ]
+}

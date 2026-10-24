@@ -1,0 +1,4522 @@
+{
+  "metadata": {
+    "iteration": "G23",
+    "timestamp": "2026-10-24T16:23:58.799Z",
+    "totalScenarios": 105,
+    "corpusItemsCount": 23,
+    "candidateUnderEvaluation": "openmemory-0.3.15-rc7.tgz",
+    "baselineCandidate": "openmemory-0.3.15-rc6.tgz"
+  },
+  "rc6Summary": {
+    "totalScenarios": 105,
+    "passedCount": 97,
+    "success1": 0.9238095238095239,
+    "p1": 0.9238095238095239,
+    "p3": 0.6587301587301587,
+    "r3": 0.9714285714285714,
+    "mrr": 0.9336507936507936,
+    "obsoleteTop1Rate": 0,
+    "obsoleteTop3Rate": 0.0761904761904762,
+    "falseDiscoveryRate": 0.047619047619047616,
+    "p50LatencyMs": 1.4142,
+    "p95LatencyMs": 2.0588
+  },
+  "rc7Summary": {
+    "totalScenarios": 105,
+    "passedCount": 105,
+    "success1": 1,
+    "p1": 1,
+    "p3": 0.7301587301587301,
+    "r3": 0.9761904761904762,
+    "mrr": 1,
+    "obsoleteTop1Rate": 0,
+    "obsoleteTop3Rate": 0.05714285714285714,
+    "falseDiscoveryRate": 0,
+    "p50LatencyMs": 3.469,
+    "p95LatencyMs": 5.6126
+  },
+  "groupBreakdown": {
+    "GROUNDED_REAL": {
+      "count": 35,
+      "rc6Passed": 33,
+      "rc7Passed": 35,
+      "rc6P1": 0.9428571428571428,
+      "rc7P1": 1,
+      "rc6P3": 0.6333333333333333,
+      "rc7P3": 0.6952380952380951,
+      "rc6MRR": 0.962857142857143,
+      "rc7MRR": 1
+    },
+    "SYNTHETIC": {
+      "count": 30,
+      "rc6Passed": 29,
+      "rc7Passed": 30,
+      "rc6P1": 0.9666666666666667,
+      "rc7P1": 1,
+      "rc6P3": 0.6666666666666667,
+      "rc7P3": 0.6666666666666667,
+      "rc6MRR": 0.9777777777777777,
+      "rc7MRR": 1
+    },
+    "ADVERSARIAL": {
+      "count": 25,
+      "rc6Passed": 20,
+      "rc7Passed": 25,
+      "rc6P1": 0.8,
+      "rc7P1": 1,
+      "rc6P3": 0.6333333333333333,
+      "rc7P3": 0.8466666666666666,
+      "rc6MRR": 0.8,
+      "rc7MRR": 1
+    },
+    "EXPLORATORY": {
+      "count": 15,
+      "rc6Passed": 15,
+      "rc7Passed": 15,
+      "rc6P1": 1,
+      "rc7P1": 1,
+      "rc6P3": 0.7444444444444444,
+      "rc7P3": 0.7444444444444444,
+      "rc6MRR": 1,
+      "rc7MRR": 1
+    }
+  },
+  "scenariosComparison": [
+    {
+      "id": "G1-ADR-01",
+      "group": "GROUNDED_REAL",
+      "category": "Active ADRs",
+      "query": "What persistence layer does InventoryHub use for storing products and inventory items?",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-005"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 11.8719,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 9.95
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 6.3
+          },
+          {
+            "id": "MEM-ADR-005",
+            "score": 2.3
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 8.402,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 8.96
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 4.73
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 1.92
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-ADR-02",
+      "group": "GROUNDED_REAL",
+      "category": "Active ADRs",
+      "query": "How does InventoryHub handle database concurrency and WAL journal mode?",
+      "expectedRelevant": [
+        "MEM-ADR-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.8028,
+        "top3": [
+          {
+            "id": "MEM-ADR-002",
+            "score": 8.34
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 3.56
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 3.36
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 4.6467,
+        "top3": [
+          {
+            "id": "MEM-ADR-002",
+            "score": 10.09
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 4.38
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 3.37
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-ADR-03",
+      "group": "GROUNDED_REAL",
+      "category": "Active ADRs",
+      "query": "Is cloud sync allowed for InventoryHub local storage files?",
+      "expectedRelevant": [
+        "MEM-ADR-004"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-009"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.8013,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 17.49
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 5.99
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 4.2793,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 21.92
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 7.29
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-ADR-04",
+      "group": "GROUNDED_REAL",
+      "category": "Active ADRs",
+      "query": "What is the requirement for product stock mutation transactions in SQLite?",
+      "expectedRelevant": [
+        "MEM-ADR-005"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.463,
+        "top3": [
+          {
+            "id": "MEM-ADR-005",
+            "score": 17.73
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.7754,
+        "top3": [
+          {
+            "id": "MEM-ADR-005",
+            "score": 17.62
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-ADR-05",
+      "group": "GROUNDED_REAL",
+      "category": "Active ADRs",
+      "query": "Explain local sqlite architectural decisions in InventoryHub",
+      "expectedRelevant": [
+        "MEM-ADR-001",
+        "MEM-ADR-002"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-005"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.5939,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 9.99
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 4.93
+          },
+          {
+            "id": "MEM-ADR-005",
+            "score": 4.45
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.659,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 11.83
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 6.66
+          },
+          {
+            "id": "MEM-ADR-005",
+            "score": 6.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-SUPER-06",
+      "group": "GROUNDED_REAL",
+      "category": "Superseded ADRs",
+      "query": "Should we migrate the inventory schema to MongoDB Atlas cluster for high availability?",
+      "expectedRelevant": [
+        "MEM-ADR-001",
+        "MEM-ADR-002"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-005"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.8775,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 6.34
+          },
+          {
+            "id": "MEM-PROP-005",
+            "score": 0.88
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 4.4595,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 5.42
+          },
+          {
+            "id": "MEM-PROP-005",
+            "score": 0.36
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-SUPER-07",
+      "group": "GROUNDED_REAL",
+      "category": "Superseded ADRs",
+      "query": "Is Amazon S3 bucket replication recommended for inventory database sync?",
+      "expectedRelevant": [
+        "MEM-ADR-004"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-009"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.5458,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 5.66
+          },
+          {
+            "id": "MEM-PROP-009",
+            "score": 0.6
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 4.0245,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 7.34
+          },
+          {
+            "id": "MEM-PROP-009",
+            "score": 0.29
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-SUPER-08",
+      "group": "GROUNDED_REAL",
+      "category": "Superseded ADRs",
+      "query": "Should we adopt MongoDB cloud database for inventory persistence?",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-005"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.4616,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 12.92
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 4.53
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.2359,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 13.25
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 4.73
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-SUPER-09",
+      "group": "GROUNDED_REAL",
+      "category": "Superseded ADRs",
+      "query": "Is cloud bucket sync approved for inventory sqlite files?",
+      "expectedRelevant": [
+        "MEM-ADR-004"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-009"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.5413,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 12.11
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 2.05
+          },
+          {
+            "id": "MEM-PROP-009",
+            "score": 0.5
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.8882,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 12.82
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 2.43
+          },
+          {
+            "id": "MEM-PROP-009",
+            "score": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-SUPER-10",
+      "group": "GROUNDED_REAL",
+      "category": "Superseded ADRs",
+      "query": "Atlas cluster scaling strategy for warehouse catalog",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-005"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.7341,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 7.56
+          },
+          {
+            "id": "MEM-PROP-005",
+            "score": 0.65
+          },
+          {
+            "id": "MEM-ADR-005",
+            "score": 0.23
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.6346,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 3.17
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-HIST-11",
+      "group": "GROUNDED_REAL",
+      "category": "Explicit Historical",
+      "query": "What was the superseded historical proposal regarding MongoDB migration?",
+      "expectedRelevant": [
+        "MEM-PROP-005"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.3832,
+        "top3": [
+          {
+            "id": "MEM-PROP-005",
+            "score": 0.5
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 0.01
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.0964,
+        "top3": [
+          {
+            "id": "MEM-PROP-005",
+            "score": 13.01
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-HIST-12",
+      "group": "GROUNDED_REAL",
+      "category": "Explicit Historical",
+      "query": "Show the rejected proposal for S3 bucket replication",
+      "expectedRelevant": [
+        "MEM-PROP-009"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": false,
+        "p1": 0,
+        "p3": 0.5,
+        "mrr": 0.5,
+        "latencyMs": 1.2276,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 5.7
+          },
+          {
+            "id": "MEM-PROP-009",
+            "score": 0.85
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.0077,
+        "top3": [
+          {
+            "id": "MEM-PROP-009",
+            "score": 21.69
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 3.43
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-HIST-13",
+      "group": "GROUNDED_REAL",
+      "category": "Explicit Historical",
+      "query": "What legacy flat JSON storage protocol was used in 2024 before SQLite?",
+      "expectedRelevant": [
+        "MEM-HIST-010"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.4602,
+        "top3": [
+          {
+            "id": "MEM-HIST-010",
+            "score": 4.69
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.5658,
+        "top3": [
+          {
+            "id": "MEM-HIST-010",
+            "score": 45.68
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-HIST-14",
+      "group": "GROUNDED_REAL",
+      "category": "Explicit Historical",
+      "query": "Retrieve the historical deprecated storage format used prior to ADR-001",
+      "expectedRelevant": [
+        "MEM-HIST-010"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.585,
+        "top3": [
+          {
+            "id": "MEM-HIST-010",
+            "score": 1.4
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 0.05
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 0.05
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.825,
+        "top3": [
+          {
+            "id": "MEM-HIST-010",
+            "score": 12.32
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-HIST-15",
+      "group": "GROUNDED_REAL",
+      "category": "Explicit Historical",
+      "query": "What past proposals were superseded by ADR-001 and ADR-004?",
+      "expectedRelevant": [
+        "MEM-PROP-005",
+        "MEM-PROP-009"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": false,
+        "p1": 0,
+        "p3": 0,
+        "mrr": 0.2,
+        "latencyMs": 1.1565,
+        "top3": [
+          {
+            "id": "MEM-ADR-005",
+            "score": 3.46
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 3.37
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 3.31
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 2.6415,
+        "top3": [
+          {
+            "id": "MEM-PROP-009",
+            "score": 6.13
+          },
+          {
+            "id": "MEM-ADR-005",
+            "score": 1.59
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 1.55
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-REQ-16",
+      "group": "GROUNDED_REAL",
+      "category": "Requirements",
+      "query": "What is the business rule and threshold logic for low stock alert notifications?",
+      "expectedRelevant": [
+        "MEM-REQ-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.4638,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 13.34
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 3.15
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.4421,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 15.54
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 3.16
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-REQ-17",
+      "group": "GROUNDED_REAL",
+      "category": "Requirements",
+      "query": "What is the threshold quantity that triggers a low stock alert event?",
+      "expectedRelevant": [
+        "MEM-REQ-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.3433,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 19.59
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 3.7
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.3469,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 22.98
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 3.71
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-REQ-18",
+      "group": "GROUNDED_REAL",
+      "category": "Requirements",
+      "query": "What protocol handles batch expiration dates and quarantine pick lists?",
+      "expectedRelevant": [
+        "MEM-REQ-006"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.6958,
+        "top3": [
+          {
+            "id": "MEM-REQ-006",
+            "score": 31.78
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 4.2932,
+        "top3": [
+          {
+            "id": "MEM-REQ-006",
+            "score": 35.74
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-REQ-19",
+      "group": "GROUNDED_REAL",
+      "category": "Requirements",
+      "query": "How many days before expiration must perishable items be quarantined?",
+      "expectedRelevant": [
+        "MEM-REQ-006"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.6551,
+        "top3": [
+          {
+            "id": "MEM-REQ-006",
+            "score": 20.41
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.8831,
+        "top3": [
+          {
+            "id": "MEM-REQ-006",
+            "score": 24.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-REQ-20",
+      "group": "GROUNDED_REAL",
+      "category": "Requirements",
+      "query": "How are multi-currency price calculations handled for inventory valuations?",
+      "expectedRelevant": [
+        "MEM-REQ-007"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.2883,
+        "top3": [
+          {
+            "id": "MEM-REQ-007",
+            "score": 20.75
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.2804,
+        "top3": [
+          {
+            "id": "MEM-REQ-007",
+            "score": 18.91
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-CONV-21",
+      "group": "GROUNDED_REAL",
+      "category": "Conventions",
+      "query": "What coding standards, test runners, and dependency constraints are enforced in InventoryHub?",
+      "expectedRelevant": [
+        "MEM-CONV-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.643,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 4.87
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.807,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 4.82
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-CONV-22",
+      "group": "GROUNDED_REAL",
+      "category": "Conventions",
+      "query": "Are external npm packages permitted in InventoryHub production core?",
+      "expectedRelevant": [
+        "MEM-CONV-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.4742,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 18.13
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.3203,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 17.62
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-CONV-23",
+      "group": "GROUNDED_REAL",
+      "category": "Conventions",
+      "query": "Zero external runtime dependencies standard in InventoryHub",
+      "expectedRelevant": [
+        "MEM-CONV-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.3101,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 28.06
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 6.29
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.1359,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 35.19
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 7.68
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-CONV-24",
+      "group": "GROUNDED_REAL",
+      "category": "Conventions",
+      "query": "What exit codes must CLI tools produce on failure and success?",
+      "expectedRelevant": [
+        "MEM-CONV-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.5095,
+        "top3": [
+          {
+            "id": "MEM-CONV-002",
+            "score": 29.05
+          },
+          {
+            "id": "MEM-ADR-005",
+            "score": 3.61
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.5935,
+        "top3": [
+          {
+            "id": "MEM-CONV-002",
+            "score": 34.57
+          },
+          {
+            "id": "MEM-ADR-005",
+            "score": 2.49
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-CONV-25",
+      "group": "GROUNDED_REAL",
+      "category": "Conventions",
+      "query": "Standard exit codes and error handling convention for command-line interface",
+      "expectedRelevant": [
+        "MEM-CONV-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.5259,
+        "top3": [
+          {
+            "id": "MEM-CONV-002",
+            "score": 27.12
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.6657,
+        "top3": [
+          {
+            "id": "MEM-CONV-002",
+            "score": 32.47
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-QA-26",
+      "group": "GROUNDED_REAL",
+      "category": "QA Test Results",
+      "query": "What were the pass criteria and latency results of the Phase 2c2 inventory manager verification?",
+      "expectedRelevant": [
+        "MEM-TEST-003"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.5309,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 22.07
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 5.7417,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 27.71
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-QA-27",
+      "group": "GROUNDED_REAL",
+      "category": "QA Test Results",
+      "query": "How many business tests were executed in the Phase 2c2 verification test report?",
+      "expectedRelevant": [
+        "MEM-TEST-003"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.7164,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 29.79
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 4.2355,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 38.02
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-QA-28",
+      "group": "GROUNDED_REAL",
+      "category": "QA Test Results",
+      "query": "What were the stress test findings for 50 concurrent SQLite writers in WAL mode?",
+      "expectedRelevant": [
+        "MEM-TEST-006"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.6435,
+        "top3": [
+          {
+            "id": "MEM-TEST-006",
+            "score": 27.91
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 13.22
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 11.32
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.8853,
+        "top3": [
+          {
+            "id": "MEM-TEST-006",
+            "score": 30.08
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 13.7
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 9.59
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-QA-29",
+      "group": "GROUNDED_REAL",
+      "category": "QA Test Results",
+      "query": "Were any SQLITE_BUSY deadlocks observed during concurrency stress testing?",
+      "expectedRelevant": [
+        "MEM-TEST-006"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.2136,
+        "top3": [
+          {
+            "id": "MEM-TEST-006",
+            "score": 30.02
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 5.86
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.056,
+        "top3": [
+          {
+            "id": "MEM-TEST-006",
+            "score": 24.71
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 3.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-QA-30",
+      "group": "GROUNDED_REAL",
+      "category": "QA Test Results",
+      "query": "Verification test pass rate and p95 latency benchmark for inventory manager",
+      "expectedRelevant": [
+        "MEM-TEST-003"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.552,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 33.26
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 4.0091,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 42.67
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-RES-31",
+      "group": "GROUNDED_REAL",
+      "category": "Findings & Research",
+      "query": "What concurrency limitations and locking characteristics were discovered for node:sqlite WAL mode?",
+      "expectedRelevant": [
+        "MEM-RES-004"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.8111,
+        "top3": [
+          {
+            "id": "MEM-RES-004",
+            "score": 17.9
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 11.71
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 9.15
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.9916,
+        "top3": [
+          {
+            "id": "MEM-RES-004",
+            "score": 20.97
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 10.96
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 9.14
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-RES-32",
+      "group": "GROUNDED_REAL",
+      "category": "Findings & Research",
+      "query": "What busy timeout duration is required for serialized SQLite writes?",
+      "expectedRelevant": [
+        "MEM-RES-004"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.378,
+        "top3": [
+          {
+            "id": "MEM-RES-004",
+            "score": 13.18
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 9.6
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.3984,
+        "top3": [
+          {
+            "id": "MEM-RES-004",
+            "score": 11.05
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 9.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-RES-33",
+      "group": "GROUNDED_REAL",
+      "category": "Findings & Research",
+      "query": "What issue was discovered regarding Windows NTFS timestamp mtimeMs granularity?",
+      "expectedRelevant": [
+        "MEM-RES-008"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.5591,
+        "top3": [
+          {
+            "id": "MEM-RES-008",
+            "score": 22.91
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.9292,
+        "top3": [
+          {
+            "id": "MEM-RES-008",
+            "score": 21.83
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-RES-34",
+      "group": "GROUNDED_REAL",
+      "category": "Findings & Research",
+      "query": "Why does cleanStaleTempFiles require maxAgeMs <= 0 condition on Windows NTFS?",
+      "expectedRelevant": [
+        "MEM-RES-008"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.3918,
+        "top3": [
+          {
+            "id": "MEM-RES-008",
+            "score": 10.52
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.1482,
+        "top3": [
+          {
+            "id": "MEM-RES-008",
+            "score": 10.29
+          }
+        ]
+      }
+    },
+    {
+      "id": "G1-RES-35",
+      "group": "GROUNDED_REAL",
+      "category": "Contradictory Decisions",
+      "query": "Should inventory data sync to cloud bucket storage?",
+      "expectedRelevant": [
+        "MEM-ADR-004"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-009"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.2497,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 13.87
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 5.67
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 2.9996,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 17.08
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 7.53
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-PARA-36",
+      "group": "SYNTHETIC",
+      "category": "Paraphrasing",
+      "query": "How is depleted warehouse stock alerted when item quantities drop under safety levels?",
+      "expectedRelevant": [
+        "MEM-REQ-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.697,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 7.67
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 6.56
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 4.2572,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 7.05
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 5.13
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-PARA-37",
+      "group": "SYNTHETIC",
+      "category": "Paraphrasing",
+      "query": "Mechanisms preventing external library inclusions into core engine code",
+      "expectedRelevant": [
+        "MEM-CONV-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.8707,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 12.76
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 4.66
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 4.5351,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 11.6
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 3.68
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-PARA-38",
+      "group": "SYNTHETIC",
+      "category": "Paraphrasing",
+      "query": "Isolation of nearing expiry inventory lots from shipping allocations",
+      "expectedRelevant": [
+        "MEM-REQ-006"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.7275,
+        "top3": [
+          {
+            "id": "MEM-REQ-006",
+            "score": 27.34
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 4.214,
+        "top3": [
+          {
+            "id": "MEM-REQ-006",
+            "score": 22.91
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-PARA-39",
+      "group": "SYNTHETIC",
+      "category": "Paraphrasing",
+      "query": "Local disk authority over remote replicated storage systems",
+      "expectedRelevant": [
+        "MEM-ADR-004"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.388,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 9.79
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.3649,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 10.09
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-PARA-40",
+      "group": "SYNTHETIC",
+      "category": "Paraphrasing",
+      "query": "Rollback guarantees during failed catalog changes",
+      "expectedRelevant": [
+        "MEM-ADR-005"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.1374,
+        "top3": [
+          {
+            "id": "MEM-ADR-005",
+            "score": 11.83
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.9731,
+        "top3": [
+          {
+            "id": "MEM-ADR-005",
+            "score": 6.6
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-AMBIG-41",
+      "group": "SYNTHETIC",
+      "category": "Ambiguous Terms",
+      "query": "cache store persistence",
+      "expectedRelevant": [
+        "MEM-ADR-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": false,
+        "p1": 0,
+        "p3": 0.3333333333333333,
+        "mrr": 0.3333333333333333,
+        "latencyMs": 0.8404,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 7.05
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 6.31
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 5.38
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 2.1654,
+        "top3": [
+          {
+            "id": "MEM-ADR-002",
+            "score": 5.26
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 4.64
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 4.27
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-AMBIG-42",
+      "group": "SYNTHETIC",
+      "category": "Ambiguous Terms",
+      "query": "buffer allocation 64MB",
+      "expectedRelevant": [
+        "MEM-EDGE-DUP1"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 0.8284,
+        "top3": [
+          {
+            "id": "MEM-EDGE-DUP1",
+            "score": 15.15
+          },
+          {
+            "id": "MEM-REQ-006",
+            "score": 1.47
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 2.171,
+        "top3": [
+          {
+            "id": "MEM-EDGE-DUP1",
+            "score": 13.87
+          },
+          {
+            "id": "MEM-REQ-006",
+            "score": 1.19
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-AMBIG-43",
+      "group": "SYNTHETIC",
+      "category": "Vocabulary Overlap",
+      "query": "low stock telemetry metrics prometheus gauge",
+      "expectedRelevant": [
+        "MEM-TEL-007"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.2213,
+        "top3": [
+          {
+            "id": "MEM-TEL-007",
+            "score": 21.49
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.8352,
+        "top3": [
+          {
+            "id": "MEM-TEL-007",
+            "score": 21.46
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-AMBIG-44",
+      "group": "SYNTHETIC",
+      "category": "Vocabulary Overlap",
+      "query": "alert notifications low stock threshold rule",
+      "expectedRelevant": [
+        "MEM-REQ-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.1635,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 18.58
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 4.45
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 2.7899,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 21.45
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 4.46
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-AMBIG-45",
+      "group": "SYNTHETIC",
+      "category": "Vocabulary Overlap",
+      "query": "concurrency locking stress benchmark",
+      "expectedRelevant": [
+        "MEM-TEST-006"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.0402,
+        "top3": [
+          {
+            "id": "MEM-TEST-006",
+            "score": 10.49
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 8.57
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 2.4887,
+        "top3": [
+          {
+            "id": "MEM-TEST-006",
+            "score": 11.98
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 9.71
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-DUP-46",
+      "group": "SYNTHETIC",
+      "category": "Duplicates",
+      "query": "Memory Cache Allocation Tuning 64MB",
+      "expectedRelevant": [
+        "MEM-EDGE-DUP1"
+      ],
+      "expectedObsolete": [
+        "MEM-EDGE-DUP2"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.1111,
+        "top3": [
+          {
+            "id": "MEM-EDGE-DUP1",
+            "score": 25.92
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.9236,
+        "top3": [
+          {
+            "id": "MEM-EDGE-DUP1",
+            "score": 24.62
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-DUP-47",
+      "group": "SYNTHETIC",
+      "category": "Duplicates",
+      "query": "page cache hit ratio buffer configuration",
+      "expectedRelevant": [
+        "MEM-EDGE-DUP1"
+      ],
+      "expectedObsolete": [
+        "MEM-EDGE-DUP2"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.1648,
+        "top3": [
+          {
+            "id": "MEM-EDGE-DUP1",
+            "score": 13.56
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.8757,
+        "top3": [
+          {
+            "id": "MEM-EDGE-DUP1",
+            "score": 16.25
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-TMS-48",
+      "group": "SYNTHETIC",
+      "category": "TMS Multipliers",
+      "query": "node:sqlite local persistence vs PostgreSQL scale",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-DRAFT-008"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.2573,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 13.71
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 2.74
+          },
+          {
+            "id": "MEM-HIST-010",
+            "score": 0.42
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.1679,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 13.77
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 2.58
+          },
+          {
+            "id": "MEM-HIST-010",
+            "score": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-TMS-49",
+      "group": "SYNTHETIC",
+      "category": "TMS Multipliers",
+      "query": "database storage engine selection for inventory",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-005",
+        "MEM-DRAFT-008"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.2136,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 4.21
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 2
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 1.29
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 2.7574,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 5.13
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 2.2
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 1.77
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-TMS-50",
+      "group": "SYNTHETIC",
+      "category": "TMS Multipliers",
+      "query": "storage architecture decisions and conventions",
+      "expectedRelevant": [
+        "MEM-ADR-001",
+        "MEM-CONV-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.1351,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 7.23
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 6.78
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 6.65
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.0074,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 7.61
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 7.32
+          },
+          {
+            "id": "MEM-CONV-002",
+            "score": 4.31
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COLD-51",
+      "group": "SYNTHETIC",
+      "category": "Cold Restart",
+      "query": "What persistence layer does InventoryHub use for storing products and inventory items?",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.5056,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 9.95
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 6.3
+          },
+          {
+            "id": "MEM-ADR-005",
+            "score": 2.3
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.6542,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 8.96
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 4.73
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 1.92
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COLD-52",
+      "group": "SYNTHETIC",
+      "category": "Cold Restart",
+      "query": "Automated Low-Stock Alerting Rule and safety threshold",
+      "expectedRelevant": [
+        "MEM-REQ-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.2276,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 17.73
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 9.09
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 2.9855,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 20.72
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 8.77
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COLD-53",
+      "group": "SYNTHETIC",
+      "category": "Cold Restart",
+      "query": "Phase 2c2 Inventory Manager E2E Verification Report",
+      "expectedRelevant": [
+        "MEM-TEST-003"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.2892,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 30.53
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.3499,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 70.68
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COLD-54",
+      "group": "SYNTHETIC",
+      "category": "Cold Restart",
+      "query": "node:sqlite WAL Concurrency and Shared Cache Limitations",
+      "expectedRelevant": [
+        "MEM-RES-004"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.3055,
+        "top3": [
+          {
+            "id": "MEM-RES-004",
+            "score": 24.6
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 19.59
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 5.53
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.2093,
+        "top3": [
+          {
+            "id": "MEM-RES-004",
+            "score": 53.17
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 19.56
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 5.48
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COLD-55",
+      "group": "SYNTHETIC",
+      "category": "Cold Restart",
+      "query": "Zero External Runtime Dependencies Standard in InventoryHub",
+      "expectedRelevant": [
+        "MEM-CONV-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.3117,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 28.06
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 6.29
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.2794,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 35.19
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 7.68
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COORD-56",
+      "group": "SYNTHETIC",
+      "category": "Multi-Term Coordination",
+      "query": "sqlite database persistence storage local built-in",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.48,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 25.18
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 5.22
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 3.87
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.5648,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 25.07
+          },
+          {
+            "id": "MEM-ADR-004",
+            "score": 4.87
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 4.69
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COORD-57",
+      "group": "SYNTHETIC",
+      "category": "Multi-Term Coordination",
+      "query": "wal mode shared cache concurrent reads serialized writes",
+      "expectedRelevant": [
+        "MEM-ADR-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.4735,
+        "top3": [
+          {
+            "id": "MEM-ADR-002",
+            "score": 33.22
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 24.71
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 5.63
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.55,
+        "top3": [
+          {
+            "id": "MEM-ADR-002",
+            "score": 31.68
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 28.03
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 5.37
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COORD-58",
+      "group": "SYNTHETIC",
+      "category": "Multi-Term Coordination",
+      "query": "automated alert notification threshold stock sku units",
+      "expectedRelevant": [
+        "MEM-REQ-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.3706,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 27.97
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 3.7
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.4055,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 32.89
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 3.71
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COORD-59",
+      "group": "SYNTHETIC",
+      "category": "Multi-Term Coordination",
+      "query": "perishable expiration date quarantine 7 days pick list",
+      "expectedRelevant": [
+        "MEM-REQ-006"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.5196,
+        "top3": [
+          {
+            "id": "MEM-REQ-006",
+            "score": 32.26
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.7686,
+        "top3": [
+          {
+            "id": "MEM-REQ-006",
+            "score": 38.41
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COORD-60",
+      "group": "SYNTHETIC",
+      "category": "Multi-Term Coordination",
+      "query": "currency exchange rates dynamic price valuation",
+      "expectedRelevant": [
+        "MEM-REQ-007"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.3207,
+        "top3": [
+          {
+            "id": "MEM-REQ-007",
+            "score": 26.51
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.0865,
+        "top3": [
+          {
+            "id": "MEM-REQ-007",
+            "score": 28.21
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COORD-61",
+      "group": "SYNTHETIC",
+      "category": "Multi-Term Coordination",
+      "query": "exit codes numeric fatal validation failure success 0 1 2",
+      "expectedRelevant": [
+        "MEM-CONV-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.4529,
+        "top3": [
+          {
+            "id": "MEM-CONV-002",
+            "score": 33.73
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.5494,
+        "top3": [
+          {
+            "id": "MEM-CONV-002",
+            "score": 40.1
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COORD-62",
+      "group": "SYNTHETIC",
+      "category": "Multi-Term Coordination",
+      "query": "average query latency p50 p95 zero corruptions 34 tests",
+      "expectedRelevant": [
+        "MEM-TEST-003"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.5149,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 31.06
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.8642,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 35.82
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COORD-63",
+      "group": "SYNTHETIC",
+      "category": "Multi-Term Coordination",
+      "query": "windows ntfs stat mtimeMs granularity sub-millisecond purge",
+      "expectedRelevant": [
+        "MEM-RES-008"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.5084,
+        "top3": [
+          {
+            "id": "MEM-RES-008",
+            "score": 31.92
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.7377,
+        "top3": [
+          {
+            "id": "MEM-RES-008",
+            "score": 31.63
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COORD-64",
+      "group": "SYNTHETIC",
+      "category": "Multi-Term Coordination",
+      "query": "atomic sqlite transactions rollback failure mutation",
+      "expectedRelevant": [
+        "MEM-ADR-005"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.3172,
+        "top3": [
+          {
+            "id": "MEM-ADR-005",
+            "score": 32.83
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.119,
+        "top3": [
+          {
+            "id": "MEM-ADR-005",
+            "score": 32.65
+          }
+        ]
+      }
+    },
+    {
+      "id": "G2-COORD-65",
+      "group": "SYNTHETIC",
+      "category": "Multi-Term Coordination",
+      "query": "50 concurrent writers stress test wal mode deadlocks",
+      "expectedRelevant": [
+        "MEM-TEST-006"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.4249,
+        "top3": [
+          {
+            "id": "MEM-TEST-006",
+            "score": 33.26
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 8.7
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 6.44
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.5784,
+        "top3": [
+          {
+            "id": "MEM-TEST-006",
+            "score": 35.94
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 7.17
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 6.22
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-DIST-66",
+      "group": "ADVERSARIAL",
+      "category": "Lexical Distractors",
+      "query": "Is PostgreSQL relational database storage recommended for high concurrency in InventoryHub?",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-DRAFT-008"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.6306,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 4.55
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 3.16
+          },
+          {
+            "id": "MEM-DRAFT-008",
+            "score": 0.33
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 5.6126,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 5.68
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 3.62
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-DIST-67",
+      "group": "ADVERSARIAL",
+      "category": "Lexical Distractors",
+      "query": "High scale relational database postgresql storage rfc draft",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-DRAFT-008"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.6768,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 3.09
+          },
+          {
+            "id": "MEM-DRAFT-008",
+            "score": 0.6
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 4.1301,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 3.34
+          },
+          {
+            "id": "MEM-DRAFT-008",
+            "score": 0.34
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-DIST-68",
+      "group": "ADVERSARIAL",
+      "category": "Lexical Distractors",
+      "query": "MongoDB Atlas cluster migration proposal database storage",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-005"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.5766,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 14.33
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 4.69
+          },
+          {
+            "id": "MEM-PROP-005",
+            "score": 1.15
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 3.589,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 12.22
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 3.44
+          },
+          {
+            "id": "MEM-PROP-005",
+            "score": 0.46
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-DIST-69",
+      "group": "ADVERSARIAL",
+      "category": "Lexical Distractors",
+      "query": "Should we use PostgreSQL database for inventory tracking?",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-DRAFT-008"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.1302,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 6.29
+          },
+          {
+            "id": "MEM-BILL-002",
+            "score": 2.7
+          },
+          {
+            "id": "MEM-TEST-003",
+            "score": 0.68
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 2.6381,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 10.1
+          },
+          {
+            "id": "MEM-TEST-003",
+            "score": 1.11
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-DIST-70",
+      "group": "ADVERSARIAL",
+      "category": "Lexical Distractors",
+      "query": "S3 bucket cloud storage replica sync protocol",
+      "expectedRelevant": [
+        "MEM-ADR-004"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-009"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.39,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 13.52
+          },
+          {
+            "id": "MEM-PROP-009",
+            "score": 0.7
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.2302,
+        "top3": [
+          {
+            "id": "MEM-ADR-004",
+            "score": 15.61
+          },
+          {
+            "id": "MEM-PROP-009",
+            "score": 0.33
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-UNANS-71",
+      "group": "ADVERSARIAL",
+      "category": "Unanswerable",
+      "query": "How do we configure Kubernetes Helm charts and Kafka consumer groups for message bus?",
+      "expectedRelevant": [],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.6162,
+        "top3": [
+          {
+            "id": "MEM-EDGE-MINIMAL",
+            "score": 0.01
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 4.3766,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-UNANS-72",
+      "group": "ADVERSARIAL",
+      "category": "Unanswerable",
+      "query": "Quantum key distribution protocols and post-quantum encryption standards",
+      "expectedRelevant": [],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.4234,
+        "top3": [
+          {
+            "id": "MEM-ORDER-001",
+            "score": 0.01
+          },
+          {
+            "id": "MEM-CONV-001",
+            "score": 0.01
+          },
+          {
+            "id": "MEM-CONV-002",
+            "score": 0.01
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.9073,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-UNANS-73",
+      "group": "ADVERSARIAL",
+      "category": "Unanswerable",
+      "query": "Artisanal culinary baking temperatures and sourdough hydration ratios",
+      "expectedRelevant": [],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.443,
+        "top3": [
+          {
+            "id": "MEM-EDGE-DUP1",
+            "score": 0.01
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.2745,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-UNANS-74",
+      "group": "ADVERSARIAL",
+      "category": "Unanswerable",
+      "query": "Stock market options pricing Black-Scholes formula",
+      "expectedRelevant": [],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.2525,
+        "top3": [
+          {
+            "id": "MEM-REQ-007",
+            "score": 0.02
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 0.01
+          },
+          {
+            "id": "MEM-REQ-002",
+            "score": 0.01
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.939,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-UNANS-75",
+      "group": "ADVERSARIAL",
+      "category": "Unanswerable",
+      "query": "Deep learning neural architecture search genetic algorithms",
+      "expectedRelevant": [],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.4301,
+        "top3": [
+          {
+            "id": "MEM-BILL-002",
+            "score": 0.01
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 0.01
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 0.01
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.5825,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-ISOL-76",
+      "group": "ADVERSARIAL",
+      "category": "Cross-Project Isolation",
+      "query": "OrderService payment gateway stripe checkout secrets",
+      "expectedRelevant": [],
+      "expectedObsolete": [
+        "MEM-ORDER-001"
+      ],
+      "rc6": {
+        "passed": false,
+        "p1": 0,
+        "p3": 0,
+        "mrr": 0,
+        "latencyMs": 1.6639,
+        "top3": [
+          {
+            "id": "MEM-ORDER-001",
+            "score": 16.04
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.8238,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-ISOL-77",
+      "group": "ADVERSARIAL",
+      "category": "Cross-Project Isolation",
+      "query": "Stripe webhook signature validation keys",
+      "expectedRelevant": [],
+      "expectedObsolete": [
+        "MEM-ORDER-001"
+      ],
+      "rc6": {
+        "passed": false,
+        "p1": 0,
+        "p3": 0,
+        "mrr": 0,
+        "latencyMs": 1.2278,
+        "top3": [
+          {
+            "id": "MEM-ORDER-001",
+            "score": 26.74
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.0481,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-ISOL-78",
+      "group": "ADVERSARIAL",
+      "category": "Cross-Project Isolation",
+      "query": "BillingService PostgreSQL schema and corporate VAT tax calculation",
+      "expectedRelevant": [],
+      "expectedObsolete": [
+        "MEM-BILL-002"
+      ],
+      "rc6": {
+        "passed": false,
+        "p1": 0,
+        "p3": 0,
+        "mrr": 0,
+        "latencyMs": 1.4142,
+        "top3": [
+          {
+            "id": "MEM-BILL-002",
+            "score": 29.06
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.3731,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-ISOL-79",
+      "group": "ADVERSARIAL",
+      "category": "Cross-Project Isolation",
+      "query": "Managed PostgreSQL database for PDF invoice generation",
+      "expectedRelevant": [],
+      "expectedObsolete": [
+        "MEM-BILL-002"
+      ],
+      "rc6": {
+        "passed": false,
+        "p1": 0,
+        "p3": 0,
+        "mrr": 0,
+        "latencyMs": 1.3822,
+        "top3": [
+          {
+            "id": "MEM-BILL-002",
+            "score": 19.34
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.923,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-ISOL-80",
+      "group": "ADVERSARIAL",
+      "category": "Cross-Project Isolation",
+      "query": "OrderService JWT tokens and authorization headers",
+      "expectedRelevant": [],
+      "expectedObsolete": [
+        "MEM-ORDER-001"
+      ],
+      "rc6": {
+        "passed": false,
+        "p1": 0,
+        "p3": 0,
+        "mrr": 0,
+        "latencyMs": 1.1349,
+        "top3": [
+          {
+            "id": "MEM-ORDER-001",
+            "score": 4.3
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.6814,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-CAT-81",
+      "group": "ADVERSARIAL",
+      "category": "Category Ambiguity",
+      "query": "test verification of architectural database storage decisions",
+      "expectedRelevant": [
+        "MEM-TEST-003",
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.6666666666666666,
+        "mrr": 1,
+        "latencyMs": 1.3769,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 7.23
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 6.44
+          },
+          {
+            "id": "MEM-TEST-003",
+            "score": 4.7
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.6666666666666666,
+        "mrr": 1,
+        "latencyMs": 3.3039,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 8.84
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 8.14
+          },
+          {
+            "id": "MEM-TEST-003",
+            "score": 6.24
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-CAT-82",
+      "group": "ADVERSARIAL",
+      "category": "Category Ambiguity",
+      "query": "architecture standard for zero external dependencies",
+      "expectedRelevant": [
+        "MEM-CONV-001",
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.0989,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 15.92
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 10.49
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.4541,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 19.27
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 13.28
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-CAT-83",
+      "group": "ADVERSARIAL",
+      "category": "Category Ambiguity",
+      "query": "benchmark test research finding for sqlite wal mode",
+      "expectedRelevant": [
+        "MEM-RES-004",
+        "MEM-TEST-006"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.6666666666666666,
+        "mrr": 1,
+        "latencyMs": 1.5083,
+        "top3": [
+          {
+            "id": "MEM-RES-004",
+            "score": 17.91
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 6.83
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 4.47
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.6666666666666666,
+        "mrr": 1,
+        "latencyMs": 4.4525,
+        "top3": [
+          {
+            "id": "MEM-RES-004",
+            "score": 21.33
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 8.42
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 4.47
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-CAT-84",
+      "group": "ADVERSARIAL",
+      "category": "Category Ambiguity",
+      "query": "alert requirement telemetry metrics monitoring",
+      "expectedRelevant": [
+        "MEM-REQ-002",
+        "MEM-TEL-007"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.2569,
+        "top3": [
+          {
+            "id": "MEM-TEL-007",
+            "score": 15.99
+          },
+          {
+            "id": "MEM-REQ-002",
+            "score": 2.93
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.9867,
+        "top3": [
+          {
+            "id": "MEM-TEL-007",
+            "score": 16.02
+          },
+          {
+            "id": "MEM-REQ-002",
+            "score": 3.15
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-CAT-85",
+      "group": "ADVERSARIAL",
+      "category": "Category Ambiguity",
+      "query": "sqlite database error exit codes convention",
+      "expectedRelevant": [
+        "MEM-CONV-002",
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.3191,
+        "top3": [
+          {
+            "id": "MEM-CONV-002",
+            "score": 16.32
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 4.1199,
+        "top3": [
+          {
+            "id": "MEM-CONV-002",
+            "score": 19.5
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-STOP-86",
+      "group": "ADVERSARIAL",
+      "category": "Stopword Invariance",
+      "query": "the a an of in on for with by about into through during",
+      "expectedRelevant": [],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.0588,
+        "top3": []
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 5.2794,
+        "top3": []
+      }
+    },
+    {
+      "id": "G3-STOP-87",
+      "group": "ADVERSARIAL",
+      "category": "Stopword Invariance",
+      "query": "what is the best way to use the sqlite database for the inventory?",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.6231,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 5.19
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.8201,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 8.3
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-STOP-88",
+      "group": "ADVERSARIAL",
+      "category": "Stopword Invariance",
+      "query": "tell me all about how and when to trigger an alert for low stock",
+      "expectedRelevant": [
+        "MEM-REQ-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.0801,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 6.29
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 2.57
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 3.469,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 8.11
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 2.59
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-STOP-89",
+      "group": "ADVERSARIAL",
+      "category": "Stopword Invariance",
+      "query": "can you please explain the zero dependency rule standard we follow?",
+      "expectedRelevant": [
+        "MEM-CONV-001"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.7229,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 6
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 4.4995,
+        "top3": [
+          {
+            "id": "MEM-CONV-001",
+            "score": 5.95
+          }
+        ]
+      }
+    },
+    {
+      "id": "G3-STOP-90",
+      "group": "ADVERSARIAL",
+      "category": "Stopword Invariance",
+      "query": "do we have any test results or verification reports from phase 2c2?",
+      "expectedRelevant": [
+        "MEM-TEST-003"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.4574,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 18.9
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.6592,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 24.59
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-SHORT-91",
+      "group": "EXPLORATORY",
+      "category": "Ultra-Short",
+      "query": "sqlite",
+      "expectedRelevant": [
+        "MEM-ADR-001",
+        "MEM-ADR-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.6666666666666666,
+        "mrr": 1,
+        "latencyMs": 0.614,
+        "top3": [
+          {
+            "id": "MEM-ADR-002",
+            "score": 2.95
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 2.91
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 2.45
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.6666666666666666,
+        "mrr": 1,
+        "latencyMs": 1.2985,
+        "top3": [
+          {
+            "id": "MEM-ADR-002",
+            "score": 5.29
+          },
+          {
+            "id": "MEM-ADR-001",
+            "score": 5.21
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 4.39
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-SHORT-92",
+      "group": "EXPLORATORY",
+      "category": "Ultra-Short",
+      "query": "alert",
+      "expectedRelevant": [
+        "MEM-REQ-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.0298,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 4.89
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 4.37
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.5,
+        "mrr": 1,
+        "latencyMs": 1.4547,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 10.62
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 5.82
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-SHORT-93",
+      "group": "EXPLORATORY",
+      "category": "Ultra-Short",
+      "query": "wal",
+      "expectedRelevant": [
+        "MEM-ADR-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 0.762,
+        "top3": [
+          {
+            "id": "MEM-ADR-002",
+            "score": 4.88
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 4.06
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 3.66
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 1.2748,
+        "top3": [
+          {
+            "id": "MEM-ADR-002",
+            "score": 4.91
+          },
+          {
+            "id": "MEM-RES-004",
+            "score": 4.85
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 3.63
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-LONG-94",
+      "group": "EXPLORATORY",
+      "category": "Long Queries",
+      "query": "In our engineering retrospective we discussed whether we should continue to rely strictly on the built in node sqlite engine or consider moving towards external cloud databases like mongo or postgres for storing items",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-005"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.976,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 14.74
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 11.7861,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 13.65
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-LONG-95",
+      "group": "EXPLORATORY",
+      "category": "Long Queries",
+      "query": "We need an exact confirmation of the warehouse operations rules concerning when an SKU item quantity is considered depleted and what threshold triggers the automated notification system for stock managers",
+      "expectedRelevant": [
+        "MEM-REQ-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.5801,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 14.89
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 8.8209,
+        "top3": [
+          {
+            "id": "MEM-REQ-002",
+            "score": 16.89
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-LONG-96",
+      "group": "EXPLORATORY",
+      "category": "Long Queries",
+      "query": "Please summarize the verified test findings from the Phase 2c2 inventory manager evaluation including the total count of business tests executed the pass rate and measured latency characteristics",
+      "expectedRelevant": [
+        "MEM-TEST-003"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.4096,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 25.81
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 8.4054,
+        "top3": [
+          {
+            "id": "MEM-TEST-003",
+            "score": 30.31
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-RARE-97",
+      "group": "EXPLORATORY",
+      "category": "Rare Terms",
+      "query": "polysemy disambiguation threshold",
+      "expectedRelevant": [
+        "MEM-EDGE-MINIMAL"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 0.9096,
+        "top3": [
+          {
+            "id": "MEM-EDGE-MINIMAL",
+            "score": 11.63
+          },
+          {
+            "id": "MEM-REQ-002",
+            "score": 0.98
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 0.67
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 2.1669,
+        "top3": [
+          {
+            "id": "MEM-EDGE-MINIMAL",
+            "score": 14.99
+          },
+          {
+            "id": "MEM-REQ-002",
+            "score": 1.2
+          },
+          {
+            "id": "MEM-TEL-007",
+            "score": 0.66
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-RARE-98",
+      "group": "EXPLORATORY",
+      "category": "Rare Terms",
+      "query": "austerity configuration parameter",
+      "expectedRelevant": [
+        "MEM-EDGE-MINIMAL"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 0.9046,
+        "top3": [
+          {
+            "id": "MEM-EDGE-MINIMAL",
+            "score": 12.15
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.0206,
+        "top3": [
+          {
+            "id": "MEM-EDGE-MINIMAL",
+            "score": 15.66
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-RARE-99",
+      "group": "EXPLORATORY",
+      "category": "Rare Terms",
+      "query": "mtimeMs sub-millisecond precision",
+      "expectedRelevant": [
+        "MEM-RES-008"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 0.9603,
+        "top3": [
+          {
+            "id": "MEM-RES-008",
+            "score": 11.74
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.2204,
+        "top3": [
+          {
+            "id": "MEM-RES-008",
+            "score": 11.6
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-INCOMP-100",
+      "group": "EXPLORATORY",
+      "category": "Incomplete Metadata",
+      "query": "polysemy",
+      "expectedRelevant": [
+        "MEM-EDGE-MINIMAL"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 0.5873,
+        "top3": [
+          {
+            "id": "MEM-EDGE-MINIMAL",
+            "score": 4.32
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.6805,
+        "top3": [
+          {
+            "id": "MEM-EDGE-MINIMAL",
+            "score": 5.56
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-INCOMP-101",
+      "group": "EXPLORATORY",
+      "category": "Incomplete Metadata",
+      "query": "austerity",
+      "expectedRelevant": [
+        "MEM-EDGE-MINIMAL"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 0.6828,
+        "top3": [
+          {
+            "id": "MEM-EDGE-MINIMAL",
+            "score": 4.32
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 2.8418,
+        "top3": [
+          {
+            "id": "MEM-EDGE-MINIMAL",
+            "score": 5.56
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-EXPL-102",
+      "group": "EXPLORATORY",
+      "category": "Exploratory",
+      "query": "high availability database cluster",
+      "expectedRelevant": [
+        "MEM-ADR-001"
+      ],
+      "expectedObsolete": [
+        "MEM-PROP-005"
+      ],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 0.9603,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 4.41
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 4.28
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 4.19
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 2.5239,
+        "top3": [
+          {
+            "id": "MEM-ADR-001",
+            "score": 2.96
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 2.74
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 2.72
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-EXPL-103",
+      "group": "EXPLORATORY",
+      "category": "Exploratory",
+      "query": "product inventory valuation currency",
+      "expectedRelevant": [
+        "MEM-REQ-007"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 0.8988,
+        "top3": [
+          {
+            "id": "MEM-REQ-007",
+            "score": 11.4
+          },
+          {
+            "id": "MEM-ADR-005",
+            "score": 1.44
+          },
+          {
+            "id": "MEM-CONV-001",
+            "score": 1.25
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.3333333333333333,
+        "mrr": 1,
+        "latencyMs": 2.7061,
+        "top3": [
+          {
+            "id": "MEM-REQ-007",
+            "score": 15.5
+          },
+          {
+            "id": "MEM-ADR-005",
+            "score": 2.11
+          },
+          {
+            "id": "MEM-CONV-001",
+            "score": 1.72
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-EXPL-104",
+      "group": "EXPLORATORY",
+      "category": "Exploratory",
+      "query": "pick list quarantine expiration protocol",
+      "expectedRelevant": [
+        "MEM-REQ-006"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 1.2679,
+        "top3": [
+          {
+            "id": "MEM-REQ-006",
+            "score": 26.01
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 1,
+        "mrr": 1,
+        "latencyMs": 3.029,
+        "top3": [
+          {
+            "id": "MEM-REQ-006",
+            "score": 31.04
+          }
+        ]
+      }
+    },
+    {
+      "id": "G4-EXPL-105",
+      "group": "EXPLORATORY",
+      "category": "Exploratory",
+      "query": "busy timeout 3000ms sqlite wal serialized writes",
+      "expectedRelevant": [
+        "MEM-RES-004",
+        "MEM-ADR-002"
+      ],
+      "expectedObsolete": [],
+      "rc6": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.6666666666666666,
+        "mrr": 1,
+        "latencyMs": 1.3869,
+        "top3": [
+          {
+            "id": "MEM-RES-004",
+            "score": 18.65
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 16
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 3.34
+          }
+        ]
+      },
+      "rc7": {
+        "passed": true,
+        "p1": 1,
+        "p3": 0.6666666666666666,
+        "mrr": 1,
+        "latencyMs": 4.0266,
+        "top3": [
+          {
+            "id": "MEM-RES-004",
+            "score": 22.57
+          },
+          {
+            "id": "MEM-ADR-002",
+            "score": 16.28
+          },
+          {
+            "id": "MEM-TEST-006",
+            "score": 3.31
+          }
+        ]
+      }
+    }
+  ]
+}

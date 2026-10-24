@@ -1,0 +1,83 @@
+{
+  "timestamp": "2026-10-20T16:00:03.657Z",
+  "results": [
+    {
+      "name": "Empty Log",
+      "events": 0,
+      "sizeBytesBefore": 563,
+      "sizeBytesAfter": 1158,
+      "avgBytesPerEvent": 0,
+      "readLatencyMs": "0.512",
+      "appendLatencyMs": "0.384",
+      "compactLatencyMs": "4.410",
+      "compacted": false,
+      "essentialPreserved": 0,
+      "prunedEvents": 0
+    },
+    {
+      "name": "Small Log (50 events)",
+      "events": 50,
+      "sizeBytesBefore": 10380,
+      "sizeBytesAfter": 10975,
+      "avgBytesPerEvent": "207.6",
+      "readLatencyMs": "0.529",
+      "appendLatencyMs": "0.202",
+      "compactLatencyMs": "1.879",
+      "compacted": false,
+      "essentialPreserved": 0,
+      "prunedEvents": 0
+    },
+    {
+      "name": "Medium Log (500 events)",
+      "events": 500,
+      "sizeBytesBefore": 105270,
+      "sizeBytesAfter": 63644,
+      "avgBytesPerEvent": "210.5",
+      "readLatencyMs": "0.995",
+      "appendLatencyMs": "0.222",
+      "compactLatencyMs": "26.480",
+      "compacted": true,
+      "essentialPreserved": 50,
+      "prunedEvents": 202
+    },
+    {
+      "name": "Threshold (1,000 events)",
+      "events": 1000,
+      "sizeBytesBefore": 210870,
+      "sizeBytesAfter": 73846,
+      "avgBytesPerEvent": "210.9",
+      "readLatencyMs": "1.630",
+      "appendLatencyMs": "0.234",
+      "compactLatencyMs": "12.551",
+      "compacted": true,
+      "essentialPreserved": 100,
+      "prunedEvents": 652
+    },
+    {
+      "name": "Heavy Log (5,000 events)",
+      "events": 5000,
+      "sizeBytesBefore": 1067670,
+      "sizeBytesAfter": 746,
+      "avgBytesPerEvent": "213.5",
+      "readLatencyMs": "6.240",
+      "appendLatencyMs": "1.000",
+      "compactLatencyMs": "2.362",
+      "compacted": false,
+      "essentialPreserved": 0,
+      "prunedEvents": 0
+    },
+    {
+      "name": "Large Stress (10,000 events)",
+      "events": 10000,
+      "sizeBytesBefore": 2138670,
+      "sizeBytesAfter": 746,
+      "avgBytesPerEvent": "213.9",
+      "readLatencyMs": "16.405",
+      "appendLatencyMs": "0.998",
+      "compactLatencyMs": "3.234",
+      "compacted": false,
+      "essentialPreserved": 0,
+      "prunedEvents": 0
+    }
+  ]
+}

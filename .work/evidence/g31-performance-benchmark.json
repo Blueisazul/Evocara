@@ -1,0 +1,51 @@
+{
+  "milestone": "G31",
+  "benchmarkType": "Lineage Traversal & Temporal Contradiction Scalability",
+  "timestamp": "2026-10-23T19:10:08.572Z",
+  "corpusStats": {
+    "totalItems": 486,
+    "totalRelations": 74,
+    "deepChainLength": 50,
+    "treeNodes": 16,
+    "conflictingPairs": 10,
+    "backgroundItems": 400
+  },
+  "measurements": {
+    "deepLinearChain": {
+      "iterations": 100,
+      "traversedNodes": 50,
+      "traversedEdges": 49,
+      "p50_ms": 0.93,
+      "p95_ms": 1.477,
+      "avg_ms": 1.205,
+      "maxDepthReached": false
+    },
+    "branchingTree": {
+      "iterations": 100,
+      "traversedNodes": 16,
+      "traversedEdges": 15,
+      "p50_ms": 0.834,
+      "p95_ms": 1.007,
+      "avg_ms": 0.846
+    },
+    "pointInTimeContradictionQuery": {
+      "iterations": 100,
+      "surfacedItems": 23,
+      "activeContradictionsDetected": 20,
+      "p50_ms": 9.525,
+      "p95_ms": 10.775,
+      "avg_ms": 9.773,
+      "confidenceCalibrated": "INCONCLUSIVE"
+    }
+  },
+  "memoryFootprint": {
+    "heapUsed_MB": 20.92,
+    "heapTotal_MB": 50.42,
+    "rss_MB": 85.84
+  },
+  "invariantsPreserved": {
+    "falsePositiveRate": 0,
+    "deterministicOrder": true,
+    "zeroMutationsOnRead": true
+  }
+}
