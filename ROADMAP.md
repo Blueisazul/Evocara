@@ -1,13 +1,14 @@
-# ROADMAP ACTUALIZADO DE OPENMEMORY / EVOCARA (G30 -> G31 -> G32 / Release v0.4.0 GA)
-## Estado de Maduración, Entregables G31, Criterios de Salida y Próximos Hitos
+# ROADMAP ACTUALIZADO DE OPENMEMORY / EVOCARA (G31 -> G32 -> G33 / Release v0.4.0 GA)
+## Estado de Maduración, Entregables G32, Criterios de Salida y Próximos Hitos
 
-- **Fecha de Actualización:** 23 de octubre de 2026
-- **Línea Base:** Milestone G31 Certificado al 100 % (Linaje Causal y Contradicciones Temporales)
+- **Fecha de Actualización:** 24 de octubre de 2026
+- **Línea Base:** Milestone G32 Certificado al 100 % (Benchmark de Continuidad y Utilidad de Memoria en InventoryHub)
 - **Artefacto Definitivo Generado:** `evocara-0.4.0.tgz` (SHA-256: `70f31da7e822bfa8ece60395212e009cac9d39761d02af0325d6c3ee3b8a730a`, 209,910 bytes)
 - **SBOM Validado:** `evocara-0.4.0.cdx.json` (SHA-256: `6621e53a415cc7406c02bfcbf55a769c19e5591c338656baa876e23fe23bb0dc`, 41,973 bytes)
 - **Manifiesto de Release:** `evocara-0.4.0-manifest.json` (3,074 bytes)
 - **Consumidor Activo (Producción Local):** `InventoryHub` (Protegido en `0.3.14-rc4`, 34/34 pruebas de negocio aprobadas en vivo)
 - **Consumidor Calificado en Staging:** `InventoryHub` (8/8 fases aprobadas, 34/34 pruebas bajo `evocara@0.4.0`, 100 % paridad en rollback drill)
+- **Benchmark de Continuidad (G32):** **7 / 7 escenarios aprobados (100.0 % ON vs 14.3 % OFF)**, +77.1 pp exactitud de decisión, -88.6 % consumo de tokens de contexto, cero regresiones de negocio.
 - **Benchmark Canónico:** **105 / 105 escenarios aprobados (100.0 %)**, Precision@1 = 100.0 %, MRR = 1.000, False Discovery Rate = 0.0 %
 - **Superficie MCP:** 8 herramientas esenciales curadas por defecto; soporte de alias duales `evocara_*` / `openmemory_*` y 42 herramientas en perfil completo.
 - **Binarios CLI Duales:** `evocara` y `openmemory` totalmente operativos.
@@ -26,6 +27,7 @@
 | **G29** | **Calidad del Conocimiento, Supersession Atómica y Estado Epistémico** | **APROBADO (100 %)** | **Motor vertical de ciclo de vida del conocimiento implementado**. `supersedeKnowledgeDecision` atómica, diferenciación de estado epistémico (`VERIFIED_FACT`, `WORKING_HYPOTHESIS`), enriquecimiento de procedencia en MCP, `includeObsolete` en recuperación. Suite 7/7 aprobada. Cero regresiones en los 105 benchmarks. |
 | **G30** | **Modelo Bi-Temporal del Conocimiento y Consultas Point-In-Time** | **APROBADO (100 %)** | **Modelo bi-temporal nativo local-first implementado**. Diferenciación ortogonal entre tiempo de validez de dominio (`[validFrom, validUntil)`) y tiempo de registro/transacción (`recordedAt`, `supersededAtSystem`). Consultas point-in-time (`queryKnowledgePointInTime`), corrección retroactiva no destructiva (`correctKnowledgeRetroactive`), protección de estados terminales y degradación para registros legados. Suite G30: 15/15 aprobados (100 %). Benchmark canónico: 105/105 aprobados (100 % P@1, MRR 1.000). Consumidor InventoryHub intacto (34/34 PASS). |
 | **G31** | **Linaje Causal, Contradicciones Temporales y Síntesis Contextual** | **APROBADO (100 %)** | **Capacidades de razonamiento y linaje causal implementadas**. `explainDecisionLineage(itemId)` bidireccional sobre relaciones `SUPERSEDES` y `DERIVED_FROM`, detección determinista de contradicciones temporales semiabiertas $[validFrom, validUntil)$, enriquecimiento de `queryKnowledgePointInTime` con calibración de confianza a `INCONCLUSIVE`, síntesis contextual estructurada y alias duales MCP (`openmemory_explain_lineage` y `evocara_explain_lineage`). Suite G31: 18/18 aprobados (100 %). Benchmark de rendimiento: p50 = 0.93ms en cadena de 50 nodos. Cero regresiones en G29/G30/G23. Consumidor InventoryHub intacto (34/34 PASS). |
+| **G32** | **Continuidad Inter-Sesión y Utilidad Práctica en Consumidor Real** | **APROBADO (100 %)** | **Evaluación empírica ON vs OFF en InventoryHub implementada y certificada**. 7 escenarios representativos evaluados en sandbox aislado: 7/7 PASS (100.0 %) en Condición ON frente a 1/7 PASS (14.3 %) en Condición OFF. Exactitud de decisiones: +77.1 pp a favor de Evocara. Ahorro de contexto: -88.6 % tokens requeridos. Prevención demostrada de fallo en pruebas de negocio (evitó resurrección de JSON legado que rompe Phase 2C.4). Cero mutaciones en proyecto real. Suite `.work/experiments/test-g32-continuity-benchmark.js`, evidencia estructurada `docs/G32_TECHNICAL_REPORT.md` y `.work/evidence/g32-continuity-benchmark-results.json`. |
 
 ---
 
@@ -54,15 +56,28 @@
 
 ---
 
-## 3. Matriz de Seguimiento y Estado Real del Proyecto (Hito G31)
+## 2.2. Detalle de Logros del Hito G32
+
+| Bloque | Objetivo G32 | Estado | Evidencia y Métricas |
+|---|---|---|---|
+| **Bloque A** | Aislamiento y Entorno Sandbox | **APROBADO (100 %)** | Clon selectivo en `os.tmpdir()` de `InventoryHub` sin mutar proyecto de desarrollo real. Ejecución autónoma con limpieza garantizada. |
+| **Bloque B** | Diseño de Escenarios Representativos | **APROBADO (100 %)** | 7 tareas de desarrollo real: justificación de ADR (Task 1), restricciones de valoración y déficit (Task 2), estado de retiro de JSON legado (Task 3), supersesión de arquitectura ESM (Task 4), contradicción de dependencias externas (Task 5), prevención de investigación redundante de timer Windows (Task 6) y honestidad epistémica $K=0$ en Shopify (Task 7). |
+| **Bloque C** | Medición Empírica ON vs OFF | **APROBADO (100 %)** | Aprobación de 7/7 (100.0 %) en ON vs 1/7 (14.3 %) en OFF. Exactitud media: 100.0 % (ON) vs 22.9 % (OFF). Reducción de tokens: 580 vs 5,070 (-88.6 %). Falsos descubrimientos: 0.0 % (ON) vs 100.0 % (OFF). |
+| **Bloque D** | Preservación de Pruebas de Negocio | **APROBADO (100 %)** | Condición ON mantiene 34/34 pruebas de negocio aprobadas en InventoryHub. Condición OFF sufre regresión crítica al recrear archivo `inventory-data.json`, fallando Phase 2C.4. |
+| **Bloque E** | Evidencia y Handoff G32 | **APROBADO (100 %)** | Evidencia en `.work/evidence/g32-continuity-benchmark-results.json`, informe en `docs/G32_TECHNICAL_REPORT.md` y handoff en `docs/G32_CONTINUITY_HANDOFF.md`. |
+
+---
+
+## 3. Matriz de Seguimiento y Estado Real del Proyecto (Hito G32)
 
 | Hito | Estado verificado | Evidencia | Pendientes | Siguiente acción |
 |---|---|---|---|---|
 | **G28** | **Confirmado al 100 %**. Artefactos de release calificados técnicamente para GA. Tarball, SBOM y manifiesto sin discrepancias. | Hashes SHA-256 idénticos bit-a-bit, SBOM CycloneDX 1.5, manifiesto SLSA v1.0. | Publicación en registro y despliegue pendientes de autorización humana. | Preservar artefactos congelados sin mutación. |
 | **G29** | **Completado al 100 %**. Ciclo de vida de conocimiento implementado, runbook de promoción calificado. | Informe `docs/G29_EXECUTION_REPORT.md`, suite `test-g29-knowledge-lifecycle-suite.js` (7/7 PASS). | Autorización explícita humana para promoción activa. | Mantener consumidor InventoryHub protegido. |
 | **G30** | **Completado al 100 %**. Soporte bi-temporal e histórico point-in-time nativo en KnowledgeTMS y StorageManager. | Informes `docs/G30_TECHNICAL_REPORT.md`, `docs/G30_EXECUTION_REPORT.md`, evidencia `docs/G30_TEST_EVIDENCE.json`, suite `test-g30-bitemporal-suite.js` (15/15 PASS). | Ninguno para este hito. | Línea base para G31. |
-| **G31** | **Completado al 100 %**. Linaje causal de decisiones, detección de contradicciones temporales y síntesis contextual MCP. | Informes `docs/G31_TECHNICAL_REPORT.md`, `docs/G31_EXECUTION_REPORT.md`, evidencia `docs/G31_TEST_EVIDENCE.json`, suite `test-g31-lineage-and-contradictions-suite.js` (18/18 PASS). | Ninguno para este hito. | Pasar al hito G32. |
-| **Siguiente hito funcional (G32)** | **Propuesto**. Benchmark de Continuidad Entre Sesiones y Explicabilidad Real en InventoryHub. | Especificación en `docs/G31_CONTINUITY_HANDOFF.md`. | Comparación controlada con memoria ON vs OFF en tareas complejas de refactorización. | Implementar arnés de benchmark multi-sesión para InventoryHub. |
+| **G31** | **Completado al 100 %**. Linaje causal de decisiones, detección de contradicciones temporales y síntesis contextual MCP. | Informes `docs/G31_TECHNICAL_REPORT.md`, `docs/G31_EXECUTION_REPORT.md`, evidencia `docs/G31_TEST_EVIDENCE.json`, suite `test-g31-lineage-and-contradictions-suite.js` (18/18 PASS). | Ninguno para este hito. | Línea base para G32. |
+| **G32** | **Completado al 100 %**. Benchmark de continuidad entre sesiones y utilidad demostrada en InventoryHub. | Suite `test-g32-continuity-benchmark.js` (7/7 PASS ON vs 1/7 OFF), evidencia `g32-continuity-benchmark-results.json`, informe `docs/G32_TECHNICAL_REPORT.md`. | Ninguno para este hito. | Pasar al hito G33 (Gobernanza / Promoción). |
+| **Siguiente hito funcional (G33)** | **Planificado**. Promoción Formal de InventoryHub a Evocara v0.4.0 GA y Cierre de Release. | Runbook en `docs/G28_PROMOTION_RUNBOOK.md` y `docs/G32_CONTINUITY_HANDOFF.md`. | Autorización explícita del usuario para actualizar `package.json` de InventoryHub. | Ejecutar promoción controlada tras confirmación del usuario. |
 
 ---
 
@@ -83,4 +98,6 @@
 13. [x] **Ciclo de vida del conocimiento y gobernanza epistémica certificados (Hito G29 completado al 100 %).**
 14. [x] **Modelo bi-temporal del conocimiento y consultas point-in-time certificados (Hito G30 completado al 100 %).**
 15. [x] **Linaje causal de decisiones, contradicciones temporales y síntesis contextual certificados (Hito G31 completado al 100 %).**
-16. [ ] **Promoción en producción local activada formalmente en `InventoryHub` (Pendiente autorización explícita del usuario).**
+16. [x] **Benchmark de continuidad inter-sesión y utilidad demostrada en consumidor real certificados (Hito G32 completado al 100 %).**
+17. [ ] **Promoción en producción local activada formalmente en `InventoryHub` (Pendiente autorización explícita del usuario).**
+
