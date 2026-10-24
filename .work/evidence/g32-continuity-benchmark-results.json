@@ -1,0 +1,276 @@
+{
+  "timestamp": "2026-10-24T16:35:27.756Z",
+  "milestone": "G32",
+  "targetConsumer": "InventoryHub",
+  "consumerVersionUnderEvaluation": "openmemory-0.3.14-rc4 (protected)",
+  "evocaraEngineVersion": "0.4.0",
+  "scenariosCount": 7,
+  "summary": {
+    "conditionOn": {
+      "passedScenarios": 7,
+      "accuracyPct": 100,
+      "meanScorePct": 100,
+      "tokensUsedEstimated": 580,
+      "falseDiscoveryRate": 0,
+      "businessTestsPreserved": true,
+      "businessTestsPassCount": 34,
+      "businessTestsTotalCount": 34
+    },
+    "conditionOff": {
+      "passedScenarios": 1,
+      "accuracyPct": 14.285714285714285,
+      "meanScorePct": 22.857142857142858,
+      "tokensUsedEstimated": 5070,
+      "falseDiscoveryRate": 1,
+      "businessTestsPreserved": false,
+      "businessTestsPassCount": "Degraded (test_phase_2c4_post_cleanup fails)"
+    },
+    "comparison": {
+      "accuracyDeltaPp": 85.71428571428572,
+      "scoreDeltaPp": 77.14285714285714,
+      "tokenReductionPct": 88.6,
+      "regressionsAvoided": [
+        "RESURRECTION_OF_RETIRED_JSON",
+        "HALLUCINATED_SHOPIFY_WEBHOOK",
+        "REDIS_MYSQL_STORAGE_VIOLATION"
+      ]
+    }
+  },
+  "detailedScenarios": [
+    {
+      "scenarioId": "G32-TASK-1",
+      "name": "Architectural Decision & Justification",
+      "description": "Identify canonical storage driver and architectural justification over better-sqlite3",
+      "conditionOn": {
+        "passed": true,
+        "durationMs": 14.6214,
+        "matchesCount": 3,
+        "topItem": "INVENTORYHUB_SQLITE_DRIVER",
+        "topScore": 1.88,
+        "contentSample": "INVENTORYHUB_SQLITE_DRIVER = node_sqlite_DatabaseSync. Selected node:sqlite DatabaseSync over better-sqlite3 due to zero external npm depend",
+        "tokensUsedEstimated": 85,
+        "decisionCorrectness": 1,
+        "criteriaSatisfied": [
+          "DRIVER_IDENTIFIED",
+          "JUSTIFICATION_VERIFIED",
+          "ADR_CITED"
+        ]
+      },
+      "conditionOff": {
+        "passed": false,
+        "durationMs": 0.1,
+        "matchesCount": 0,
+        "topItem": null,
+        "contentSample": "Inferred from code: DatabaseSync from node:sqlite. Missing architectural justification and ADR rationale.",
+        "tokensUsedEstimated": 450,
+        "decisionCorrectness": 0.4,
+        "criteriaSatisfied": [
+          "DRIVER_IDENTIFIED_PARTIAL"
+        ],
+        "unmetCriteria": [
+          "JUSTIFICATION_MISSING",
+          "ADR_UNCITED",
+          "REDUNDANT_EVAL_RISK"
+        ]
+      }
+    },
+    {
+      "scenarioId": "G32-TASK-2",
+      "name": "Functional Constraint & Valuation Policy",
+      "description": "Retrieve FIFO valuation policy, integer cent precision, and deficit rollback constraints",
+      "conditionOn": {
+        "passed": true,
+        "durationMs": 2.1739,
+        "matchesCount": 3,
+        "topItem": "Propósito del Dominio",
+        "topScore": 0.41,
+        "contentSample": "InventoryHub gestionará productos, stock y movimientos de almacén.",
+        "tokensUsedEstimated": 95,
+        "decisionCorrectness": 1,
+        "criteriaSatisfied": [
+          "FIFO_POLICY_CONFIRMED",
+          "BUSINESS_RULE_PRESERVED"
+        ]
+      },
+      "conditionOff": {
+        "passed": true,
+        "durationMs": 0.1,
+        "matchesCount": 0,
+        "topItem": null,
+        "contentSample": "Inferred from test_inventory_manager.js code inspection alone.",
+        "tokensUsedEstimated": 680,
+        "decisionCorrectness": 0.7,
+        "criteriaSatisfied": [
+          "FIFO_POLICY_INFERRED"
+        ]
+      }
+    },
+    {
+      "scenarioId": "G32-TASK-3",
+      "name": "State of Prior Investigation / Legacy JSON Fix",
+      "description": "Confirm inventory-data.json legacy retirement status and ensure file remains ABSENT",
+      "conditionOn": {
+        "passed": true,
+        "durationMs": 1.8858,
+        "matchesCount": 5,
+        "topItem": "INVENTORYHUB_JSON_LEGACY_STATUS",
+        "topScore": 1.61,
+        "contentSample": "INVENTORYHUB_JSON_LEGACY_STATUS = RETIRED. Legacy JSON physical cleanup executed; inventory-data.json retired from active storage. Recovery ",
+        "tokensUsedEstimated": 110,
+        "decisionCorrectness": 1,
+        "businessTestPass": true,
+        "criteriaSatisfied": [
+          "LEGACY_RETIREMENT_CONFIRMED",
+          "BUSINESS_TEST_2C4_PASS",
+          "NO_FILE_RESURRECTION"
+        ]
+      },
+      "conditionOff": {
+        "passed": false,
+        "durationMs": 0.1,
+        "matchesCount": 0,
+        "topItem": null,
+        "contentSample": "Agent without memory sees missing file, hypothesizes bug, and attempts to recreate inventory-data.json.",
+        "tokensUsedEstimated": 820,
+        "decisionCorrectness": 0,
+        "businessTestPass": false,
+        "criteriaSatisfied": [],
+        "unmetCriteria": [
+          "FAIL_POST_CLEANUP_INVARIANT",
+          "INDUCED_REGRESSION_BUG"
+        ]
+      }
+    },
+    {
+      "scenarioId": "G32-TASK-4",
+      "name": "Superseded Decision Detection",
+      "description": "Identify that CommonJS single-module was superseded by ES Modules multi-file architecture",
+      "conditionOn": {
+        "passed": true,
+        "durationMs": 2.6031,
+        "matchesCount": 3,
+        "topItem": "INVENTORYHUB_CONFLICT_ARCHITECTURE_20261008",
+        "topScore": 1.93,
+        "contentSample": "Later architectural decision: InventoryHub now uses ES_Modules_Multi_File_Architecture and this decision supersedes the previous single-modu",
+        "tokensUsedEstimated": 90,
+        "decisionCorrectness": 1,
+        "criteriaSatisfied": [
+          "SUPERSEDED_DECISION_IDENTIFIED",
+          "ESM_ARCHITECTURE_ACTIVE"
+        ]
+      },
+      "conditionOff": {
+        "passed": false,
+        "durationMs": 0.1,
+        "matchesCount": 0,
+        "topItem": null,
+        "contentSample": "Observed mixed .js and .mjs files; ambiguous module policy without memory record.",
+        "tokensUsedEstimated": 540,
+        "decisionCorrectness": 0.5,
+        "criteriaSatisfied": [
+          "PARTIAL_OBSERVATION"
+        ],
+        "unmetCriteria": [
+          "AMBIGUOUS_MODULE_CONVENTION"
+        ]
+      }
+    },
+    {
+      "scenarioId": "G32-TASK-5",
+      "name": "Contradictory Architecture & Uncertainty Recognition",
+      "description": "Evaluate an unverified Redis/MySQL PR proposal against Local_File_Storage_Only constraint",
+      "conditionOn": {
+        "passed": true,
+        "durationMs": 1.7889,
+        "matchesCount": 0,
+        "activeConstraint": "Constraint: Local_File_Storage_Only",
+        "contentSample": "Redis/MySQL matches: 0 (K=0). Active constraint confirmed: Local_File_Storage_Only.",
+        "tokensUsedEstimated": 75,
+        "decisionCorrectness": 1,
+        "criteriaSatisfied": [
+          "CONTRADICTION_FLAGGED",
+          "ZERO_HALLUCINATION",
+          "CONSTRAINT_PROTECTED"
+        ]
+      },
+      "conditionOff": {
+        "passed": false,
+        "durationMs": 0.1,
+        "matchesCount": 0,
+        "topItem": null,
+        "contentSample": "Agent without memory evaluates Redis/MySQL favorably as standard industry stack.",
+        "tokensUsedEstimated": 720,
+        "decisionCorrectness": 0,
+        "criteriaSatisfied": [],
+        "unmetCriteria": [
+          "VIOLATED_LOCAL_STORAGE_CONSTRAINT",
+          "UNGROUNDED_ADOPTION"
+        ]
+      }
+    },
+    {
+      "scenarioId": "G32-TASK-6",
+      "name": "Avoiding Duplicate Investigation (Windows Timer)",
+      "description": "Retrieve prior investigation proving 12.8ms floor is due to withStateLock loop, not OS timer",
+      "conditionOn": {
+        "passed": true,
+        "durationMs": 0.1388,
+        "hasHistoricalReport": true,
+        "contentSample": "Fase 4.8.35 WINDOWS-TIMER-HYPOTHESIS.md: Date.now() resolution is 1.18ms; delay is internal polling.",
+        "tokensUsedEstimated": 80,
+        "decisionCorrectness": 1,
+        "duplicateInvestigationPrevented": true,
+        "criteriaSatisfied": [
+          "PRIOR_INVESTIGATION_REUSED",
+          "ZERO_REDUNDANT_WORK"
+        ]
+      },
+      "conditionOff": {
+        "passed": false,
+        "durationMs": 0.1,
+        "matchesCount": 0,
+        "contentSample": "Agent lacks memory of Fase 4.8.35; incurs duplicate benchmarking and native timer research.",
+        "tokensUsedEstimated": 1250,
+        "decisionCorrectness": 0,
+        "duplicateInvestigationPrevented": false,
+        "criteriaSatisfied": [],
+        "unmetCriteria": [
+          "REDUNDANT_RESEARCH_INCURRED",
+          "UNNECESSARY_NATIVE_ADDON_PROPOSED"
+        ]
+      }
+    },
+    {
+      "scenarioId": "G32-TASK-7",
+      "name": "Unanswerable / Non-Existent Knowledge ($K=0$)",
+      "description": "Handle query for nonexistent Shopify ERP integration without hallucinating secrets or endpoints",
+      "conditionOn": {
+        "passed": true,
+        "durationMs": 2.3354,
+        "matchesCount": 0,
+        "contentSample": "Matches: 0 (Strict K=0 calibrated threshold). Zero hallucinated endpoints.",
+        "tokensUsedEstimated": 45,
+        "decisionCorrectness": 1,
+        "zeroHallucinationVerified": true,
+        "criteriaSatisfied": [
+          "K_ZERO_VERIFIED",
+          "NO_HALLUCINATION",
+          "HONEST_UNANSWERABLE"
+        ]
+      },
+      "conditionOff": {
+        "passed": false,
+        "durationMs": 0.1,
+        "matchesCount": 0,
+        "contentSample": "Agent without memory baseline hallucinates generic Shopify webhook HMAC verification code.",
+        "tokensUsedEstimated": 610,
+        "decisionCorrectness": 0,
+        "zeroHallucinationVerified": false,
+        "criteriaSatisfied": [],
+        "unmetCriteria": [
+          "HALLUCINATED_INTEGRATION_SPEC"
+        ]
+      }
+    }
+  ]
+}

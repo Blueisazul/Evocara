@@ -1,0 +1,19 @@
+{
+  "candidate": "openmemory-0.3.15-rc10.tgz",
+  "sha256": "9F56909CD8CB34F615C4E7BD35350B8AD934E20F19A938DA139A370C6C4D9848",
+  "sizeBytes": 207862,
+  "liveConsumer": {
+    "path": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+    "activeVersion": "0.3.14-rc4",
+    "status": "PROTECTED_UNTOUCHED"
+  },
+  "stagingResults": {
+    "allPhasesPassed": true,
+    "phasesCount": "8/8",
+    "businessTestsPassed": "34/34",
+    "mcpCuratedVerified": true,
+    "rollbackDrillPassed": true,
+    "postRollbackParity": "100%"
+  },
+  "timestamp": "2026-10-22T16:13:03.212Z"
+}

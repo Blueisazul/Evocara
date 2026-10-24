@@ -1,0 +1,152 @@
+{
+  "manifestVersion": "3.2.0",
+  "milestone": "G14-OPERATIONAL-ASSURANCE-AND-GATE-CERTIFICATION",
+  "verdict": "G14_OPERATIONALLY_VERIFIED",
+  "timestamp": "2026-10-19T02:23:06.902Z",
+  "targetArtifact": {
+    "package": "openmemory",
+    "version": "0.3.15-rc2",
+    "path": ".work/artifacts/openmemory-0.3.15-rc2.tgz",
+    "sizeBytes": 190051,
+    "sha256": "a82a2a02a5db20d0d96ae8fb913c04ca937e683da870d7fdbddb06ea77f8bfc5",
+    "sha512Base64": "xDAzTSQgn4DT2c1bVOud9dqKda3+TS3HzoT2Ld7PSy0KIDH9mM/uI/JkgdljDGAfn9vp9zzD40lmvFoiQ9WqUg==",
+    "role": "QUALIFIED_RELEASE_CANDIDATE",
+    "status": "INTEGRITY_VERIFIED",
+    "declaredSha256Match": true,
+    "declaredSizeMatch": true,
+    "contents": {
+      "totalFiles": 75,
+      "leaksDetected": 0,
+      "tarSlipFlaws": 0,
+      "inspectionPassed": true
+    }
+  },
+  "historicalBaseline": {
+    "package": "openmemory",
+    "version": "0.3.15-rc1",
+    "path": ".work/artifacts/openmemory-0.3.15-rc1.tgz",
+    "sizeBytes": 184295,
+    "sha256": "8b3df7e15222cfcce93d33044efc817e2c10564aa996af389a9603b66595d716",
+    "sha512Base64": "8q24rROste0KEoAO39ZcFJMvzhKEFsrTOlFv0e12zI2qIh/kpVcLwYT1tEWomwSGyf4KG1N9KzUM90IJ8f9rvQ==",
+    "role": "PRESERVED_HISTORICAL_BASELINE",
+    "status": "INTEGRITY_VERIFIED",
+    "discrepancyDocumented": "Packaged at commit bdbf41f before G9/G10 enhancements; preserved intact as historical release qualification evidence"
+  },
+  "gitState": {
+    "branch": "fix/p0-security-concurrency-hardening",
+    "priorHeadCommit": "319fb8d",
+    "status": "WORKING_TREE_VERIFIED",
+    "headCommit": "d5581f3"
+  },
+  "protectedConsumer": {
+    "path": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+    "installedVersion": "openmemory@0.3.14-rc4",
+    "status": "100% UNTOUCHED & PASSING",
+    "accountingParity": "34/34 assertions passing",
+    "databases": [
+      {
+        "path": "test-inventory-data.db",
+        "status": "INTACT_AND_QUIESCENT"
+      }
+    ]
+  },
+  "safeTestRunner": {
+    "totalSuites": 24,
+    "passedSuites": 24,
+    "failedSuites": 0,
+    "exitCode": 0,
+    "suites": [
+      "SEC-001",
+      "PERSIST-001",
+      "F13.3.3",
+      "SPIKE",
+      "AUDIT-COMPARE",
+      "SYNTHETIC-PROMO",
+      "RECOVERY-P08",
+      "RECOVERY-P09",
+      "INVARIANTS-P10",
+      "TRANS-BACKUP",
+      "ADVERSARIAL-P12",
+      "REHEARSAL-P13",
+      "HARDENING-P14",
+      "ADVERSARIAL-P15",
+      "AUDIT-P16",
+      "G6-REHEARSAL",
+      "G7-DIAGNOSTICS",
+      "G7.2-LIFECYCLE",
+      "G9-PROMOTION",
+      "G10-OBSERVABILITY",
+      "G11-INTEGRATION",
+      "G12-RELEASE-GATE",
+      "G13-SUPPLY-CHAIN",
+      "G14-ASSURANCE"
+    ]
+  },
+  "blockVerifications": {
+    "blockA_IntegrityAndBaselineAudit": {
+      "status": "VERIFIED",
+      "evidence": "TypeScript compile clean (tsc exit 0), rc2 and rc1 cryptographic hashes verified, verifiers fail-closed on corrupt/tampered inputs, historical artifacts immutably preserved."
+    },
+    "blockB_RunbookAndPreconditionsAudit": {
+      "status": "VERIFIED",
+      "dryRunSemantics": "Resolved: DRY_RUN_PASSED, 0 filesystem mutations, 0 package installs, 0 misleading backups in backups/, 0 COMMITTED operation manifests.",
+      "sqliteQuiescencePolicy": "Resolved: WAL > 0 requires PRAGMA wal_checkpoint(TRUNCATE); active readers/writers detected via BEGIN IMMEDIATE and blocked in preflight; isolated -shm residual accepted as quiescent; manual WAL/SHM deletion strictly prohibited."
+    },
+    "blockC_AdversarialPromotionTests": {
+      "status": "VERIFIED",
+      "suite": "G14-ASSURANCE (.work/experiments/test-g14-operational-assurance.js)",
+      "passedTests": 10,
+      "totalTests": 10,
+      "coverage": [
+        "Dry-run zero mutation guarantee",
+        "SQLite active writer contention rejection",
+        "SQLite active reader contention rejection",
+        "SQLite residual -shm safe acceptance",
+        "Cryptographic candidate integrity enforcement",
+        "Active PID lock defense & dead PID lock eviction",
+        "Graceful recovery on truncated/corrupted operation manifest",
+        "Full promotion lifecycle, fault injection, rollback parity & idempotency",
+        "CI/CD workflow least-privilege & pinned SHAs static audit",
+        "Consumer InventoryHub preservation"
+      ]
+    },
+    "blockD_CICDAndProvenanceAttestation": {
+      "status": "PREPARED_AND_LOCALLY_VERIFIED",
+      "workflowFile": ".github/workflows/release-attestation.yml",
+      "permissions": "id-token: write, contents: read, attestations: write",
+      "actionPins": "Pinned to immutable commit SHAs (actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683, actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af, actions/attest-build-provenance@c074443f1a5fb4a4829737143834372559b56f8f)",
+      "slsaStatus": "Local workflow statically validated; remote provenance attestation requires human-triggered GitHub Actions release run."
+    },
+    "blockE_MCPObservabilityAndContracts": {
+      "status": "VERIFIED",
+      "toolsAudited": [
+        "openmemory_health_diagnostics",
+        "openmemory_promotion_status",
+        "openmemory_candidate_integrity",
+        "openmemory_run_sqlite_checkpoint",
+        "openmemory_backup_history"
+      ],
+      "invariants": "Read-only diagnostics, lock token masking, clear distinction between simulation (DRY_RUN_PASSED, isDryRun: true) and real promotion (COMMITTED, isDryRun: false), structured error reporting."
+    },
+    "blockF_SyntheticConsumerRehearsal": {
+      "status": "VERIFIED",
+      "rehearsalEngine": "scripts/transactional-promotion-engine.js",
+      "outcomesTested": [
+        "DRY_RUN_PASSED (0 mutations, 0 backups)",
+        "PROMOTION_COMMITTED (100% verified)",
+        "PROMOTION_ROLLED_BACK (100% cryptographic parity post-restore)",
+        "Interrupted promotion crash recovery idempotency"
+      ]
+    }
+  },
+  "governanceCompliance": {
+    "inventoryHubModified": false,
+    "inventoryHubPackageInstalled": false,
+    "inventoryHubDatabaseChanged": false,
+    "npmPackagesPublished": false,
+    "gitPushExecuted": false,
+    "officialTagsCreated": false,
+    "historicalArtifactsModified": false,
+    "syntheticConsumerIsolationRespected": true
+  }
+}

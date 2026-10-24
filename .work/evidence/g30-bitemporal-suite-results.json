@@ -1,0 +1,100 @@
+{
+  "milestone": "G30",
+  "suite": "Bi-Temporal Knowledge & Point-In-Time Evaluation Suite",
+  "timestamp": "2026-10-24T17:23:50.960Z",
+  "totalScenarios": 15,
+  "passedScenarios": 15,
+  "passRate": "100.0%",
+  "scenarios": [
+    {
+      "scenarioId": 1,
+      "name": "Creation of a decision with explicit validity interval",
+      "status": "PASS",
+      "durationMs": 7
+    },
+    {
+      "scenarioId": 2,
+      "name": "Decision supersession without loss of historical record",
+      "status": "PASS",
+      "durationMs": 8
+    },
+    {
+      "scenarioId": 3,
+      "name": "Point-in-time query before supersession (historical state recovery)",
+      "status": "PASS",
+      "durationMs": 4
+    },
+    {
+      "scenarioId": 4,
+      "name": "Point-in-time query after supersession",
+      "status": "PASS",
+      "durationMs": 1
+    },
+    {
+      "scenarioId": 5,
+      "name": "Differentiation between domain valid time and system transaction time",
+      "status": "PASS",
+      "durationMs": 16
+    },
+    {
+      "scenarioId": 6,
+      "name": "Non-destructive retroactive correction",
+      "status": "PASS",
+      "durationMs": 6
+    },
+    {
+      "scenarioId": 7,
+      "name": "Open-ended intervals, exact boundaries, and consecutive transitions",
+      "status": "PASS",
+      "durationMs": 2
+    },
+    {
+      "scenarioId": 8,
+      "name": "Invalid dates, inverted intervals, and missing temporal data",
+      "status": "PASS",
+      "durationMs": 3
+    },
+    {
+      "scenarioId": 9,
+      "name": "Persistence durability and reconstruction after cold restart",
+      "status": "PASS",
+      "durationMs": 4
+    },
+    {
+      "scenarioId": 10,
+      "name": "Concurrent writes and atomic state lock protection",
+      "status": "PASS",
+      "durationMs": 8
+    },
+    {
+      "scenarioId": 11,
+      "name": "Cycle prevention and terminal state protection",
+      "status": "PASS",
+      "durationMs": 2
+    },
+    {
+      "scenarioId": 12,
+      "name": "Cross-project isolation boundary on point-in-time queries",
+      "status": "PASS",
+      "durationMs": 8
+    },
+    {
+      "scenarioId": 13,
+      "name": "Explicit historical retrieval vs standard operational retrieval",
+      "status": "PASS",
+      "durationMs": 2
+    },
+    {
+      "scenarioId": 14,
+      "name": "Legacy record backward compatibility and MCP presentation",
+      "status": "PASS",
+      "durationMs": 24
+    },
+    {
+      "scenarioId": 15,
+      "name": "Unanswerable cases with zero fabricated historical facts",
+      "status": "PASS",
+      "durationMs": 1
+    }
+  ]
+}

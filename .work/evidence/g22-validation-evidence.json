@@ -1,0 +1,73 @@
+{
+  "timestamp": "2026-10-20T17:38:34.781Z",
+  "iteration": "G22",
+  "candidate": {
+    "tarball": "openmemory-0.3.15-rc7.tgz",
+    "version": "0.3.15-rc7",
+    "sha256": "06862A82B82FF4CBA972A077C58817AAA986D7296A92DC1FDB18596B4DA2C206",
+    "sizeBytes": 208015,
+    "sourceCommit": "bc7d66a46e16a9fa34f0f12bf688c0c4068e79f1",
+    "branch": "fix/p0-security-concurrency-hardening"
+  },
+  "referenceHistorical": {
+    "tag": "v0.3.1",
+    "annotatedCommit": "90f889a46f82e3f7c69a669455aab169646d4a04",
+    "targetCommit": "8c8a43081e5e7a7fbd0aa5919074f4ff7cd437c8",
+    "status": "VERIFIED_INTACT"
+  },
+  "previousCandidate": {
+    "tarball": "openmemory-0.3.15-rc6.tgz",
+    "sha256": "E94E8FA98260BB67C33D09F06710F1BC8D6D6ABA580D0614058115F4C8923099",
+    "sizeBytes": 207494,
+    "status": "FROZEN_UNTOUCHED"
+  },
+  "consumerActive": {
+    "path": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+    "version": "0.3.14-rc4",
+    "status": "UNTOUCHED_ZERO_MUTATIONS"
+  },
+  "suites": {
+    "safeTestRunnerG22": {
+      "passed": 2,
+      "total": 2,
+      "status": "PASSED"
+    },
+    "candidateValidation": {
+      "passed": 9,
+      "total": 9,
+      "status": "PASSED"
+    },
+    "e2eAcceptance": {
+      "passed": 12,
+      "total": 12,
+      "status": "PASSED"
+    },
+    "inventoryHubBenchmark": {
+      "passed": 13,
+      "total": 13,
+      "precisionAt1": 1,
+      "mrr": 1,
+      "status": "PASSED"
+    },
+    "scaledSyntheticBenchmark": {
+      "passed": 10,
+      "total": 10,
+      "status": "PASSED"
+    },
+    "contractsAndIsolation": {
+      "passed": 10,
+      "total": 10,
+      "status": "PASSED"
+    },
+    "durabilityAndConcurrency": {
+      "passed": 10,
+      "total": 10,
+      "status": "PASSED"
+    },
+    "inventoryHubBusinessTests": {
+      "passed": 34,
+      "total": 34,
+      "status": "PASSED"
+    }
+  }
+}

@@ -73,13 +73,17 @@ async function runF35E2ETests() {
     storage.getOrInitManifest();
     storage.getOrInitProjectState();
     storage.getOrInitHandoff();
-    storage.saveADR({
-      title: "E2E Backup Strategy Verification",
-      status: "ACCEPTED",
-      date: "2026-09-25",
-      context: "Verify pre-modification atomic backups.",
-      decision: "Copy state files to timestamped backup directory.",
-    });
+    const sess = storage.registerSession({ agentId: "agent-e2e", status: "ACTIVE" });
+    storage.saveADR(
+      {
+        title: "E2E Backup Strategy Verification",
+        date: "2026-09-25",
+        context: "Verify pre-modification atomic backups.",
+        decision: "Copy state files to timestamped backup directory.",
+      },
+      "agent-e2e",
+      sess.id
+    );
 
     const backupMeta = storage.createBackup("e2e-test-label");
     backupId = backupMeta.id;
@@ -157,7 +161,7 @@ async function runF35E2ETests() {
     }
 
     const restoredState = storage.getOrInitProjectState();
-    if (!restoredState.activePhase || restoredState.activePhase === "CORRUPTED") {
+    if (!restoredState.currentStage || (restoredState as any).activePhase === "CORRUPTED") {
       throw new Error("Restored state failed to parse or was invalid");
     }
 
@@ -211,11 +215,11 @@ async function runF35E2ETests() {
   // Test F3.5-006: Programmatic CLI Commands Execution
   // -------------------------------------------------------------------------
   try {
-    const statusOut = runCLI(["status"], tempDir);
-    const backupOut = runCLI(["backup", "cli-test"], tempDir);
-    const listOut = runCLI(["list-backups"], tempDir);
-    const diagOut = runCLI(["diagnostics"], tempDir);
-    const cleanOut = runCLI(["cleanup"], tempDir);
+    const statusOut = await runCLI(["status"], tempDir);
+    const backupOut = await runCLI(["backup", "cli-test"], tempDir);
+    const listOut = await runCLI(["list-backups"], tempDir);
+    const diagOut = await runCLI(["diagnostics"], tempDir);
+    const cleanOut = await runCLI(["cleanup"], tempDir);
 
     if (!statusOut.includes("OpenMemory Project Context Summary")) {
       throw new Error("CLI 'status' output format invalid");
@@ -273,7 +277,12 @@ async function runF35E2ETests() {
     });
 
     await pluginB.event({
-      event: { type: "session.created", session: { id: "session-post-crash-001" } },
+      event: {
+        type: "session.created",
+        properties: {
+          info: { id: "session-post-crash-001" },
+        },
+      },
     });
 
     const storageB = new StorageEngine(tempDir);
@@ -320,17 +329,34 @@ async function runF35E2ETests() {
 
     // 1. Session created
     await pluginE2E.event({
-      event: { type: "session.created", session: { id: "e2e-sess-001" } },
+      event: {
+        type: "session.created",
+        properties: {
+          info: { id: "e2e-sess-001" },
+        },
+      },
     });
 
     // 2. Session idle
     await pluginE2E.event({
-      event: { type: "session.idle", timestamp: new Date().toISOString() },
+      event: {
+        type: "session.idle",
+        properties: {
+          sessionID: "e2e-sess-001",
+        },
+        timestamp: new Date().toISOString(),
+      },
     });
 
     // 3. Session compacted
     await pluginE2E.event({
-      event: { type: "session.compacted", summary: "Context compressed during E2E run" },
+      event: {
+        type: "session.compacted",
+        properties: {
+          sessionID: "e2e-sess-001",
+        },
+        summary: "Context compressed during E2E run",
+      },
     });
 
     const finalStorage = new StorageEngine(tempDir);
@@ -340,7 +366,7 @@ async function runF35E2ETests() {
     if (finalState.currentStatus !== "COMPACTION_CHECKPOINT_SAVED") {
       throw new Error(`Expected COMPACTION_CHECKPOINT_SAVED status, got ${finalState.currentStatus}`);
     }
-    if (!finalHandoff.includes("# OpenMemory Session Handoff")) {
+    if (!finalHandoff.includes("Session Handoff")) {
       throw new Error("Handoff header missing in final state");
     }
 

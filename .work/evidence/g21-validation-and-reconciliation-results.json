@@ -1,0 +1,58 @@
+{
+  "iteration": "G21",
+  "timestamp": "2026-10-20T15:08:39.067Z",
+  "git": {
+    "branch": "fix/p0-security-concurrency-hardening",
+    "baseCommit": "bc7d66a46e16a9fa34f0f12bf688c0c4068e79f1",
+    "remote": "https://github.com/Blueisazul/OpenMemory.git",
+    "protectedOfficialReference": "v0.3.1 (commit 90f889a46f82e3f7c69a669455aab169646d4a04)"
+  },
+  "candidateReconciliation": {
+    "artifactName": "openmemory-0.3.15-rc6.tgz",
+    "physicalPath": "c:/Users/sant1/Downloads/OpenMemory/.work/artifacts/openmemory-0.3.15-rc6.tgz",
+    "physicalSize": 207494,
+    "physicalSha256": "E94E8FA98260BB67C33D09F06710F1BC8D6D6ABA580D0614058115F4C8923099",
+    "manifestPath": "c:/Users/sant1/Downloads/OpenMemory/.work/artifacts/openmemory-0.3.15-rc6-manifest.json",
+    "manifestSha256": "08B9A16A937CB7C4FF4331066CAA87F5AD56683F60F447E659C10A99C807876D",
+    "manifestContentSha256": "E94E8FA98260BB67C33D09F06710F1BC8D6D6ABA580D0614058115F4C8923099",
+    "discrepancyResolution": {
+      "preliminaryHash": "A388AA1849D6F071F0833CA87EC95B5DB9AA67F0322E9E9FCD06AD6A1578F12E",
+      "preliminarySize": 206297,
+      "preliminaryTimestamp": "2026-10-20T02:26:38Z",
+      "definitiveHash": "E94E8FA98260BB67C33D09F06710F1BC8D6D6ABA580D0614058115F4C8923099",
+      "definitiveSize": 207494,
+      "definitiveTimestamp": "2026-10-20T04:05:24Z",
+      "forensicCause": "In G20, an initial packaging of rc6 (A388AA18...) occurred at 02:26 UTC. During subsequent E2E sandbox acceptance and benchmark validation, the model refined BM25 V2 type casting and dynamic cutoff in src/storage.ts. At 04:05 UTC, it rebuilt (tsc) and repacked rc6, producing the definitive artifact (E94E8FA9..., 207494 B) and updated openmemory-0.3.15-rc6-manifest.json. The earlier technical report section retained the draft hash, while the final acceptance report recorded the definitive hash. The file physically present on disk is 100% matching E94E8FA9..."
+    }
+  },
+  "testExecution": {
+    "safeTestRunner": {
+      "totalSuites": 40,
+      "passedSuites": 40,
+      "failedSuites": 0,
+      "status": "ALL_PASSED",
+      "workingTreePollution": "ZERO"
+    },
+    "candidateSandboxValidation": {
+      "totalTests": 9,
+      "passedTests": 9,
+      "failedTests": 0,
+      "status": "ALL_PASSED"
+    },
+    "e2eSandboxAcceptance": {
+      "totalTests": 12,
+      "passedTests": 12,
+      "failedTests": 0,
+      "status": "ALL_PASSED"
+    }
+  },
+  "consumerProtection": {
+    "consumerPath": "C:/Users/sant1/OneDrive/Documentos/ChatGPT/OpenMemory/InventoryHub",
+    "activeDependency": "file:../../../../../Downloads/OpenMemory/.work/artifacts/openmemory-0.3.14-rc4.tgz",
+    "installedVersion": "0.3.14-rc4",
+    "strayLocks": false,
+    "mutationDetected": false,
+    "status": "INVIOLATE"
+  },
+  "verdict": "PASS"
+}

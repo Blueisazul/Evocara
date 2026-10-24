@@ -1,9 +1,14 @@
 {
   "mcpServers": {
+    "evocara": {
+      "command": "npx",
+      "args": ["tsx", "src/mcp.ts"],
+      "description": "Evocara Operational Memory Framework MCP Adapter"
+    },
     "openmemory": {
       "command": "npx",
       "args": ["tsx", "src/mcp.ts"],
-      "description": "OpenMemory Zero-Dependency Operational Memory Framework MCP Adapter"
+      "description": "OpenMemory Zero-Dependency Operational Memory Framework MCP Adapter (Compatibility Alias)"
     }
   }
 }

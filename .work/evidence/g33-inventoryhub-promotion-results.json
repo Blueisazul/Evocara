@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "operationId": "promo_g33_1792863055838",
+  "timestamp": "2026-10-24T17:30:57.053Z",
+  "state": "COMMITTED",
+  "consumerPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+  "targetCandidate": "0.4.0",
+  "targetTarball": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\OpenMemory\\.work\\artifacts\\evocara-0.4.0.tgz",
+  "targetTarballHash": "70f31da7e822bfa8ece60395212e009cac9d39761d02af0325d6c3ee3b8a730a",
+  "targetTarballSize": 209910,
+  "installedPackage": "evocara",
+  "installedVersion": "0.4.0",
+  "previousDependency": "openmemory-0.3.14-rc4",
+  "previousDependencySpecifier": "file:../../../../../Downloads/OpenMemory/.work/artifacts/openmemory-0.3.14-rc4.tgz",
+  "backupDirectory": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\backups\\backup_g33_promo_1792863055838",
+  "testResults": {
+    "test_phase_2c4_post_cleanup": "10/10",
+    "test_phase_2c2_full": "24/24",
+    "total": "34/34",
+    "legacyJsonAbsent": true
+  },
+  "rollbackInstructions": {
+    "step1": "cp \"C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\backups\\backup_g33_promo_1792863055838\\package.json\" \"C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\package.json\"",
+    "step2": "cp \"C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\backups\\backup_g33_promo_1792863055838\\opencode.json\" \"C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\opencode.json\"",
+    "step3": "cd \"C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\" && npm install"
+  }
+}

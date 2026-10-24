@@ -1,0 +1,173 @@
+{
+  "metadata": {
+    "date": "2026-10-19",
+    "iteration": "G20",
+    "totalScenarios": 13,
+    "candidate": "0.3.15-rc6",
+    "baselineCandidate": "0.3.15-rc5",
+    "p50LatencyMs": 1.7616,
+    "p95LatencyMs": 5.5802
+  },
+  "baseline": {
+    "p1": 0.6923076923076923,
+    "p3": 0.4230769230769231,
+    "p5": 0.35641025641025653,
+    "r3": 0.8846153846153846,
+    "r5": 0.9615384615384616,
+    "rAll": 1,
+    "mrr": 0.814102564102564,
+    "obsoleteRate": 0.05128205128205128
+  },
+  "g19": {
+    "p1": 0.5384615384615384,
+    "p3": 0.3333333333333333,
+    "p5": 0.23076923076923078,
+    "r3": 0.9230769230769231,
+    "r5": 0.9230769230769231,
+    "rAll": 1,
+    "mrr": 0.6923076923076923,
+    "obsoleteRate": 0.02564102564102564
+  },
+  "g20": {
+    "p1": 0.8461538461538461,
+    "p3": 0.5512820512820512,
+    "p5": 0.4692307692307693,
+    "r3": 0.9615384615384616,
+    "r5": 0.9615384615384616,
+    "rAll": 1,
+    "mrr": 0.9230769230769231,
+    "obsoleteRate": 0.02564102564102564
+  },
+  "scenarios": [
+    {
+      "id": "IH-ADR-01",
+      "category": "Active ADRs",
+      "query": "What persistence layer does InventoryHub use for storing products and inventory items?",
+      "baselineP3": 0.3333333333333333,
+      "g19P3": 0.3333333333333333,
+      "g20P3": 0.3333333333333333,
+      "g20Passed": true,
+      "latencyMs": 0.0007
+    },
+    {
+      "id": "IH-ADR-02",
+      "category": "Superseded ADRs",
+      "query": "Should we migrate the inventory schema to MongoDB Atlas cluster for high availability?",
+      "baselineP3": 0.3333333333333333,
+      "g19P3": 0,
+      "g20P3": 0.3333333333333333,
+      "g20Passed": false,
+      "latencyMs": 0.7846
+    },
+    {
+      "id": "IH-REQ-03",
+      "category": "Functional Requirements",
+      "query": "What is the business rule and threshold logic for low stock alert notifications?",
+      "baselineP3": 0.3333333333333333,
+      "g19P3": 0.3333333333333333,
+      "g20P3": 0.5,
+      "g20Passed": true,
+      "latencyMs": 1.1279
+    },
+    {
+      "id": "IH-CONV-04",
+      "category": "Project Conventions",
+      "query": "What coding standards, test runners, and dependency constraints are enforced in InventoryHub?",
+      "baselineP3": 0.3333333333333333,
+      "g19P3": 0.3333333333333333,
+      "g20P3": 0.3333333333333333,
+      "g20Passed": true,
+      "latencyMs": 1.3049
+    },
+    {
+      "id": "IH-TEST-05",
+      "category": "Test Results",
+      "query": "What were the pass criteria and latency results of the Phase 2c2 inventory manager verification?",
+      "baselineP3": 0.3333333333333333,
+      "g19P3": 0.3333333333333333,
+      "g20P3": 1,
+      "g20Passed": true,
+      "latencyMs": 1.6702
+    },
+    {
+      "id": "IH-FIND-06",
+      "category": "Findings & Research",
+      "query": "What concurrency limitations and locking characteristics were discovered for node:sqlite WAL mode?",
+      "baselineP3": 0.3333333333333333,
+      "g19P3": 0.3333333333333333,
+      "g20P3": 0.3333333333333333,
+      "g20Passed": true,
+      "latencyMs": 1.7302
+    },
+    {
+      "id": "IH-UNANS-07",
+      "category": "Unanswerable / Out-of-Scope",
+      "query": "How do we configure Kubernetes Helm charts and Kafka consumer groups for message bus?",
+      "baselineP3": 1,
+      "g19P3": 0,
+      "g20P3": 1,
+      "g20Passed": true,
+      "latencyMs": 1.7616
+    },
+    {
+      "id": "IH-AMBIG-08",
+      "category": "Ambiguous Terms",
+      "query": "cache store persistence",
+      "baselineP3": 0.3333333333333333,
+      "g19P3": 0.3333333333333333,
+      "g20P3": 0.3333333333333333,
+      "g20Passed": true,
+      "latencyMs": 1.9672
+    },
+    {
+      "id": "IH-PARAPH-09",
+      "category": "Paraphrasing without verbatim shared words",
+      "query": "How is depleted warehouse stock alerted when item quantities drop under safety levels?",
+      "baselineP3": 0.5,
+      "g19P3": 0.3333333333333333,
+      "g20P3": 1,
+      "g20Passed": true,
+      "latencyMs": 1.9809
+    },
+    {
+      "id": "IH-DISTRACT-10",
+      "category": "Lexical Distractors",
+      "query": "Is PostgreSQL relational database storage recommended for high concurrency in InventoryHub?",
+      "baselineP3": 0.3333333333333333,
+      "g19P3": 0.3333333333333333,
+      "g20P3": 0.3333333333333333,
+      "g20Passed": false,
+      "latencyMs": 2.1869
+    },
+    {
+      "id": "IH-ISOL-11",
+      "category": "Cross-Project Isolation",
+      "query": "OrderService payment gateway stripe checkout secrets",
+      "baselineP3": 1,
+      "g19P3": 1,
+      "g20P3": 1,
+      "g20Passed": true,
+      "latencyMs": 2.6249
+    },
+    {
+      "id": "IH-CONTRA-12",
+      "category": "Contradictory Decisions",
+      "query": "Should inventory data sync to cloud bucket storage?",
+      "baselineP3": 0,
+      "g19P3": 0.3333333333333333,
+      "g20P3": 0.3333333333333333,
+      "g20Passed": true,
+      "latencyMs": 3.5059
+    },
+    {
+      "id": "IH-COLD-13",
+      "category": "Cold-Restart Recovery",
+      "query": "What persistence layer does InventoryHub use for storing products and inventory items?",
+      "baselineP3": 0.3333333333333333,
+      "g19P3": 0.3333333333333333,
+      "g20P3": 0.3333333333333333,
+      "g20Passed": true,
+      "latencyMs": 5.5802
+    }
+  ]
+}

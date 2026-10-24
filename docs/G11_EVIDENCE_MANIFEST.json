@@ -1,0 +1,84 @@
+{
+  "manifestVersion": "2.1.0",
+  "milestone": "G11-INTEGRATION-ASSURANCE",
+  "timestamp": "2026-10-18T21:05:00.000Z",
+  "targetArtifact": {
+    "package": "openmemory",
+    "version": "0.3.15-rc2",
+    "path": ".work/artifacts/openmemory-0.3.15-rc2.tgz",
+    "sizeBytes": 190051,
+    "sha256": "a82a2a02a5db20d0d96ae8fb913c04ca937e683da870d7fdbddb06ea77f8bfc5",
+    "sha512Base64": "xDAzTSQgn4DT2c1bVOud9dqKda3+TS3HzoT2Ld7PSy0KIDH9mM/uI/JkgdljDGAfn9vp9zzD40lmvFoiQ9WqUg==",
+    "declaredSha256Match": true,
+    "declaredSizeMatch": true,
+    "contents": {
+      "totalFiles": 75,
+      "leaksDetected": 0,
+      "tarSlipFlaws": 0,
+      "inspectionPassed": true
+    }
+  },
+  "historicalBaseline": {
+    "package": "openmemory",
+    "version": "0.3.15-rc1",
+    "path": ".work/artifacts/openmemory-0.3.15-rc1.tgz",
+    "sizeBytes": 184295,
+    "sha256": "8b3df7e15222cfcce93d33044efc817e2c10564aa996af389a9603b66595d716",
+    "sha512Base64": "8q24rROste0KEoAO39ZcFJMvzhKEFsrTOlFv0e12zI2qIh/kpVcLwYT1tEWomwSGyf4KG1N9KzUM90IJ8f9rvQ==",
+    "status": "PRESERVED_AS_AUDIT_BASELINE",
+    "discrepancyDocumented": "Packaged at commit bdbf41f before G9/G10 enhancements; preserved intact as historical release qualification evidence"
+  },
+  "gitState": {
+    "branch": "fix/p0-security-concurrency-hardening",
+    "headCommit": "7211377",
+    "status": "CLEAN"
+  },
+  "environment": {
+    "nodeVersion": "v22.15.0",
+    "npmVersion": "10.9.2",
+    "platform": "win32",
+    "arch": "x64"
+  },
+  "testHarness": {
+    "runner": "scripts/safe-test-runner.js",
+    "totalSuites": 21,
+    "suites": [
+      "SEC-001",
+      "PERSIST-001",
+      "F13.3.3",
+      "SPIKE",
+      "AUDIT-COMPARE",
+      "SYNTHETIC-PROMO",
+      "RECOVERY-P08",
+      "RECOVERY-P09",
+      "INVARIANTS-P10",
+      "TRANS-BACKUP",
+      "ADVERSARIAL-P12",
+      "REHEARSAL-P13",
+      "HARDENING-P14",
+      "ADVERSARIAL-P15",
+      "AUDIT-P16",
+      "G6-REHEARSAL",
+      "G7-DIAGNOSTICS",
+      "G7.2-LIFECYCLE",
+      "G9-PROMOTION",
+      "G10-OBSERVABILITY",
+      "G11-INTEGRATION"
+    ],
+    "allPassed": true
+  },
+  "referenceConsumer": {
+    "path": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+    "installedDependency": "openmemory@0.3.14-rc4",
+    "mutationsDetected": false,
+    "databaseIntact": true,
+    "testsPassing": true,
+    "totalAssertionsPassed": 34
+  },
+  "supplyChainSecurity": {
+    "sigstorePipeline": ".github/workflows/release-attestation.yml",
+    "oidcKeylessSigning": "CONFIGURED",
+    "slsaProvenanceTarget": "SLSA Level 3",
+    "localAttestationDeclaration": "SLSA Level 1/2 achieved locally; SLSA Level 3 requires execution in isolated GitHub Actions runner"
+  }
+}

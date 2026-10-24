@@ -1,0 +1,76 @@
+{
+  "timestamp": "2026-10-22T16:02:23.493Z",
+  "iteration": "G24",
+  "candidateTarball": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\OpenMemory\\.work\\artifacts\\openmemory-0.3.15-rc7.tgz",
+  "candidateSha256": "06862A82B82FF4CBA972A077C58817AAA986D7296A92DC1FDB18596B4DA2C206",
+  "totalTests": 11,
+  "passedTests": 11,
+  "resultsLog": [
+    {
+      "step": 1,
+      "name": "Candidate rc7 tarball cryptographic SHA-256 and byte-size match",
+      "status": "PASS",
+      "durationMs": 1
+    },
+    {
+      "step": 2,
+      "name": "Initialize clean, isolated staging clone of InventoryHub",
+      "status": "PASS",
+      "durationMs": 4174
+    },
+    {
+      "step": 3,
+      "name": "Promote candidate rc7 into staging consumer via PromotionEngine",
+      "status": "PASS",
+      "durationMs": 4226
+    },
+    {
+      "step": 4,
+      "name": "Real plugin loading and MCP contract conformance (40 tools)",
+      "status": "PASS",
+      "durationMs": 125
+    },
+    {
+      "step": 5,
+      "name": "Process closure and cold-restart persistence fidelity",
+      "status": "PASS",
+      "durationMs": 41
+    },
+    {
+      "step": 6,
+      "name": "Execute InventoryHub business tests in promoted staging environment",
+      "status": "PASS",
+      "durationMs": 354
+    },
+    {
+      "step": 7,
+      "name": "Authorization fail-closed and cross-project isolation checks",
+      "status": "PASS",
+      "durationMs": 8
+    },
+    {
+      "step": 8,
+      "name": "Event lifecycle, opportunistic compaction, and essential preservation",
+      "status": "PASS",
+      "durationMs": 13
+    },
+    {
+      "step": 9,
+      "name": "Zero persistent background processes or lingering locks",
+      "status": "PASS",
+      "durationMs": 0
+    },
+    {
+      "step": 10,
+      "name": "Independent operation without commercial API keys",
+      "status": "PASS",
+      "durationMs": 67
+    },
+    {
+      "step": 11,
+      "name": "Fault-injected transactional rollback drill with 100% bidirectional parity",
+      "status": "PASS",
+      "durationMs": 8987
+    }
+  ]
+}

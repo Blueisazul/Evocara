@@ -57,7 +57,9 @@ async function runPluginTests() {
     await pluginInstance.event({
       event: {
         type: "session.created",
-        session: { id: "session-official-001" },
+        properties: {
+          info: { id: "session-official-001" },
+        },
       },
     });
 
@@ -105,6 +107,9 @@ async function runPluginTests() {
     await pluginInstance.event({
       event: {
         type: "session.idle",
+        properties: {
+          sessionID: "session-official-001",
+        },
         timestamp: new Date().toISOString(),
       },
     });
@@ -127,6 +132,9 @@ async function runPluginTests() {
     await pluginInstance.event({
       event: {
         type: "session.compacted",
+        properties: {
+          sessionID: "session-official-001",
+        },
         summary: "Official OpenCode history compaction test summary.",
         tokensFreed: 15000,
       },
@@ -155,7 +163,9 @@ async function runPluginTests() {
     await pluginInstance.event({
       event: {
         type: "session.created",
-        session: { id: "session-official-001-repeat" },
+        properties: {
+          info: { id: "session-official-001-repeat" },
+        },
       },
     });
     const handoffAfter = stateStorage.getOrInitHandoff();
@@ -185,7 +195,9 @@ async function runPluginTests() {
     await secondPluginInstance.event({
       event: {
         type: "session.created",
-        session: { id: "session-official-002" },
+        properties: {
+          info: { id: "session-official-002" },
+        },
       },
     });
 

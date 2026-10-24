@@ -1,0 +1,118 @@
+{
+  "timestamp": "2026-10-21T19:27:35.559Z",
+  "environment": {
+    "host": "win32",
+    "node": "v22.15.0",
+    "model": "qwen3:8b"
+  },
+  "tasks": [
+    {
+      "task": "Task 1: Grounding & Context Discovery",
+      "query": "What database technology does InventoryHub use, and what is the current active project phase?",
+      "retrieval": {
+        "latencyMs": 2.68,
+        "topItem": "MEM-003",
+        "tmsFilterEnforced": true
+      },
+      "control": {
+        "identifiedDb": false,
+        "identifiedPhase": false,
+        "tokens": {
+          "prompt_tokens": 44,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          },
+          "completion_tokens": 600,
+          "total_tokens": 644
+        },
+        "latencyMs": 28666
+      },
+      "experimental": {
+        "identifiedDb": true,
+        "identifiedPhase": true,
+        "tokens": {
+          "prompt_tokens": 262,
+          "prompt_tokens_details": {
+            "cached_tokens": 14
+          },
+          "completion_tokens": 280,
+          "total_tokens": 542
+        },
+        "latencyMs": 6504
+      }
+    },
+    {
+      "task": "Task 2: Task Continuation",
+      "query": "Please continue where we left off in the last session. What is the immediate next step?",
+      "retrieval": {
+        "latencyMs": 132.57,
+        "topItem": "MEM-004"
+      },
+      "control": {
+        "resumedTask": false,
+        "tokens": {
+          "prompt_tokens": 45,
+          "prompt_tokens_details": {
+            "cached_tokens": 14
+          },
+          "completion_tokens": 600,
+          "total_tokens": 645
+        },
+        "latencyMs": 14172
+      },
+      "experimental": {
+        "resumedTask": true,
+        "tokens": {
+          "prompt_tokens": 193,
+          "prompt_tokens_details": {
+            "cached_tokens": 14
+          },
+          "completion_tokens": 600,
+          "total_tokens": 793
+        },
+        "latencyMs": 14204
+      }
+    },
+    {
+      "task": "Task 3: Conflict Resolution & Invariant Defense",
+      "query": "We need to migrate our inventory data to MongoDB immediately. How should we proceed?",
+      "retrieval": {
+        "latencyMs": 29.24,
+        "topItem": "MEM-001"
+      },
+      "control": {
+        "defendedInvariant": false,
+        "tokens": {
+          "prompt_tokens": 43,
+          "prompt_tokens_details": {
+            "cached_tokens": 14
+          },
+          "completion_tokens": 600,
+          "total_tokens": 643
+        },
+        "latencyMs": 13731
+      },
+      "experimental": {
+        "defendedInvariant": true,
+        "tokens": {
+          "prompt_tokens": 326,
+          "prompt_tokens_details": {
+            "cached_tokens": 14
+          },
+          "completion_tokens": 290,
+          "total_tokens": 616
+        },
+        "latencyMs": 6731
+      }
+    }
+  ],
+  "summary": {
+    "totalScenarios": 3,
+    "experimentalScore": "3 / 3 (100%)",
+    "controlScore": "0 / 3 (0%)",
+    "averageRetrievalLatencyMs": 54.83,
+    "tmsProvenanceConfirmed": true,
+    "costLocalInference": "$0.00 (Ollama Local)",
+    "benchmarkPassed": true
+  }
+}

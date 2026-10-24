@@ -25,19 +25,23 @@ async function runF34Tests() {
   console.log("=================================================\n");
 
   const storage = new StorageEngine(tempDir);
+  const sess = storage.registerSession({ agentId: "agent-test", status: "ACTIVE" });
 
   // -------------------------------------------------------------------------
   // Test F3.4-001: ADR Creation & Atomic Persistence
   // -------------------------------------------------------------------------
   try {
-    const newADR = storage.saveADR({
-      title: "Zero-dependency Native OpenCode Plugin Architecture",
-      status: "ACCEPTED",
-      date: "2026-09-25",
-      context: "OpenMemory requires local zero-dependency context management.",
-      decision: "Implement TypeScript plugin leveraging native OpenCode session hooks.",
-      consequences: "Eliminates secondary daemon and external vector DB complexity.",
-    });
+    const newADR = storage.saveADR(
+      {
+        title: "Zero-dependency Native OpenCode Plugin Architecture",
+        date: "2026-09-25",
+        context: "OpenMemory requires local zero-dependency context management.",
+        decision: "Implement TypeScript plugin leveraging native OpenCode session hooks.",
+        consequences: "Eliminates secondary daemon and external vector DB complexity.",
+      },
+      "agent-test",
+      sess.id
+    );
 
     const expectedFile = path.join(tempDir, ".openmemory", "adrs", "ADR-001.md");
     if (!fs.existsSync(expectedFile)) {
@@ -47,7 +51,7 @@ async function runF34Tests() {
     const fileContent = fs.readFileSync(expectedFile, "utf-8");
     if (
       !fileContent.includes("# ADR-001:") ||
-      !fileContent.includes("**Status:** ACCEPTED") ||
+      !fileContent.includes("**Status:** PROPOSED") ||
       !fileContent.includes("Zero-dependency Native OpenCode Plugin Architecture")
     ) {
       throw new Error("ADR Markdown content format mismatch");
@@ -75,13 +79,16 @@ async function runF34Tests() {
   // -------------------------------------------------------------------------
   try {
     // Add second ADR
-    storage.saveADR({
-      title: "Atomic File Persistence Strategy",
-      status: "ACCEPTED",
-      date: "2026-09-25",
-      context: "Prevent data corruption during sudden process restarts.",
-      decision: "Use write-to-.tmp followed by synchronous rename.",
-    });
+    storage.saveADR(
+      {
+        title: "Atomic File Persistence Strategy",
+        date: "2026-09-25",
+        context: "Prevent data corruption during sudden process restarts.",
+        decision: "Use write-to-.tmp followed by synchronous rename.",
+      },
+      "agent-test",
+      sess.id
+    );
 
     const adrs = storage.listADRs();
     if (adrs.length !== 2) {
@@ -147,14 +154,14 @@ async function runF34Tests() {
     const task1 = storage.addTask("Implement F3.4 Storage extensions", "IN_PROGRESS");
     const task2 = storage.addTask("Verify F3.4 empirical tests", "PENDING");
     storage.updateTaskStatus(task1.id, "COMPLETED");
-    storage.setActiveGoal("Complete OpenMemory Phase 3 Core Engine", "PHASE_3_COMPLETE");
+    storage.setActiveGoal("Complete OpenMemory Phase 3 Core Engine", "IMPLEMENTAR");
 
     const state = storage.getOrInitProjectState();
     if (state.activeGoal !== "Complete OpenMemory Phase 3 Core Engine") {
       throw new Error(`Active goal mismatch: ${state.activeGoal}`);
     }
-    if (state.activePhase !== "PHASE_3_COMPLETE") {
-      throw new Error(`Active phase mismatch: ${state.activePhase}`);
+    if ((state.currentStage || (state as any).activePhase) !== "IMPLEMENTAR") {
+      throw new Error(`Active phase mismatch: ${state.currentStage || (state as any).activePhase}`);
     }
     const updatedTask1 = state.activeTasks.find((t) => t.id === task1.id);
     if (!updatedTask1 || updatedTask1.status !== "COMPLETED") {
@@ -260,7 +267,9 @@ async function runF34Tests() {
     await pluginInstance.event({
       event: {
         type: "session.created",
-        session: { id: "f34-session-001" },
+        properties: {
+          info: { id: "f34-session-001" },
+        },
       },
     });
 

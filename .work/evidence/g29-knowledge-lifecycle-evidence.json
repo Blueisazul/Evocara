@@ -1,0 +1,92 @@
+{
+  "milestone": "G29",
+  "name": "Knowledge Lifecycle & Epistemic Quality Governance",
+  "timestamp": "2026-10-22T20:46:30.000Z",
+  "summary": {
+    "status": "COMPLETED",
+    "totalScenarios": 7,
+    "passedScenarios": 7,
+    "failedScenarios": 0,
+    "successRate": 1.0,
+    "regressionsDetected": 0
+  },
+  "scenarios": [
+    {
+      "index": 1,
+      "name": "Decision Registration and Cross-Session Retrieval",
+      "status": "PASS",
+      "verification": "Session 1 registers ADR-001 with evidenceReference; Session 2 queries and retrieves it in Top-1 with full provenance intact."
+    },
+    {
+      "index": 2,
+      "name": "Atomic Decision Supersession and Obsolete Deprecation",
+      "status": "PASS",
+      "verification": "StorageEngine.supersedeKnowledgeDecision atomically transitions old item to SUPERSEDED, creates new ACCEPTED item, establishes canonical SUPERSEDES relation; normal queries return new item, includeObsolete:false filters old item, historical query retrieves old item."
+    },
+    {
+      "index": 3,
+      "name": "Epistemic Status Differentiation",
+      "status": "PASS",
+      "verification": "Correctly classifies items into VERIFIED_FACT (with evidence), WORKING_HYPOTHESIS, and UNVALIDATED_OBSERVATION."
+    },
+    {
+      "index": 4,
+      "name": "Complete Provenance & Audit Trail Recovery via MCP",
+      "status": "PASS",
+      "verification": "MCP openmemory_query_knowledge outputs rich Markdown rendering with 🟢 [VERIFIED FACT] badge, originating agentId, timestamp, and bold Evidence Reference."
+    },
+    {
+      "index": 5,
+      "name": "Multi-Project Sandboxing & Fail-Closed Boundary",
+      "status": "PASS",
+      "verification": "MCP server bound to workspace strictly rejects cross-project queries with fail-closed error code."
+    },
+    {
+      "index": 6,
+      "name": "Durability & Restart Integrity Across Cold Reboots",
+      "status": "PASS",
+      "verification": "Instantiating a fresh StorageEngine on the same directory re-indexes all 5 items, preserves SUPERSEDED/ACCEPTED states, and reconstructs TMS graph views perfectly."
+    },
+    {
+      "index": 7,
+      "name": "Terminal State Protection and Non-Destructive Invalidation",
+      "status": "PASS",
+      "verification": "Terminal state protection prevents resurrecting or double-superseding terminal items while preserving non-destructive audit trail on disk."
+    }
+  ],
+  "regressionBatteryResults": {
+    "canonical105Benchmark": {
+      "passedScenarios": 105,
+      "totalScenarios": 105,
+      "precisionAt1": 1.0,
+      "recallAt3": 0.976,
+      "mrr": 1.0,
+      "obsoleteInTop1": 0.0,
+      "falseDiscoveryRate": 0.0,
+      "latencyP50Ms": 3.55
+    },
+    "bm25UnitSuite": "9/9 PASSED",
+    "spanishMultilingualSuite": "7/7 PASSED",
+    "unanswerableCoordinationSuite": "4/4 PASSED",
+    "mcpCuratedSurfaceSuite": "9/9 PASSED",
+    "evocaraDualCompatibilitySuite": "9/9 PASSED"
+  },
+  "fileSignatures": {
+    "src/storage/types.ts": {
+      "sha256": "bc1b478c201a21eb8e0b51283149419fd20ba0ef70236419e9380796b558f0c4",
+      "bytes": 24939
+    },
+    "src/storage.ts": {
+      "sha256": "691cbb20dd88d467bd248981f061eee2eaff4ac210cfd15fb7f87f745c328071",
+      "bytes": 128806
+    },
+    "src/mcp.ts": {
+      "sha256": "33262eb0e2fc91141bc59765ba28ede99c5cfb80faf56a35e3634abbd1cc0ff6",
+      "bytes": 95062
+    },
+    ".work/experiments/test-g29-knowledge-lifecycle-suite.js": {
+      "sha256": "b6e9a0f862514b38fdf60f23d9645ac876bed01148dbfa691a3ebb22c16a0cca",
+      "bytes": 17264
+    }
+  }
+}

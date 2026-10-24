@@ -1,0 +1,91 @@
+{
+  "metadata": {
+    "nodeVersion": "v22.15.0",
+    "platform": "win32",
+    "arch": "x64",
+    "cpus": 32,
+    "totalMemoryMB": 16108,
+    "timestamp": "2026-10-22T15:56:50.047Z"
+  },
+  "trials": [
+    {
+      "trial": 1,
+      "order": "A_then_B",
+      "runA": {
+        "attempted": 35,
+        "confirmed": 35,
+        "lockContention": 0,
+        "authErrors": 0,
+        "otherErrors": 0,
+        "totalDurationMs": 257.31,
+        "throughputOpsPerSec": 136.02,
+        "stats": {
+          "min": 6.08,
+          "max": 8.77,
+          "mean": 7.35,
+          "p50": 7.24,
+          "p95": 8.7
+        }
+      },
+      "runB": {
+        "attempted": 35,
+        "confirmed": 35,
+        "lockContention": 0,
+        "authErrors": 0,
+        "otherErrors": 0,
+        "totalDurationMs": 247.21,
+        "throughputOpsPerSec": 141.58,
+        "stats": {
+          "min": 6.07,
+          "max": 9.27,
+          "mean": 7.06,
+          "p50": 6.98,
+          "p95": 7.92
+        }
+      }
+    },
+    {
+      "trial": 2,
+      "order": "B_then_A",
+      "runB": {
+        "attempted": 35,
+        "confirmed": 35,
+        "lockContention": 0,
+        "authErrors": 0,
+        "otherErrors": 0,
+        "totalDurationMs": 239.97,
+        "throughputOpsPerSec": 145.85,
+        "stats": {
+          "min": 5.81,
+          "max": 8.99,
+          "mean": 6.85,
+          "p50": 6.54,
+          "p95": 8.8
+        }
+      },
+      "runA": {
+        "attempted": 35,
+        "confirmed": 35,
+        "lockContention": 0,
+        "authErrors": 0,
+        "otherErrors": 0,
+        "totalDurationMs": 236.27,
+        "throughputOpsPerSec": 148.14,
+        "stats": {
+          "min": 5.76,
+          "max": 8.63,
+          "mean": 6.75,
+          "p50": 6.55,
+          "p95": 8.1
+        }
+      }
+    }
+  ],
+  "summary": {
+    "opsPerTrial": 35,
+    "meanThroughputA": 142.08,
+    "meanThroughputB": 143.72,
+    "parityRatio": 1.012,
+    "parityConfirmed": true
+  }
+}

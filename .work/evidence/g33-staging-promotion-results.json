@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-10-24T17:30:05.156Z",
+  "stagingDir": "C:\\Users\\sant1\\AppData\\Local\\Temp\\inventoryhub-g33-staging-1792862996873",
+  "baselineTests": {
+    "postCleanupPassed": 10,
+    "fullPassed": 24,
+    "totalPassed": 34,
+    "success": true
+  },
+  "promotionInstall": {
+    "success": true,
+    "installedVersion": "0.4.0",
+    "tarballUsed": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\OpenMemory\\.work\\artifacts\\evocara-0.4.0.tgz"
+  },
+  "postPromotionTests": {
+    "postCleanupPassed": 10,
+    "fullPassed": 24,
+    "totalPassed": 34,
+    "inventoryDataAbsent": true,
+    "success": true
+  },
+  "mcpVerification": {
+    "storageEngineLoadable": true,
+    "researchesCount": 15,
+    "success": true
+  },
+  "rollbackTest": {
+    "rolledBackVersion": "0.3.14-rc4",
+    "testsPassed": 34,
+    "success": true
+  },
+  "passed": true
+}

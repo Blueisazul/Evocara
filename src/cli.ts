@@ -8,7 +8,8 @@ import {
   KnowledgeItemType,
   KnowledgeClassification,
 } from "./storage";
-import { installOpenMemory } from "./installer";
+import { installOpenMemory, runInteractiveInitWizard, uninstallOpenMemory } from "./installer";
+import { StageEngine } from "./stage-engine";
 
 function parseQueryFlags(args: string[]): Record<string, any> {
   const flags: Record<string, any> = {};
@@ -28,6 +29,8 @@ function parseQueryFlags(args: string[]): Record<string, any> {
       flags.adr = args[++i] || "";
     } else if (arg === "--research-id") {
       flags.researchId = args[++i] || "";
+    } else if (arg === "--agent-id" || arg === "--agent") {
+      flags.agentId = args[++i] || "";
     } else if (arg === "--json") {
       flags.json = true;
     }
@@ -91,8 +94,8 @@ function parseRecordFlags(args: string[], rootDir?: string): ResearchRecord {
       status: parsed.status || flags.status || "COMPLETED",
       createdAt: parsed.createdAt || new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      sessionId: parsed.sessionId || flags.sessionId || "cli-session",
-      agentId: parsed.agentId || flags.agentId || "cli-agent",
+      sessionId: parsed.sessionId || flags.sessionId || "",
+      agentId: parsed.agentId || flags.agentId || "",
       items: parsed.items || flags.items || [],
       relatedAdrId: parsed.relatedAdrId || flags.relatedAdrId,
     };
@@ -110,24 +113,198 @@ function parseRecordFlags(args: string[], rootDir?: string): ResearchRecord {
     status: (flags.status as ResearchRecord["status"]) || "COMPLETED",
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-    sessionId: flags.sessionId || "cli-session",
-    agentId: flags.agentId || "cli-agent",
+    sessionId: flags.sessionId || "",
+    agentId: flags.agentId || "",
     items: flags.items || [],
     relatedAdrId: flags.relatedAdrId,
   };
 }
 
-export function runCLI(args: string[] = process.argv.slice(2), rootDir?: string): string {
+export async function runCLI(args: string[] = process.argv.slice(2), rootDir?: string): Promise<string> {
   const storage = new StorageEngine(rootDir);
+  const stageEngine = new StageEngine(rootDir);
   const command = args[0] || "status";
 
   switch (command) {
-    case "status": {
-      return storage.formatProjectContextSummary();
+    case "tms": {
+      const sub = args[1];
+      if (sub === "transition" || sub === "t") {
+        let researchId = "";
+        let itemId = "";
+        let targetState = "";
+        let actorId = "";
+        let sessionId = "";
+        let role = "";
+        let rationale = "";
+        let basis = "";
+        let evidence = "";
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--research-id" || arg === "-r") researchId = args[++i] || "";
+          else if (arg === "--item-id" || arg === "-i") itemId = args[++i] || "";
+          else if (arg === "--state" || arg === "-s") targetState = (args[++i] || "").toUpperCase();
+          else if (arg === "--actor-id" || arg === "-a") actorId = args[++i] || "";
+          else if (arg === "--session-id") sessionId = args[++i] || "";
+          else if (arg === "--role") role = (args[++i] || "").toUpperCase();
+          else if (arg === "--rationale") rationale = args[++i] || "";
+          else if (arg === "--basis") basis = (args[++i] || "").toUpperCase();
+          else if (arg === "--evidence") evidence = args[++i] || "";
+        }
+
+        if (!researchId || !itemId || !targetState || !actorId || !sessionId) {
+          throw new Error("Missing required arguments for 'openmemory tms transition': --research-id <id> --item-id <id> --state <state> --actor-id <id> --session-id <id>");
+        }
+
+        const res = storage.updateKnowledgeLifecycle({
+          researchId,
+          itemId,
+          targetState: targetState as any,
+          actorId,
+          sessionId,
+          actorRole: role as any,
+          evaluationRationale: rationale || undefined,
+          acceptanceBasis: basis as any,
+          evidenceReference: evidence || undefined,
+        });
+
+        if (!res.success) {
+          throw new Error(`Lifecycle transition rejected: ${res.reason}`);
+        }
+        return `[OpenMemory CLI] KnowledgeItem Lifecycle Updated:
+  Item: ${res.item?.id}
+  State: ${res.item?.lifecycleState}
+  Evaluator: ${actorId}`;
+      } else if (sub === "relate") {
+        let researchId = "";
+        let relationType = "";
+        let sourceItemId = "";
+        let targetItemId = "";
+        let targetResearch = "";
+        let rationale = "";
+        let agentId = "";
+        let sessionId = "";
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--research-id" || arg === "-r") researchId = args[++i] || "";
+          else if (arg === "--type" || arg === "-t") relationType = (args[++i] || "").toUpperCase();
+          else if (arg === "--source-id" || arg === "-s") sourceItemId = args[++i] || "";
+          else if (arg === "--target-id") targetItemId = args[++i] || "";
+          else if (arg === "--target-research") targetResearch = args[++i] || "";
+          else if (arg === "--rationale") rationale = args[++i] || "";
+          else if (arg === "--agent-id" || arg === "-a") agentId = args[++i] || "";
+          else if (arg === "--session-id") sessionId = args[++i] || "";
+        }
+
+        if (!researchId || !relationType || !sourceItemId || !targetItemId || !agentId || !sessionId) {
+          throw new Error("Missing required arguments for 'openmemory tms relate': --research-id <id> --type <type> --source-id <id> --target-id <id> --agent-id <id> --session-id <id>");
+        }
+
+        const res = storage.addKnowledgeRelation({
+          researchId,
+          relationType: relationType as any,
+          sourceItemId,
+          targetItemId,
+          targetResearchRecordId: targetResearch || undefined,
+          rationale: rationale || undefined,
+          agentId,
+          sessionId,
+        });
+
+        if (!res.success) {
+          throw new Error(`Relation creation rejected: ${res.reason}`);
+        }
+        return `[OpenMemory CLI] Knowledge Relation Created:
+  ID: ${res.relation?.id}
+  Type: ${res.relation?.relationType}
+  Link: ${sourceItemId} -> ${targetItemId}`;
+      } else if (sub === "analyze" || !sub) {
+        let researchId = "";
+        let itemId = "";
+        let jsonOutput = false;
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--research-id" || arg === "-r") researchId = args[++i] || "";
+          else if (arg === "--item-id" || arg === "-i") itemId = args[++i] || "";
+          else if (arg === "--json") jsonOutput = true;
+        }
+
+        const res = storage.analyzeKnowledgeTMS({
+          researchId: researchId || undefined,
+          itemId: itemId || undefined,
+        });
+
+        if (jsonOutput) {
+          return JSON.stringify(res, null, 2);
+        }
+
+        let out = `[OpenMemory CLI] Truth Maintenance System (TMS) Analysis Report:
+`;
+        out += `  Overall Status:        ${res.overallStatus}
+`;
+        out += `  Total Items Evaluated: ${res.summary.totalItems}
+`;
+        out += `  Total Relations:       ${res.summary.totalRelations}
+`;
+        out += `  Consistent Items:      ${res.summary.consistentCount}
+`;
+        out += `  Conflicted Items:      ${res.summary.conflictedCount}
+`;
+        out += `  Unresolved Items:      ${res.summary.unresolvedCount}
+`;
+        out += `  Degraded Items:        ${res.summary.degradedCount}
+`;
+        if (res.diagnostics && res.diagnostics.length > 0) {
+          out += `  Diagnostics:
+` + res.diagnostics.map(d => `    - ${d}`).join('\n');
+        }
+        return out;
+      }
+      throw new Error(`Unknown tms subcommand '${sub}'. Supported: transition, relate, analyze`);
     }
-    case "install": {
+    case "status": {
+      const summary = storage.formatProjectContextSummary();
+      const stageState = stageEngine.getStageState();
+      const activeRoadmap = stageState.roadmap?.phases.find((p) => p.id === stageState.roadmap?.activePhaseId);
+      return `${summary}\n\n[Stage Governance Status]\nWorkflow Stage: ${stageState.currentStage}\nRoadmap Phase: ${activeRoadmap?.id || "PHASE-1"}\nEstado: ${stageState.phaseStatus}\nAprobación Requerida: ${stageState.approvalRequired ? "SÍ" : "NO"}\nModificar Código de Producción: ${stageEngine.canModifyProductionCode() ? "PERMITIDO" : "PROHIBIDO"}`;
+    }
+    case "stage": {
+      const state = stageEngine.getStageState();
+      const phaseDef = stageEngine.getPhaseDefinition(state.currentStage);
+      const activeRoadmap = state.roadmap?.phases.find((p) => p.id === state.roadmap?.activePhaseId);
+      return `[Stage Governance Engine]\nProyecto: ${state.projectName}\nWorkflow Stage: ${phaseDef.name} (${state.currentStage})\nRoadmap Phase: ${activeRoadmap?.id || "PHASE-1"}\nEstado: ${state.phaseStatus}\nObjetivo: ${phaseDef.objective}\nModificación de Código Autorizada: ${stageEngine.canModifyProductionCode() ? "SÍ" : "NO"}\nAprobación Requerida: ${state.approvalRequired ? "SÍ" : "NO"}\nSiguiente Stage: ${state.nextPhase || "Ninguno"}`;
+    }
+    case "approve": {
+      const notes = args[1] || "Aprobado desde CLI";
+      const newState = stageEngine.approveStage(notes);
+      return `[OpenMemory CLI] Transición APROBADA exitosamente.\nNuevo Stage Activo: ${newState.currentStage} (Estado: ${newState.phaseStatus})`;
+    }
+    case "report": {
+      const state = stageEngine.getStageState();
+      if (!state.phaseReport) {
+        return `[OpenMemory CLI] No existe reporte de fase disponible para el stage actual ${state.currentStage}.`;
+      }
+      return `[OpenMemory CLI] Reporte de Stage (${state.phaseReport.phaseId}):\nGenerado: ${state.phaseReport.generatedAt}\nResumen: ${state.phaseReport.summary}\nDoD Verificado: ${state.phaseReport.dodVerified ? "SÍ" : "NO"}\nEvidencias: ${state.phaseReport.evidenceProduced.join(", ") || "Ninguna"}\nPendientes: ${state.phaseReport.pendingItems.join(", ") || "Ninguno"}`;
+    }
+    case "init":
+    case "install":
+    case "setup": {
+      const isInteractive = args.includes("--interactive") || args.includes("-i");
+      if (isInteractive) {
+        const res = await runInteractiveInitWizard({ targetDir: rootDir });
+        if (!res.userConfirmed) {
+          return `[OpenMemory CLI] Interactive /init wizard cancelled by user. No files modified.`;
+        }
+        return `[OpenMemory CLI] Interactive /init wizard complete:\n  Project Name: ${res.userAnswers?.projectName}\n  Active Goal: ${res.userAnswers?.activeGoal}\n  Active Phase: ${res.userAnswers?.activePhase}\n  Target AGENTS.md: ${res.targetAgentsMdPath}\n  Plugin Shim: ${res.targetPluginPath}\n  MCP Config: ${res.targetMcpConfigPath}\n  Backup: ${res.backupCreated || "None"}`;
+      }
       const result = installOpenMemory({ targetDir: rootDir });
-      return `[OpenMemory CLI] Installation complete:\n  Target: ${result.targetAgentsMdPath}\n  Storage Initialized: ${result.storageInitialized}\n  AGENTS.md Updated: ${result.agentsMdUpdated}\n  Backup: ${result.backupCreated || "None"}`;
+      return `[OpenMemory CLI] Installation complete:\n  Target AGENTS.md: ${result.targetAgentsMdPath}\n  Storage Initialized: ${result.storageInitialized}\n  AGENTS.md Updated: ${result.agentsMdUpdated}\n  Plugin Shim Created: ${result.pluginShimCreated}\n  MCP Configured: ${result.mcpConfigured}\n  Backup: ${result.backupCreated || "None"}`;
+    }
+    case "uninstall": {
+      const res = uninstallOpenMemory({ targetDir: rootDir });
+      return `[OpenMemory CLI] Integration Uninstalled:\n  AGENTS.md Cleaned: ${res.agentsMdCleaned}\n  Plugin Shim Removed: ${res.pluginShimRemoved}\n  MCP Config Removed: ${res.mcpConfigRemoved}\n  Storage Preserved (.openmemory/): ${res.storagePreserved}`;
     }
     case "backup": {
       const label = args[1] || "manual-cli";
@@ -154,12 +331,40 @@ export function runCLI(args: string[] = process.argv.slice(2), rootDir?: string)
       storage.restoreBackup(backupId);
       return `[OpenMemory CLI] State restored successfully from backup '${backupId}'.`;
     }
+    case "health": {
+      const isJson = args.includes("--json") || args.includes("-j");
+      const summary = storage.getConsolidatedHealthSummary();
+      if (isJson) return JSON.stringify(summary, null, 2);
+      const dbStr = summary.sqliteLifecycle.activeDatabases.length > 0
+        ? "ACTIVE UNCONSOLIDATED (" + summary.sqliteLifecycle.activeDatabases.join(", ") + ")"
+        : "QUIESCENT (0 active WAL)";
+      return `[OpenMemory CLI] Consolidated Health Status: ${summary.overallStatus}
+  * Storage Diagnostics: ${summary.storage.status}
+  * SQLite Quiescence: ${summary.sqliteLifecycle.quiescent ? "QUIESCENT" : dbStr}
+  * Advisory Locks: ${summary.advisoryLocks.active} active, ${summary.advisoryLocks.stale} stale (${summary.advisoryLocks.deadProcessLocks} dead process)
+  * Health Coordinator: ${summary.healthCoordinator.running ? "RUNNING" : "STOPPED"} (${summary.healthCoordinator.totalExecutions} executions)
+  * Promotion Interrupted: ${summary.promotion.isInterrupted ? "YES (RECOVERY NEEDED)" : "NO"}
+  * Candidate Artifact: ${summary.candidateArtifact.present ? "PRESENT (" + summary.candidateArtifact.version + ")" : "ABSENT"}`;
+    }
     case "diagnostics": {
-      const report = storage.runDiagnostics();
+      const isJson = args.includes("--json") || args.includes("-j");
+      const shouldRepair = args.includes("--repair") || args.includes("-r");
+      const report = storage.runDiagnostics({ repair: shouldRepair });
+      if (isJson) {
+        return JSON.stringify(report, null, 2);
+      }
       const checkLines = report.checks
-        .map((c) => `  * [${c.passed ? "PASS" : "FAIL"}] ${c.name}: ${c.details}`)
+        .map((c) => {
+          const mark = c.passed ? (c.repaired ? "REPAIRED" : "PASS") : "FAIL";
+          return `  * [${mark}] ${c.name}: ${c.details}`;
+        })
         .join("\n");
-      return `[OpenMemory CLI] Storage Diagnostic Report (${report.status}):\n${checkLines}\n  * Orphaned Temp Files Removed: ${report.orphanedTempFilesRemoved}`;
+      const subLines = report.subsystems
+        ? Object.entries(report.subsystems)
+            .map(([sub, info]) => `  - Subsystem [${info.status.padEnd(4)}] ${sub} (${info.checksCount} check${info.checksCount > 1 ? "s" : ""})`)
+            .join("\n")
+        : "";
+      return `[OpenMemory CLI] Storage Diagnostic Report (${report.status}):\n${checkLines}\n${subLines ? "\n[Subsystems Overview]:\n" + subLines + "\n" : ""}\n  * Orphaned Temp Files Removed: ${report.orphanedTempFilesRemoved}\n  * Torn Log Lines: ${report.tornLogLinesCount ?? 0}\n  * Active Advisory Locks: ${report.activeLocksCount ?? 0}\n  * SQLite Quiescence: ${report.sqliteQuiescent ? "QUIESCENT" : "ACTIVE_TRANSACTIONS"}`;
     }
     case "cleanup": {
       const count = storage.cleanupTempFiles();
@@ -167,7 +372,7 @@ export function runCLI(args: string[] = process.argv.slice(2), rootDir?: string)
     }
     case "query": {
       const flags = parseQueryFlags(args.slice(1));
-      let researches = storage.listResearches();
+      let researches = storage.listResearches({ agentId: flags.agentId });
 
       if (flags.researchId) {
         researches = researches.filter((r) => r.id === flags.researchId);
@@ -203,8 +408,8 @@ export function runCLI(args: string[] = process.argv.slice(2), rootDir?: string)
           );
         }
         if (queryText) {
-          const topicMatches = res.topic.toLowerCase().includes(queryText);
-          const summaryMatches = res.summary.toLowerCase().includes(queryText);
+          const topicMatches = res.topic ? res.topic.toLowerCase().includes(queryText) : false;
+          const summaryMatches = res.summary ? String(res.summary).toLowerCase().includes(queryText) : false;
           if (!topicMatches && !summaryMatches) {
             items = items.filter(
               (i) =>
@@ -241,7 +446,7 @@ export function runCLI(args: string[] = process.argv.slice(2), rootDir?: string)
                 `  - [${item.type}:${item.classification}] ${item.title}\n    Content: ${item.content}\n    Provenance: ${JSON.stringify(item.provenance)}`
             )
             .join("\n\n");
-          return `* Research: ${research.id} - ${research.topic} (${research.category})\n  Summary: ${research.summary}\n  Status: ${research.status} | Session: ${research.sessionId} | Related ADR: ${research.relatedAdrId || "None"}\n  Knowledge Items:\n${itemsStr || "  (No items matching filter)"}`;
+          return `* Research: ${research.id} - ${research.topic} (${research.category})\n  Summary: ${research.summary || "None"}\n  Status: ${research.status} | Session: ${research.sessionId} | Related ADR: ${research.relatedAdrId || "None"}\n  Knowledge Items:\n${itemsStr || "  (No items matching filter)"}`;
         })
         .join("\n\n---\n\n");
 
@@ -249,22 +454,493 @@ export function runCLI(args: string[] = process.argv.slice(2), rootDir?: string)
     }
     case "record": {
       const recordInput = parseRecordFlags(args.slice(1), rootDir);
-      const savedRecord = storage.saveResearch(recordInput);
+      const agentId = recordInput.agentId;
+      const sessionId = recordInput.sessionId;
+      if (!agentId || !sessionId) {
+        throw new Error("Missing required arguments for 'openmemory record': --agent-id <agentId> --session-id <sessionId>");
+      }
+      const savedRecord = storage.saveResearch(recordInput, agentId, sessionId);
       return `[OpenMemory CLI] Knowledge recorded successfully:\n  ID: ${savedRecord.id}\n  Topic: ${savedRecord.topic}\n  Category: ${savedRecord.category}\n  Items: ${savedRecord.items.length}\n  Related ADR: ${savedRecord.relatedAdrId || "None"}`;
     }
+    case "roadmap": {
+      const roadmap = stageEngine.getRoadmap();
+      return `[OpenMemory CLI] Roadmap Status:\n${JSON.stringify(roadmap, null, 2)}`;
+    }
+    case "phase": {
+      const sub = args[1];
+      if (sub === "approve") {
+        const phaseId = args[2];
+        const newState = stageEngine.approvePhase(phaseId);
+        const active = newState.roadmap?.phases.find((p) => p.id === newState.roadmap?.activePhaseId);
+        return `[OpenMemory CLI] Phase Approved! Now active: ${active?.id} (${active?.name})`;
+      }
+      if (sub === "reject") {
+        const phaseId = args[2];
+        const reason = args.slice(3).join(" ") || undefined;
+        const newState = stageEngine.rejectPhase(phaseId, reason);
+        return `[OpenMemory CLI] Phase Rejected! Returned to rework. Reason: ${reason || "None"}`;
+      }
+      const roadmap = stageEngine.getRoadmap();
+      const active = roadmap.phases.find((p) => p.id === roadmap.activePhaseId);
+      return `[OpenMemory CLI] Active Phase: ${active?.id} - ${active?.name}\nStatus: ${active?.status}\nCurrent Stage: ${active?.currentStage}`;
+    }
+    case "oss": {
+      const evals = storage.listOSSEvaluations();
+      if (evals.length === 0) {
+        return "[OpenMemory CLI] No OSS evaluation records found.";
+      }
+      return `[OpenMemory CLI] OSS Evaluation Records (${evals.length}):\n${JSON.stringify(evals, null, 2)}`;
+    }
+    case "migrate": {
+      const isDryRun = args.includes("--dry-run");
+      const rollbackIdx = args.indexOf("--rollback");
+      const rollbackId = rollbackIdx !== -1 ? args[rollbackIdx + 1] : undefined;
+
+      const result = storage.migrateToV02({ dryRun: isDryRun, rollbackBackupId: rollbackId });
+
+      let output = `OpenMemory Migration v0.2\n\n`;
+      output += `Current schema: ${result.currentVersion}\n`;
+      output += `Target schema:  ${result.targetVersion}\n`;
+      output += `Mode:           ${result.dryRun ? "DRY-RUN" : rollbackId ? "ROLLBACK" : "EXECUTE"}\n`;
+      output += `Status:         ${result.status}\n\n`;
+      output += `Actions:\n` + result.actions.map(a => `  - ${a}`).join("\n");
+
+      if (result.blockers.length > 0) {
+        output += `\n\nBlockers:\n` + result.blockers.map(b => `  ❌ ${b}`).join("\n");
+      }
+
+      return output;
+    }
+    case "adr": {
+      const sub = args[1];
+      if (sub === "vote" || sub === "v") {
+        let adrId = "";
+        let vote = "";
+        let agentId = "";
+        let sessionId = "";
+        let rationale = "";
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--id" || arg === "-i" || arg === "--adr-id") {
+            adrId = args[++i] || "";
+          } else if (arg === "--vote" || arg === "-v" || arg === "--decision") {
+            vote = (args[++i] || "").toUpperCase();
+          } else if (arg === "--agent-id" || arg === "--agent" || arg === "-a") {
+            agentId = args[++i] || "";
+          } else if (arg === "--session-id" || arg === "--session" || arg === "-s") {
+            sessionId = args[++i] || "";
+          } else if (arg === "--rationale" || arg === "--reason" || arg === "-r") {
+            rationale = args[++i] || "";
+          }
+        }
+
+        if (!adrId || !vote || !agentId || !sessionId) {
+          throw new Error("Missing required arguments for 'openmemory adr vote': --id <adrId>, --vote <APPROVE|REJECT>, --agent-id <agentId>, --session-id <sessionId>");
+        }
+
+        if (vote !== "APPROVE" && vote !== "REJECT") {
+          throw new Error("Invalid vote decision. Must be APPROVE or REJECT.");
+        }
+
+        const updatedADR = storage.voteADR(adrId, agentId, sessionId, vote as "APPROVE" | "REJECT", rationale || undefined);
+        return `[OpenMemory CLI] ADR Vote Recorded:\n  ADR ID: ${updatedADR.id}\n  Status: ${updatedADR.status}\n  Agent: ${agentId}\n  Vote: ${vote}\n  Total Votes: ${updatedADR.votes?.length || 0}`;
+      } else if (sub === "list" || !sub) {
+        const adrs = storage.listADRs();
+        if (adrs.length === 0) {
+          return "[OpenMemory CLI] No ADR records found.";
+        }
+        return (
+          `[OpenMemory CLI] ADR Records (${adrs.length}):\n` +
+          adrs
+            .map(
+              (a) =>
+                `  * ${a.id}: ${a.title} [${a.status}] (Proposed by: ${a.proposedByAgentId || "N/A"}, Votes: ${a.votes?.length || 0})`
+            )
+            .join("\n")
+        );
+      }
+      throw new Error(`[OpenMemory CLI] Unknown adr subcommand '${sub}'. Available: vote, list`);
+    }
+    case "sqlite": {
+      const sub = args[1];
+      if (sub === "checkpoint" || sub === "cp") {
+        let dbPath = "";
+        let mode = "TRUNCATE";
+        let isJson = false;
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--mode" || arg === "-m") {
+            mode = (args[++i] || "TRUNCATE").toUpperCase();
+          } else if (arg === "--json" || arg === "-j") {
+            isJson = true;
+          } else if (!arg.startsWith("-") && !dbPath) {
+            dbPath = arg;
+          }
+        }
+
+        if (mode !== "TRUNCATE" && mode !== "PASSIVE" && mode !== "FULL" && mode !== "RESTART") {
+          throw new Error(`[OpenMemory CLI] Invalid checkpoint mode '${mode}'. Available: TRUNCATE, PASSIVE, FULL, RESTART`);
+        }
+
+        if (dbPath) {
+          const result = storage.checkpointDatabase(dbPath, { mode });
+          if (isJson) return JSON.stringify(result, null, 2);
+          const statusStr = result.success ? "SUCCESS" : result.busy ? "BUSY" : "FAILED";
+          return `[OpenMemory CLI] SQLite Checkpoint (${statusStr}):\n  Database: ${result.dbPath}\n  Mode: ${result.mode}\n  Success: ${result.success}\n  Busy: ${result.busy}\n  Wal Size Before: ${result.walBytesBefore ?? 0} B\n  Wal Size After: ${result.walBytesAfter ?? 0} B\n  Duration: ${result.durationMs}ms${result.error ? `\n  Error: ${result.error}` : ""}`;
+        } else {
+          const report = storage.checkpointWorkspace(undefined, { mode });
+          if (isJson) return JSON.stringify(report, null, 2);
+          if (report.totalDatabases === 0) {
+            return "[OpenMemory CLI] No SQLite databases found in workspace to checkpoint.";
+          }
+          const lines = report.results.map(r => `  * [${r.success ? "OK" : r.busy ? "BUSY" : "FAIL"}] ${r.dbPath} (WAL: ${r.walBytesBefore ?? 0}B -> ${r.walBytesAfter ?? 0}B)`);
+          return `[OpenMemory CLI] Workspace SQLite Checkpoint (${report.successfulCheckpoints}/${report.totalDatabases} succeeded, ${report.busyCheckpoints} busy):\n${lines.join("\n")}`;
+        }
+      }
+      throw new Error(`[OpenMemory CLI] Unknown sqlite subcommand '${sub}'. Available: checkpoint`);
+    }
+    case "locks": {
+      const sub = args[1];
+      if (sub === "cleanup" || sub === "clean") {
+        const cleaned = storage.cleanupStaleLocks();
+        return `[OpenMemory CLI] Advisory Locks Cleanup:\n  Cleaned: ${cleaned} stale lock/temporary file(s).`;
+      }
+      throw new Error(`[OpenMemory CLI] Unknown locks subcommand '${sub}'. Available: cleanup`);
+    }
+    case "sessions": {
+      const sub = args[1];
+      if (sub === "register") {
+        let agentId = "";
+        let id: string | undefined;
+        let hostId: string | undefined;
+        let status: any = "ACTIVE";
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--agent-id" || arg === "--agent" || arg === "-a") {
+            agentId = args[++i] || "";
+          } else if (arg === "--id" || arg === "-i") {
+            id = args[++i] || "";
+          } else if (arg === "--host-id" || arg === "--host" || arg === "-h") {
+            hostId = args[++i] || "";
+          } else if (arg === "--status" || arg === "-s") {
+            status = args[++i] || "ACTIVE";
+          }
+        }
+        if (!agentId && args[2] && !args[2].startsWith("-")) {
+          agentId = args[2];
+        }
+        if (!agentId) {
+          throw new Error("Missing required argument '--agent-id <agentId>' for 'openmemory sessions register'");
+        }
+
+        const record = storage.registerSession({ agentId, id, hostId, status });
+        return `[OpenMemory CLI] Session registered successfully:\n  ID: ${record.id}\n  Agent: ${record.agentId}${record.hostId ? `\n  Host: ${record.hostId}` : ""}\n  Status: ${record.status}\n  Started: ${record.startedAt}`;
+      } else if (sub === "reconcile") {
+        let thresholdHours = 24;
+        let confirm = false;
+        let isJson = false;
+        let agentId = "cli-operator";
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--threshold-hours") {
+            const valStr = args[++i];
+            if (!valStr || valStr.startsWith("-")) {
+              throw new Error("Invalid --threshold-hours value: numeric value in hours is required.");
+            }
+            const parsedVal = Number(valStr);
+            if (typeof parsedVal !== "number" || isNaN(parsedVal) || !Number.isFinite(parsedVal)) {
+              throw new Error(`Invalid --threshold-hours value '${valStr}': must be a finite number.`);
+            }
+            thresholdHours = parsedVal;
+          } else if (arg === "--confirm") {
+            confirm = true;
+          } else if (arg === "--json") {
+            isJson = true;
+          } else if (arg === "--agent-id" || arg === "--agent") {
+            agentId = args[++i] || agentId;
+          }
+        }
+
+        if (thresholdHours <= 0 || thresholdHours < 1) {
+          throw new Error(`Invalid thresholdHours (${thresholdHours}h): threshold must be a positive number of at least 1 hour.`);
+        }
+
+        const thresholdMs = thresholdHours * 3600000;
+        const result = storage.reconcileSessions({
+          thresholdMs,
+          dryRun: !confirm,
+          confirm,
+          agentId,
+        });
+
+        if (isJson) {
+          return JSON.stringify(result, null, 2);
+        }
+
+        const modeStr = result.dryRun
+          ? "DRY RUN - no mutation requested"
+          : "CONFIRMED - ACTIVE → ABORTED mutations applied";
+
+        let output = `[OpenMemory CLI] Session Reconciliation (${modeStr})\n`;
+        output += `  Inactivity Threshold: ${thresholdHours} hour(s) (${result.thresholdMs}ms)\n`;
+        output += `  Authorizing Actor: ${agentId}\n`;
+        output += `  Action Status: ${result.dryRun ? "WOULD_RECONCILE" : "RECONCILED"}\n`;
+        output += `  Stale Candidates Found: ${result.candidatesFound}\n`;
+        output += `  Sessions Reconciled: ${result.reconciledCount}`;
+
+        if (result.candidates.length > 0) {
+          output += `\n  Candidate Sessions:\n`;
+          output += result.candidates
+            .map(
+              (c) =>
+                `  * Session ID: ${c.sessionId} | Host: ${c.hostId || "N/A"} | Inactive: ${(c.inactiveDurationMs / 3600000).toFixed(1)}h | Action: ${c.action}`
+            )
+            .join("\n");
+        } else {
+          output += `\n  * No stale ACTIVE sessions found exceeding the inactivity threshold.`;
+        }
+
+        return output;
+      } else if (sub === "list" || !sub) {
+        let agentId: string | undefined;
+        let status: string | undefined;
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--agent-id" || arg === "--agent") {
+            agentId = args[++i];
+          } else if (arg === "--status") {
+            status = args[++i];
+          }
+        }
+
+        const sessions = storage.listSessions({ agentId, status });
+        if (sessions.length === 0) {
+          return "[OpenMemory CLI] No sessions found matching filters.";
+        }
+        return `[OpenMemory CLI] Registered Sessions (${sessions.length}):\n${JSON.stringify(sessions, null, 2)}`;
+      }
+      throw new Error(`[OpenMemory CLI] Unknown sessions subcommand '${sub}'. Available: register, list, reconcile`);
+    }
+    case "context": {
+      const sub = args[1];
+      let requestingAgentId = "agent-cli";
+      let queryTopic: string | undefined;
+
+      if (sub === "assemble" && args[2] && !args[2].startsWith("-")) {
+        requestingAgentId = args[2];
+      }
+
+      for (let i = 1; i < args.length; i++) {
+        const arg = args[i];
+        if (arg === "--agent-id" || arg === "--agent") {
+          requestingAgentId = args[++i] || requestingAgentId;
+        } else if (arg === "--query" || arg === "--topic" || arg === "-q") {
+          queryTopic = args[++i] || undefined;
+        }
+      }
+
+      const summary = storage.assembleCrossAgentContext(requestingAgentId, queryTopic);
+      return summary.assembledContextMarkdown;
+    }
+    case "task": {
+      const sub = args[1];
+      if (sub === "create") {
+        let title = "";
+        let description = "";
+        let createdAgentId = "";
+        let assignedAgentId: string | undefined;
+        let dependsOn: string[] | undefined;
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--title" || arg === "-t") {
+            title = args[++i] || "";
+          } else if (arg === "--description" || arg === "-d") {
+            description = args[++i] || "";
+          } else if (arg === "--created-by" || arg === "--created-agent-id") {
+            createdAgentId = args[++i] || "";
+          } else if (arg === "--assigned-to" || arg === "--assigned-agent-id") {
+            assignedAgentId = args[++i] || "";
+          } else if (arg === "--depends-on") {
+            const val = args[++i] || "";
+            dependsOn = val ? val.split(",").map(s => s.trim()).filter(Boolean) : undefined;
+          }
+        }
+        if (!title && args[2] && !args[2].startsWith("-")) title = args[2];
+        if (!description && args[3] && !args[3].startsWith("-")) description = args[3];
+        if (!createdAgentId && args[4] && !args[4].startsWith("-")) createdAgentId = args[4];
+
+        if (!title || !createdAgentId) {
+          throw new Error("Missing required arguments for 'openmemory task create': --title <title> --created-by <agentId>");
+        }
+
+        const task = storage.createCoordinationTask({ title, description, createdAgentId, assignedAgentId, dependsOn });
+        return `[OpenMemory CLI] Coordination Task created successfully:\n  ID: ${task.id}\n  Title: ${task.title}\n  Status: ${task.status}\n  Created By: ${task.createdAgentId}${task.dependsOn ? `\n  Depends On: ${task.dependsOn.join(", ")}` : ""}`;
+      } else if (sub === "claim") {
+        let taskId = "";
+        let agentId = "";
+        let sessionId = "";
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--id" || arg === "--task-id") {
+            taskId = args[++i] || "";
+          } else if (arg === "--agent-id" || arg === "--agent") {
+            agentId = args[++i] || "";
+          } else if (arg === "--session-id" || arg === "--session" || arg === "-s") {
+            sessionId = args[++i] || "";
+          }
+        }
+        if (!taskId && args[2] && !args[2].startsWith("-")) taskId = args[2];
+        if (!agentId && args[3] && !args[3].startsWith("-")) agentId = args[3];
+        if (!sessionId && args[4] && !args[4].startsWith("-")) sessionId = args[4];
+
+        if (!taskId || !agentId || !sessionId) {
+          throw new Error("Missing required arguments for 'openmemory task claim': <taskId> <agentId> --session-id <sessionId>");
+        }
+
+        const res = storage.claimCoordinationTask(taskId, agentId, sessionId);
+        if (!res.success) {
+          throw new Error(`Failed to claim task '${taskId}': ${res.reason}`);
+        }
+        return `[OpenMemory CLI] Task '${taskId}' claimed successfully by '${agentId}'! Status: ${res.task?.status}`;
+      } else if (sub === "update") {
+        let taskId = "";
+        let status = "";
+        let agentId = "";
+        let sessionId = "";
+        let summary: string | undefined;
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--id" || arg === "--task-id") {
+            taskId = args[++i] || "";
+          } else if (arg === "--status") {
+            status = args[++i] || "";
+          } else if (arg === "--agent-id" || arg === "--agent") {
+            agentId = args[++i] || "";
+          } else if (arg === "--session-id" || arg === "--session") {
+            sessionId = args[++i] || "";
+          } else if (arg === "--summary" || arg === "--result-summary") {
+            summary = args[++i];
+          }
+        }
+        if (!taskId && args[2] && !args[2].startsWith("-")) taskId = args[2];
+        if (!status && args[3] && !args[3].startsWith("-")) status = args[3];
+        if (!agentId && args[4] && !args[4].startsWith("-")) agentId = args[4];
+        if (!sessionId && args[5] && !args[5].startsWith("-")) sessionId = args[5];
+
+        if (!taskId || !status || !agentId || !sessionId) {
+          throw new Error("Missing required arguments for 'openmemory task update': <taskId> <status> <agentId> <sessionId>");
+        }
+
+        const validStatuses = ["IN_PROGRESS", "COMPLETED", "FAILED", "CANCELLED"];
+        if (!validStatuses.includes(status)) {
+          throw new Error(`Invalid task status '${status}'. Must be one of: ${validStatuses.join(", ")}`);
+        }
+
+        const updatedTask = storage.updateCoordinationTaskStatus(taskId, status as any, agentId, sessionId, summary);
+        return `[OpenMemory CLI] Task '${taskId}' updated successfully! Status: ${updatedTask.status}`;
+      } else if (sub === "list" || !sub) {
+        let status: string | undefined;
+        let assignedAgentId: string | undefined;
+        let createdAgentId: string | undefined;
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--status") status = args[++i];
+          else if (arg === "--assigned") assignedAgentId = args[++i];
+          else if (arg === "--created") createdAgentId = args[++i];
+        }
+
+        const tasks = storage.listCoordinationTasks({ status, assignedAgentId, createdAgentId });
+        if (tasks.length === 0) {
+          return "[OpenMemory CLI] No coordination tasks found matching filters.";
+        }
+        return `[OpenMemory CLI] Coordination Tasks (${tasks.length}):\n${JSON.stringify(tasks, null, 2)}`;
+      }
+      throw new Error(`[OpenMemory CLI] Unknown task subcommand '${sub}'. Available: create, claim, update, list`);
+    }
+    case "logs": {
+      const sub = args[1];
+      if (sub === "rotate") {
+        let maxSizeBytes = 1048576;
+        let maxArchiveFiles = 3;
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--max-size") maxSizeBytes = parseInt(args[++i], 10) || 1048576;
+          else if (arg === "--max-archives") maxArchiveFiles = parseInt(args[++i], 10) || 3;
+        }
+
+        const res = storage.rotateEventLogs(maxSizeBytes, maxArchiveFiles);
+        return `[OpenMemory CLI] Event Logs Rotation:\n  Rotated: ${res.rotated ? "YES" : "NO"}\n  Detail: ${res.archivedFile || res.reason}`;
+      } else if (sub === "compact") {
+        let maxSizeBytes: number | undefined = undefined;
+        let maxEvents: number | undefined = undefined;
+        let maxArchiveFiles: number | undefined = undefined;
+
+        for (let i = 2; i < args.length; i++) {
+          const arg = args[i];
+          if (arg === "--max-size" || arg === "--max-bytes") maxSizeBytes = parseInt(args[++i], 10);
+          else if (arg === "--max-events") maxEvents = parseInt(args[++i], 10);
+          else if (arg === "--max-archives") maxArchiveFiles = parseInt(args[++i], 10);
+        }
+
+        const override: any = {};
+        if (maxSizeBytes !== undefined) override.maxSizeBytes = maxSizeBytes;
+        if (maxEvents !== undefined) override.maxEvents = maxEvents;
+        if (maxArchiveFiles !== undefined) override.maxArchiveFiles = maxArchiveFiles;
+
+        const res = storage.compactEventLogs(override);
+        return `[OpenMemory CLI] Event Logs Compaction:
+  Compacted: ${res.compacted ? "YES" : "NO"}
+  Events: ${res.eventsBefore} -> ${res.eventsAfter}
+  Essential Preserved: ${res.essentialPreserved}
+  Pruned: ${res.prunedEvents}
+  Archived: ${res.archivedFile || "None"}
+  Detail: ${res.reason || "Success"}`;
+      } else if (sub === "policy") {
+        const pol = storage.getEventRetentionPolicy();
+        return JSON.stringify(pol, null, 2);
+      } else if (sub === "audit") {
+        const audit = (storage as any).eventLogger.auditEventLogIntegrity();
+        return `[OpenMemory CLI] Event Log Integrity Audit:
+  Total Lines: ${audit.totalLines}
+  Valid Lines: ${audit.validLines}
+  Corrupt Lines: ${audit.corruptLines}`;
+      } else if (sub === "clean-temp") {
+        const cleaned = storage.cleanStaleEventTempFiles(0);
+        return `[OpenMemory CLI] Stale Temp Files Cleaned: ${cleaned}`;
+      }
+      throw new Error(`[OpenMemory CLI] Unknown logs subcommand '${sub}'. Available: rotate, compact, policy, audit, clean-temp`);
+    }
+    case "version":
+    case "--version":
+    case "-v": {
+      return "Evocara (formerly OpenMemory) v0.4.0 (package: evocara@0.4.0)";
+    }
+    case "help":
+    case "--help":
+    case "-h":
     default: {
-      return `[OpenMemory CLI] Usage: openmemory <status|install|backup|list-backups|restore|diagnostics|cleanup|query|record>`;
+      return `[Evocara / OpenMemory CLI] Usage: evocara <command> (or: openmemory <command>)\nCommands: status, stage, approve, report, roadmap, phase, oss, install, setup, uninstall, backup, list-backups, restore, health, diagnostics, cleanup, query, record, migrate, adr, locks, sqlite, sessions, context, task, logs, tms, version`;
     }
   }
 }
 
+
 // Execute CLI directly if invoked from command line
 if (require.main === module) {
-  try {
-    const output = runCLI();
-    console.log(output);
-  } catch (err) {
-    console.error("[OpenMemory CLI Error]", (err as Error).message);
-    process.exit(1);
-  }
+  runCLI()
+    .then((output) => console.log(output))
+    .catch((err) => {
+      console.error("[Evocara / OpenMemory CLI Error]", (err as Error).message);
+      process.exit(1);
+    });
 }

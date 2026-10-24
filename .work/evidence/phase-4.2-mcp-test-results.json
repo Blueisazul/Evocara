@@ -9,7 +9,7 @@
     "id": "F4.2-002",
     "name": "tools/list Schema Handler",
     "status": "PASSED",
-    "details": "tools/list returned 5 valid OpenMemory tool schemas: openmemory_status, openmemory_get_handoff, openmemory_save_adr, openmemory_create_backup, openmemory_run_diagnostics, openmemory_record_knowledge, openmemory_query_knowledge"
+    "details": "tools/list returned 5 valid OpenMemory tool schemas: openmemory_status, openmemory_get_handoff, openmemory_save_adr, openmemory_vote_adr, openmemory_cleanup_locks, openmemory_create_backup, openmemory_run_diagnostics, openmemory_record_knowledge, openmemory_query_knowledge, openmemory_get_stage, openmemory_start_stage, openmemory_complete_stage, openmemory_request_approval, openmemory_approve_stage, openmemory_reject_stage, openmemory_get_phase_report, openmemory_get_roadmap, openmemory_approve_phase, openmemory_reject_phase, openmemory_save_oss_evaluation, openmemory_register_session, openmemory_list_sessions, openmemory_assemble_cross_context, openmemory_create_coordination_task, openmemory_list_coordination_tasks, openmemory_claim_coordination_task, openmemory_update_coordination_task, openmemory_rotate_event_logs, openmemory_reconcile_sessions"
   },
   {
     "id": "F4.2-003",

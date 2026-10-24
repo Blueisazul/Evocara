@@ -1,0 +1,144 @@
+﻿{
+  "manifestVersion": "1.0.0",
+  "iteration": "P1.6",
+  "project": "Evocara / OpenMemory",
+  "timestamp": "2026-10-18T00:48:00Z",
+  "canonicalRepository": "C:\\Users\\sant1\\Downloads\\OpenMemory",
+  "git": {
+    "branch": "fix/p0-security-concurrency-hardening",
+    "headCommit": "1ef6a7cb9f3aa87566c3e0eaf576770e2f19b09e",
+    "status": "Untracked operational release tooling & docs preserved locally; zero unpushed writes."
+  },
+  "candidatePackage": {
+    "name": "openmemory",
+    "version": "0.3.14-rc4",
+    "tarball": ".work/artifacts/openmemory-0.3.14-rc4.tgz",
+    "sizeBytes": 167133,
+    "sha256": "af88fae90107dfda797c7f6bcc982cf6bbd7ef53fd9a5d887c9bf77185a35f6e",
+    "entryCount": 69,
+    "coreFilesCount": 21,
+    "status": "QUALIFIED_DETERMINISTIC"
+  },
+  "historicalArtifactsCatalog": [
+    {
+      "name": "openmemory-0.3.14-rc1.tgz",
+      "sizeBytes": 160896,
+      "sha256": "cd6d5b621c2a451e142f505fb08b891affd3f187662bca8a08d9b891bc26f8eb",
+      "status": "INTACT"
+    },
+    {
+      "name": "openmemory-0.3.14-rc2.tgz",
+      "sizeBytes": 164153,
+      "sha256": "1a2ff6de243e80518c7939df2e7033c5e25d4d4226395d1adc2a9b8df29f24b3",
+      "status": "INTACT"
+    },
+    {
+      "name": "openmemory-0.3.14-rc3.tgz",
+      "sizeBytes": 166375,
+      "sha256": "9261e85a7f7394bbdab2ec1b19bdbbc5e5bf573475b22d66ac5576342c5771c6",
+      "status": "INTACT"
+    },
+    {
+      "name": "openmemory-0.3.14-rc4.tgz",
+      "sizeBytes": 167133,
+      "sha256": "af88fae90107dfda797c7f6bcc982cf6bbd7ef53fd9a5d887c9bf77185a35f6e",
+      "status": "CALIFIED_CANDIDATE"
+    },
+    {
+      "name": "openmemory-0.3.1.tgz",
+      "path": "InventoryHub/scratch/exp2_10/fase4_5/dist/openmemory-0.3.1.tgz",
+      "sizeBytes": 147676,
+      "sha256": "48d022f8ef35914769ef2df423a39a1c391cb383686e6a2575ca6906a115b1ef",
+      "status": "CONSUMER_BASE_INTACT"
+    },
+    {
+      "name": "openmemory-0.3.14-rc4.cdx.json",
+      "sizeBytes": 42007,
+      "sha256": "6e2fe99308eca85cf88ab9652ccb68e94b35e4999f586aee47637b50f86c676a",
+      "status": "VALIDATED_CYCLONEDX_1_5"
+    },
+    {
+      "name": "release-manifest-0.3.14-rc4.json",
+      "sizeBytes": 3111,
+      "sha256": "71f7753648d314d1f79e86fac50015cf378022f0ba880f0fb461a25a7a394fa3",
+      "status": "VALIDATED_IN_TOTO_0_2"
+    }
+  ],
+  "protectedConsumer": {
+    "name": "InventoryHub",
+    "path": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub",
+    "installedVersion": "openmemory@0.3.1",
+    "lockState": "CLEAN (no orphan locks)",
+    "sqliteState": "QUIESCENT (0 active WAL, 0 active SHM)",
+    "integrity": "100% UNTOUCHED"
+  },
+  "testExecutionSummary": {
+    "totalSuites": 15,
+    "passedSuites": 15,
+    "failedSuites": 0,
+    "consolidatedDurationMs": 19007,
+    "suites": [
+      { "id": "SEC-001", "name": "Path Traversal & Domain ID Hardening Suite", "status": "PASS", "durationMs": 105 },
+      { "id": "PERSIST-001", "name": "Multi-Process Concurrency & Lock Stress Suite", "status": "PASS", "durationMs": 3470 },
+      { "id": "F13.3.3", "name": "ADR Governance Domain Unit & Facade Tests", "status": "PASS", "durationMs": 2188 },
+      { "id": "SPIKE", "name": "OpenMemory Plugin Spike Empirical Suite", "status": "PASS", "durationMs": 1391 },
+      { "id": "AUDIT-COMPARE", "name": "Vulnerability Advisory Differential Comparator Suite", "status": "PASS", "durationMs": 254 },
+      { "id": "SYNTHETIC-PROMO", "name": "Synthetic Consumer Promotion & Verifiable Rollback Suite", "status": "PASS", "durationMs": 6107 },
+      { "id": "RECOVERY-P08", "name": "P0.8 Adversarial Recovery & Promotion Security Suite", "status": "PASS", "durationMs": 80 },
+      { "id": "RECOVERY-P09", "name": "P0.9 Adversarial Recovery, Promotion & Forensic Security Suite", "status": "PASS", "durationMs": 169 },
+      { "id": "INVARIANTS-P10", "name": "P1.0 High-Impact Adversarial Invariants & Deep Recovery Suite", "status": "PASS", "durationMs": 357 },
+      { "id": "TRANS-BACKUP", "name": "Transactional Backup & Rollback Recovery Suite", "status": "PASS", "durationMs": 378 },
+      { "id": "ADVERSARIAL-P12", "name": "P1.2 Adversarial Promotion, Staged Rollback & Forensics Suite", "status": "PASS", "durationMs": 3815 },
+      { "id": "REHEARSAL-P13", "name": "P1.3 End-to-End Promotion Rehearsal & Forensic Recovery Suite", "status": "PASS", "durationMs": 256 },
+      { "id": "HARDENING-P14", "name": "P1.4 Engine Adversarial Hardening, Symlink & Lock Resilience Suite", "status": "PASS", "durationMs": 236 },
+      { "id": "ADVERSARIAL-P15", "name": "P1.5 Deep Adversarial Transactional Engine & Lock Assertion Suite", "status": "PASS", "durationMs": 131 },
+      { "id": "AUDIT-P16", "name": "P1.6 Deep Transactional Engine Hardening & Audit Suite", "status": "PASS", "durationMs": 70 }
+    ]
+  },
+  "mcpServerVerification": {
+    "totalToolsExpected": 29,
+    "totalToolsValidated": 29,
+    "schemaValidation": "100% PASS (names, descriptions, and inputSchema verified)",
+    "tools": [
+      "openmemory_status",
+      "openmemory_get_handoff",
+      "openmemory_save_adr",
+      "openmemory_vote_adr",
+      "openmemory_cleanup_locks",
+      "openmemory_create_backup",
+      "openmemory_run_diagnostics",
+      "openmemory_record_knowledge",
+      "openmemory_query_knowledge",
+      "openmemory_get_stage",
+      "openmemory_start_stage",
+      "openmemory_complete_stage",
+      "openmemory_request_approval",
+      "openmemory_approve_stage",
+      "openmemory_reject_stage",
+      "openmemory_get_phase_report",
+      "openmemory_get_roadmap",
+      "openmemory_approve_phase",
+      "openmemory_reject_phase",
+      "openmemory_save_oss_evaluation",
+      "openmemory_register_session",
+      "openmemory_list_sessions",
+      "openmemory_assemble_cross_context",
+      "openmemory_create_coordination_task",
+      "openmemory_list_coordination_tasks",
+      "openmemory_claim_coordination_task",
+      "openmemory_update_coordination_task",
+      "openmemory_rotate_event_logs",
+      "openmemory_reconcile_sessions"
+    ]
+  },
+  "governanceGateStates": {
+    "G0": "PASS (Baseline reconciled)",
+    "G1": "PASS (15 suites verified)",
+    "G2": "PASS (Package verified deterministic)",
+    "G3": "PASS (SBOM and manifest validated)",
+    "G4": "PASS (Rehearsal 8/8 stages passed)",
+    "G5": "PENDING_AUTHORIZATION (Remote CI matrix push blocked by rule 3)",
+    "G6": "READY_FOR_AUTHORIZATION (InventoryHub promotion runbook ready)",
+    "G7": "PENDING (General release tag and publish)"
+  }
+}

@@ -1,0 +1,522 @@
+{
+  "timestamp": "2026-10-18T15:58:34.308Z",
+  "consumer": "C:\\\\Users\\\\sant1\\\\OneDrive\\\\Documentos\\\\ChatGPT\\\\OpenMemory\\\\InventoryHub",
+  "fileCount": 72,
+  "inventory": {
+    ".opencode/.gitignore": {
+      "type": "file",
+      "size": 63,
+      "mode": 33206,
+      "hash": "663a068e76d264d0bc6740f5450b6c4193c7b41ecf5e0dc222485b8a17404d95",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.opencode\\.gitignore"
+    },
+    ".opencode/package-lock.json": {
+      "type": "file",
+      "size": 6973,
+      "mode": 33206,
+      "hash": "f186046b7fb047a76e0bb6bb1375fb167d8a77b007100ce82b6992f36560662e",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.opencode\\package-lock.json"
+    },
+    ".opencode/package.json": {
+      "type": "file",
+      "size": 65,
+      "mode": 33206,
+      "hash": "03acb0f9a0c48470d1b64ff6c036c5788be9f27e186c0a556a0b1f6731548b80",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.opencode\\package.json"
+    },
+    ".opencode/plugins/openmemory.ts": {
+      "type": "file",
+      "size": 138,
+      "mode": 33206,
+      "hash": "c734404ebdd0df3d8054467d88a57c408784a7aded06a87399deef2e4ac99de8",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.opencode\\plugins\\openmemory.ts"
+    },
+    ".openmemory/adrs/ADR-001.md": {
+      "type": "file",
+      "size": 441,
+      "mode": 33206,
+      "hash": "9e1a6a4504812f6753e4d9b4e7445e5200f55b90515f1666decd344e7dad8eae",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\adrs\\ADR-001.md"
+    },
+    ".openmemory/handoff.md": {
+      "type": "file",
+      "size": 431,
+      "mode": 33206,
+      "hash": "6caba8ba9a9602a2741a925834d66d8aa64cb7a5a54a35811944e38dfe24197e",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\handoff.md"
+    },
+    ".openmemory/knowledge/oss_evaluations": {
+      "type": "dir",
+      "empty": true,
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\oss_evaluations"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-06T14-10-10-386Z-22su.json": {
+      "type": "file",
+      "size": 906,
+      "mode": 33206,
+      "hash": "ca6dac676c5d82a15aa0b2a134f0fc8de467782ae3c69d543ad362a3d240851c",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-06T14-10-10-386Z-22su.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-06T18-50-33-973Z-e358.json": {
+      "type": "file",
+      "size": 796,
+      "mode": 33206,
+      "hash": "65bd517d0bf2fc1437c71330afc3b572424153b631e774481c17c46e6a867f42",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-06T18-50-33-973Z-e358.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-07T20-41-04-994Z-yudr.json": {
+      "type": "file",
+      "size": 1010,
+      "mode": 33206,
+      "hash": "c02780ec06637849a7b3053ae6d0a3c2f7980508c7155837515538f383579eab",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-07T20-41-04-994Z-yudr.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-07T20-41-41-725Z-b6gf.json": {
+      "type": "file",
+      "size": 1280,
+      "mode": 33206,
+      "hash": "4787dd01cb7e7a4cc3f580045ddd4ebfe8a6e1355a4cd29852d59b23116d02e0",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-07T20-41-41-725Z-b6gf.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T01-24-34-623Z-6l84.json": {
+      "type": "file",
+      "size": 1075,
+      "mode": 33206,
+      "hash": "0647a020c935eed3c0537295b74e7ae0620f81dd149d0dec82ca62e3d35dab44",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T01-24-34-623Z-6l84.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T01-25-44-838Z-vary.json": {
+      "type": "file",
+      "size": 1169,
+      "mode": 33206,
+      "hash": "2afbbde0e6b5e4ff59fbddf8aad68186a5ccd5b4f34cc548e9fed587161a91e3",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T01-25-44-838Z-vary.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T01-27-01-221Z-b62x.json": {
+      "type": "file",
+      "size": 1071,
+      "mode": 33206,
+      "hash": "876eb5ecf43323ca23b63569e7caa9e016749bf4fe9e4fa9c861f61a061dbedf",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T01-27-01-221Z-b62x.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T01-27-52-282Z-iukh.json": {
+      "type": "file",
+      "size": 1324,
+      "mode": 33206,
+      "hash": "246dd5975d38a355df9c2fba6351171cbc1c192f7c2bf4817fc312c108c16c85",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T01-27-52-282Z-iukh.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T02-32-58-312Z-n2rk.json": {
+      "type": "file",
+      "size": 1777,
+      "mode": 33206,
+      "hash": "6f3be111f2dfd69823881b57a23b88f217fae7abe4948709bfc9a1bae62cf316",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T02-32-58-312Z-n2rk.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T14-37-44-738Z-ml2i.json": {
+      "type": "file",
+      "size": 1781,
+      "mode": 33206,
+      "hash": "2594096cd29957422bc93c4bfd57c5a8d6d583776633655b1ee1c11d0eb1ee9a",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T14-37-44-738Z-ml2i.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T15-09-44-816Z-reva.json": {
+      "type": "file",
+      "size": 1590,
+      "mode": 33206,
+      "hash": "8269abce8b34a2413ec120f6ea1eade0329e914129499c5f913dbbc9fc44d000",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T15-09-44-816Z-reva.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T19-05-01-100Z-wp01.json": {
+      "type": "file",
+      "size": 1140,
+      "mode": 33206,
+      "hash": "780f9a16f003b409a74575e57d533b40538278abdf33d604e9ba9f83db4885a7",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T19-05-01-100Z-wp01.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T20-41-20-154Z-50sb.json": {
+      "type": "file",
+      "size": 970,
+      "mode": 33206,
+      "hash": "29536b741365b1c9a38b7c66eff27047d4faa35dc79c4c07cf10185d09c56699",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T20-41-20-154Z-50sb.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T20-41-26-267Z-mhk7.json": {
+      "type": "file",
+      "size": 977,
+      "mode": 33206,
+      "hash": "d9e1116b4161e2f7842895ca4ef60aaff5ca41492929b043d5727392afdbdcd0",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T20-41-26-267Z-mhk7.json"
+    },
+    ".openmemory/knowledge/researches/RES-2026-10-08T20-45-32-539Z-akc9.json": {
+      "type": "file",
+      "size": 1029,
+      "mode": 33206,
+      "hash": "36be899b52be13acd2d858938dd2a98599b06d91bde71eb65084c695d4fae4eb",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\knowledge\\researches\\RES-2026-10-08T20-45-32-539Z-akc9.json"
+    },
+    ".openmemory/locks": {
+      "type": "dir",
+      "empty": true,
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\locks"
+    },
+    ".openmemory/logs/events.1.jsonl": {
+      "type": "file",
+      "size": 1048583,
+      "mode": 33206,
+      "hash": "646937baa8209583202d9c0210d19d94011cc9d6a79488de76a5e75b3413e1fb",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\logs\\events.1.jsonl"
+    },
+    ".openmemory/logs/events.jsonl": {
+      "type": "file",
+      "size": 246350,
+      "mode": 33206,
+      "hash": "6f7d465c7db07764031f7087ed48a3ad31394764ff9ba26a5123eddcfb6430e5",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\logs\\events.jsonl"
+    },
+    ".openmemory/openmemory.json": {
+      "type": "file",
+      "size": 293,
+      "mode": 33206,
+      "hash": "cb78ae219e430bc0bc6bf08bd5ff294a95f1db5aae8c87790449b1563ca8e42a",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\openmemory.json"
+    },
+    ".openmemory/project-state.json": {
+      "type": "file",
+      "size": 21374,
+      "mode": 33206,
+      "hash": "5b4c66f45bbba2a9c7a01af2545be49a672397376f0f1abdae324842aa498b3f",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\project-state.json"
+    },
+    ".openmemory/reports": {
+      "type": "dir",
+      "empty": true,
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\.openmemory\\reports"
+    },
+    "AGENTS.md": {
+      "type": "file",
+      "size": 756,
+      "mode": 33206,
+      "hash": "6c31b30bc16a8b5e0cd5862e2c59f40104d38f10a924090421e9729f6f670036",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AGENTS.md"
+    },
+    "AUDITORIA-CONSOLIDADA-EVIDENCIA-OPENMEMORY-OPENCODE.md": {
+      "type": "file",
+      "size": 12707,
+      "mode": 33206,
+      "hash": "c31ae7c4436bcc1a3cb0b1712a4bf6e1047dab49aedd7adebd3d467272b39088",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-CONSOLIDADA-EVIDENCIA-OPENMEMORY-OPENCODE.md"
+    },
+    "AUDITORIA-CONSOLIDADA-MEMORY-DRIVEN-EVOLUTION-v0.3.1.md": {
+      "type": "file",
+      "size": 19042,
+      "mode": 33206,
+      "hash": "890b5248756f6e299c71e74fb38e94619489ec6608d5bd20ec8a4491b07169a6",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-CONSOLIDADA-MEMORY-DRIVEN-EVOLUTION-v0.3.1.md"
+    },
+    "AUDITORIA-E2E-CROSS-SESSION-OPENCODE-OPENMEMORY.md": {
+      "type": "file",
+      "size": 7829,
+      "mode": 33206,
+      "hash": "0b3d13deefc5d34d1bf6992f80c56504b02af77a2e079c3469f1aee6e92179be",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-E2E-CROSS-SESSION-OPENCODE-OPENMEMORY.md"
+    },
+    "AUDITORIA-E2E-NAMESPACE-MCP-OPENCODE-OPENMEMORY.md": {
+      "type": "file",
+      "size": 6392,
+      "mode": 33206,
+      "hash": "c41d22a079d4c31f37a617de70657c3c9e8bd4f57e8809ee4237a3ed05e309aa",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-E2E-NAMESPACE-MCP-OPENCODE-OPENMEMORY.md"
+    },
+    "AUDITORIA-EXPERIMENTO-2-ROBUSTEST-RECUPERACION-OPENMEMORY-v0.3.1.md": {
+      "type": "file",
+      "size": 13077,
+      "mode": 33206,
+      "hash": "b1fcc8fecbdbdcbd3327509152251e408ed9332b369b25f4c743f39db5c9d6da",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-EXPERIMENTO-2-ROBUSTEST-RECUPERACION-OPENMEMORY-v0.3.1.md"
+    },
+    "AUDITORIA-EXPERIMENTO-2.1-RECUPERACION-ASISTIDA-OPENMEMORY-v0.3.1.md": {
+      "type": "file",
+      "size": 11697,
+      "mode": 33206,
+      "hash": "bdaef9d069f8989855a1cfba360a615b7cfe4c0f103c095999947ae7a542f54a",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-EXPERIMENTO-2.1-RECUPERACION-ASISTIDA-OPENMEMORY-v0.3.1.md"
+    },
+    "AUDITORIA-EXPERIMENTO-2.2-VERIFICACION-E2E-PROTOCOLO-ASISTIDO.md": {
+      "type": "file",
+      "size": 9896,
+      "mode": 33206,
+      "hash": "1d545e1cd305148e06ca0812ffb736cc484c5264dbf45bc460b80612972b38f1",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-EXPERIMENTO-2.2-VERIFICACION-E2E-PROTOCOLO-ASISTIDO.md"
+    },
+    "AUDITORIA-EXPERIMENTO-E-MEMORY-DRIVEN-EVOLUTION.md": {
+      "type": "file",
+      "size": 19862,
+      "mode": 33206,
+      "hash": "99ab0e3299428a946a99ceefbe2095e55be5582060597e8142accf63d1d7e6ee",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-EXPERIMENTO-E-MEMORY-DRIVEN-EVOLUTION.md"
+    },
+    "AUDITORIA-FASE-2A-REEXECUCION-E2E.md": {
+      "type": "file",
+      "size": 6148,
+      "mode": 33206,
+      "hash": "4259f6eb65b369783f8baee02f0fb07741df1084e286a9078f7589f958f7748d",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FASE-2A-REEXECUCION-E2E.md"
+    },
+    "AUDITORIA-FASE-2B-EVALUACION-DRIVER-SQLITE.md": {
+      "type": "file",
+      "size": 5818,
+      "mode": 33206,
+      "hash": "3c269cd3ae42704f1fed5c70d926952b8476c0b25c6de29380b03992302b71e5",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FASE-2B-EVALUACION-DRIVER-SQLITE.md"
+    },
+    "AUDITORIA-FASE-2B1-RUNTIME-COMPATIBILITY-NODE-SQLITE.md": {
+      "type": "file",
+      "size": 9059,
+      "mode": 33206,
+      "hash": "204287750f942f4a2197a759e481a1ecc79be6c54610492ebf48cfe11c6d241d",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FASE-2B1-RUNTIME-COMPATIBILITY-NODE-SQLITE.md"
+    },
+    "AUDITORIA-FASE-2B2-ARCHITECTURE-DECISION-GATE.md": {
+      "type": "file",
+      "size": 8090,
+      "mode": 33206,
+      "hash": "25c8edea879879e3097aa28975766614fb3535edb036138b40d552f677aa0f13",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FASE-2B2-ARCHITECTURE-DECISION-GATE.md"
+    },
+    "AUDITORIA-FASE-2C1-MIGRATION-DESIGN-GATE.md": {
+      "type": "file",
+      "size": 12777,
+      "mode": 33206,
+      "hash": "2a6756b59372381228ab99627497c933481b0e5ee6fbd31d1b825633843916f5",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FASE-2C1-MIGRATION-DESIGN-GATE.md"
+    },
+    "AUDITORIA-FASE-2C2-IMPLEMENTATION-GATE.md": {
+      "type": "file",
+      "size": 8989,
+      "mode": 33206,
+      "hash": "812e80a595aee77d5f7b164539722b80a98e7c48cccdb78d13436b0e062ba063",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FASE-2C2-IMPLEMENTATION-GATE.md"
+    },
+    "AUDITORIA-FASE-2C2.1-CONTRACT-DIFF-FORENSIC.md": {
+      "type": "file",
+      "size": 10434,
+      "mode": 33206,
+      "hash": "fc46822cd06cdcbcfb2cbeab2c4d56509f5875a218b07565f60b37ffdba44de8",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FASE-2C2.1-CONTRACT-DIFF-FORENSIC.md"
+    },
+    "AUDITORIA-FASE-2C3-GOVERNANCE-LEGACY-CLEANUP-GATE.md": {
+      "type": "file",
+      "size": 9553,
+      "mode": 33206,
+      "hash": "26c84619c34a35c7848ffbecd8aee46b3c852cf56893c7c117809ec6c3bca9b3",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FASE-2C3-GOVERNANCE-LEGACY-CLEANUP-GATE.md"
+    },
+    "AUDITORIA-FASE-2C4-LEGACY-CLEANUP-EXECUTION.md": {
+      "type": "file",
+      "size": 6911,
+      "mode": 33206,
+      "hash": "3003f3714057ade5bf1c55406a2e05095f25ca4b68f1a05af6a7c10310dd7069",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FASE-2C4-LEGACY-CLEANUP-EXECUTION.md"
+    },
+    "AUDITORIA-FASE-2C4.1-POST-CLEANUP-FORENSIC.md": {
+      "type": "file",
+      "size": 8199,
+      "mode": 33206,
+      "hash": "31d1a0c6c433705c6f30096a10545b101cd70f0b452502832e97bbf076e57a96",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FASE-2C4.1-POST-CLEANUP-FORENSIC.md"
+    },
+    "AUDITORIA-FORENSE-FASE-2A-AISLAMIENTO.md": {
+      "type": "file",
+      "size": 4503,
+      "mode": 33206,
+      "hash": "21a52307f4cb607675092618b481fc73e464451bbb1949c1f36573f123a56b8a",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FORENSE-FASE-2A-AISLAMIENTO.md"
+    },
+    "AUDITORIA-FORENSE-QUERY-KNOWLEDGE-OPENMEMORY-0.3.1.md": {
+      "type": "file",
+      "size": 12395,
+      "mode": 33206,
+      "hash": "415257fcbdbbf4bc298daad73e345e33e19c63e2d23bba8ef98c05ab501214f3",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FORENSE-QUERY-KNOWLEDGE-OPENMEMORY-0.3.1.md"
+    },
+    "AUDITORIA-FORENSE-VALIDEZ-EXPERIMENTO-2.2.md": {
+      "type": "file",
+      "size": 9295,
+      "mode": 33206,
+      "hash": "03816f5ab4a091dd454c426afb65a094baba44677141237faee400fa4dc553ea",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FORENSE-VALIDEZ-EXPERIMENTO-2.2.md"
+    },
+    "AUDITORIA-FUNCIONAL-INVENTORYHUB-OPENMEMORY.md": {
+      "type": "file",
+      "size": 12009,
+      "mode": 33206,
+      "hash": "1e6aec465e7db623f4672e365dcbb4c46df0a8ea5467b6f4db0390387bbdd37b",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-FUNCIONAL-INVENTORYHUB-OPENMEMORY.md"
+    },
+    "AUDITORIA-MATRIZ-RECUPERACION-OPENMEMORY.md": {
+      "type": "file",
+      "size": 7927,
+      "mode": 33206,
+      "hash": "064d976b365b3defdf9d3bda01230f87c22d569675c71f5e981824c3eaa4e094",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-MATRIZ-RECUPERACION-OPENMEMORY.md"
+    },
+    "AUDITORIA-MCP-TOOL-EXPOSURE-OPENCODE-1.18.34.md": {
+      "type": "file",
+      "size": 6394,
+      "mode": 33206,
+      "hash": "ab9253b7e19d3689615f3f7ce61821cf46d66427b03982a6242940c6a2a9d459",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-MCP-TOOL-EXPOSURE-OPENCODE-1.18.34.md"
+    },
+    "AUDITORIA-PIPELINE-MCP-OPENCODE-1.18.34.md": {
+      "type": "file",
+      "size": 7041,
+      "mode": 33206,
+      "hash": "72cf8dc08c6a2ac299cc90080a212524b344265d57000718d022bd31280937cb",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-PIPELINE-MCP-OPENCODE-1.18.34.md"
+    },
+    "AUDITORIA-PIPELINE-TOOLS-MCP-FINAL-OPENCODE-1.18.34.md": {
+      "type": "file",
+      "size": 13537,
+      "mode": 33206,
+      "hash": "57a5a04b85a0bcb8cc86637f522638a0dfb767aafc4aaacb7b60c552351eb436",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\AUDITORIA-PIPELINE-TOOLS-MCP-FINAL-OPENCODE-1.18.34.md"
+    },
+    "index.js": {
+      "type": "file",
+      "size": 110,
+      "mode": 33206,
+      "hash": "371f40843f08bc67b87f9bce1a24ae01286aa3d512e2a014a2b2dc9b52e1604a",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\index.js"
+    },
+    "INFORME-FASE-2A-GOVERNANCE-GATE.md": {
+      "type": "file",
+      "size": 8804,
+      "mode": 33206,
+      "hash": "fe9a83a7e48eb54d8eed3b416b85269dfa43fde939c6e655af2163552dfbf46f",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\INFORME-FASE-2A-GOVERNANCE-GATE.md"
+    },
+    "opencode.json": {
+      "type": "file",
+      "size": 833,
+      "mode": 33206,
+      "hash": "f949b1e744f8552f5577648bc097fa223054a0657414b41ad0cfe74367a7797e",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\opencode.json"
+    },
+    "opencode.json.bak": {
+      "type": "file",
+      "size": 603,
+      "mode": 33206,
+      "hash": "23127a104241191947905afde02143369e79c7fad2c99c78cbb091b35f399c39",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\opencode.json.bak"
+    },
+    "opencode.json.bak.2": {
+      "type": "file",
+      "size": 603,
+      "mode": 33206,
+      "hash": "23127a104241191947905afde02143369e79c7fad2c99c78cbb091b35f399c39",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\opencode.json.bak.2"
+    },
+    "package/package.json": {
+      "type": "file",
+      "size": 7936,
+      "mode": 33206,
+      "hash": "5500f6998f0b32d436b578209c744767673ce57966bbd868372ee5388ab62a23",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\package\\package.json"
+    },
+    "package-lock.json": {
+      "type": "file",
+      "size": 42831,
+      "mode": 33206,
+      "hash": "a2fac1e4e4a4cca189a2db3dea32be326fef9c73d782ab0c3a0d2051dde62420",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\package-lock.json"
+    },
+    "package.json": {
+      "type": "file",
+      "size": 346,
+      "mode": 33206,
+      "hash": "2315d30c0db5be73c438c4c5955b0566e8436e928d9ec80f178b87cc0568de11",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\package.json"
+    },
+    "PLAN-EXPERIMENTO-USO-MEMORIA-INVENTORYHUB.md": {
+      "type": "file",
+      "size": 9968,
+      "mode": 33206,
+      "hash": "996ed29bdcbce9e0dfa94fc5b2280c7aac81465e5a42e9bbc2ed9f68381379e6",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\PLAN-EXPERIMENTO-USO-MEMORIA-INVENTORYHUB.md"
+    },
+    "src/database/Database.js": {
+      "type": "file",
+      "size": 1953,
+      "mode": 33206,
+      "hash": "f6decaedf7d16e52aad4876bce0a742c465b17cdc4e1d717264835d560c98725",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\src\\database\\Database.js"
+    },
+    "src/index.js": {
+      "type": "file",
+      "size": 6726,
+      "mode": 33206,
+      "hash": "ee86745b9cd19d93f795065529310e405f08b9ecfdfd368280a64145ca83d20b",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\src\\index.js"
+    },
+    "src/repository/InventoryRepository.js": {
+      "type": "file",
+      "size": 3470,
+      "mode": 33206,
+      "hash": "d08dc45ad122ccf2da216cd2a2bc2e7e4fbf67357bffaacaaec2c01dd8a57e90",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\src\\repository\\InventoryRepository.js"
+    },
+    "test_inventory_manager.js": {
+      "type": "file",
+      "size": 2002,
+      "mode": 33206,
+      "hash": "a3d7d016a7df369d6c4b83ef4263774859ce43f4b3c6741583cc79311253ec8b",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\test_inventory_manager.js"
+    },
+    "test_phase_2c2_full.js": {
+      "type": "file",
+      "size": 8050,
+      "mode": 33206,
+      "hash": "34f59756c4a56cbf259fc8359ef4cdbbd5523ed70bd5ed1d4356846615bb26bd",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\test_phase_2c2_full.js"
+    },
+    "test_phase_2c4_post_cleanup.mjs": {
+      "type": "file",
+      "size": 3451,
+      "mode": 33206,
+      "hash": "2bb4af80aac41ca323eb71098a84e5068b70553abf1280049764d18a40423e88",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\test_phase_2c4_post_cleanup.mjs"
+    },
+    "VALIDACION-FIX-MCP-OPENCODE-OPENMEMORY.md": {
+      "type": "file",
+      "size": 6092,
+      "mode": 33206,
+      "hash": "55fc7b41ecdf95dfabc279c5379ef97bc3837639044f9f75506545a1850e63e8",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\VALIDACION-FIX-MCP-OPENCODE-OPENMEMORY.md"
+    },
+    "VALIDATION-BASELINE-v0.3.1.md": {
+      "type": "file",
+      "size": 13129,
+      "mode": 33206,
+      "hash": "87b9e6e212eb3029bf48f98aec406d15c91caeca7a47f6375eb2f42ebc18ce1d",
+      "fullPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\InventoryHub\\VALIDATION-BASELINE-v0.3.1.md"
+    }
+  },
+  "packageJson": {
+    "name": "inventoryhub",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "type": "module",
+    "dependencies": {
+      "openmemory": "file:scratch/exp2_10/fase4_5/dist/openmemory-0.3.1.tgz"
+    }
+  },
+  "installedVersion": "0.3.1"
+}
