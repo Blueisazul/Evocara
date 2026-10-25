@@ -1,0 +1,123 @@
+{
+  "milestone": "G35",
+  "title": "Evocara v0.4.0 GA Release Certification and Publication Readiness",
+  "timestamp": "2026-10-25T14:58:00.000Z",
+  "status": "PREPARED_AWAITING_AUTHORIZATION",
+  "repository": {
+    "canonicalLocalPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\OpenMemory",
+    "remoteUrl": "https://github.com/Blueisazul/Evocara.git",
+    "branch": "master",
+    "headCommit": "1c18986cdb25ea1af0f1f336e1bfefb174abb52a",
+    "remoteHeadCommit": "1c18986cdb25ea1af0f1f336e1bfefb174abb52a",
+    "syncStatus": "UP_TO_DATE (ahead 0, behind 0)"
+  },
+  "artifacts": {
+    "tarball": {
+      "path": ".work/artifacts/evocara-0.4.0.tgz",
+      "sizeBytes": 209910,
+      "sha256": "70f31da7e822bfa8ece60395212e009cac9d39761d02af0325d6c3ee3b8a730a",
+      "filesContained": 76,
+      "integrityVerified": true
+    },
+    "sbom": {
+      "path": ".work/artifacts/evocara-0.4.0.cdx.json",
+      "sizeBytes": 41973,
+      "sha256": "6621e53a415cc7406c02bfcbf55a769c19e5591c338656baa876e23fe23bb0dc",
+      "format": "CycloneDX 1.5 JSON",
+      "integrityVerified": true
+    },
+    "provenanceManifest": {
+      "path": ".work/artifacts/evocara-0.4.0-manifest.json",
+      "sizeBytes": 3074,
+      "sha256": "5edeb88fd07cffa85c803fe1bd347205c019a91c6dbdca83d0e8859d76ed5108",
+      "schemaVersion": "1.5.0",
+      "slsaBuildLevel": "SLSA_BUILD_LEVEL_1_CANDIDATE",
+      "integrityVerified": true
+    }
+  },
+  "packageMetadata": {
+    "name": "evocara",
+    "version": "0.4.0",
+    "license": "MIT",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "bin": {
+      "evocara": "./dist/cli.js",
+      "openmemory": "./dist/cli.js"
+    },
+    "exportsCount": 9,
+    "mainExportSymbolsCount": 45
+  },
+  "validationResults": {
+    "preflight": {
+      "workingTreeClean": true,
+      "untrackedFilesAudited": true,
+      "secretsFound": 0,
+      "historicalBackupDownloadsPreserved": true
+    },
+    "build": {
+      "command": "npm run build (tsc)",
+      "exitCode": 0,
+      "passed": true
+    },
+    "tarballContractValidation": {
+      "script": ".work/experiments/test-g33-artifact-contract-validation.js",
+      "exitCode": 0,
+      "passed": true,
+      "checks": [
+        "Tarball size & SHA-256 match expected",
+        "SBOM size & SHA-256 match expected",
+        "Package extracted to tmp directory",
+        "CLI binaries (evocara & openmemory) executed cleanly",
+        "45 main exports present",
+        "StorageEngine, StageEngine, Installer, MCP validated",
+        "ADR governance & consensus voting validated",
+        "BM25 query retrieval validated"
+      ]
+    },
+    "isolatedInstallSmokeTest": {
+      "script": ".work/experiments/test-g35-isolated-install.js",
+      "exitCode": 0,
+      "passed": true,
+      "checks": [
+        "npm install from tarball in fresh sandbox succeeded",
+        "Installed package verified as evocara@0.4.0",
+        "CLI dist/cli.js --help executed cleanly",
+        "Subpath imports (evocara, evocara/storage, evocara/mcp) succeeded"
+      ]
+    },
+    "consumerValidation": {
+      "consumer": "InventoryHub",
+      "dependency": "file:../OpenMemory/.work/artifacts/evocara-0.4.0.tgz",
+      "passed": true,
+      "suites": [
+        {
+          "name": "test_phase_2c4_post_cleanup.mjs",
+          "checksPassed": "10/10",
+          "legacyJsonAbsent": true
+        },
+        {
+          "name": "test_phase_2c2_full.js",
+          "checksPassed": "24/24"
+        }
+      ]
+    }
+  },
+  "publicationStatus": {
+    "npmRegistry": {
+      "packageName": "evocara",
+      "currentRegistryStatus": "404 Not Found (Available for initial registration)",
+      "localAuthStatus": "ENEEDAUTH (No local npm login/token detected)",
+      "published": false,
+      "blockers": ["Awaiting human owner authorization", "Authentication credentials required"]
+    },
+    "gitHubRelease": {
+      "repoUrl": "https://github.com/Blueisazul/Evocara",
+      "targetCommit": "1c18986cdb25ea1af0f1f336e1bfefb174abb52a",
+      "existingTags": ["v0.3.0", "v0.3.1"],
+      "proposedTag": "v0.4.0",
+      "releaseCreated": false,
+      "blockers": ["Awaiting human owner authorization"]
+    }
+  }
+}

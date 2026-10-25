@@ -30,6 +30,7 @@
 | **G32** | **Continuidad Inter-Sesión y Utilidad Práctica en Consumidor Real** | **APROBADO (100 %)** | **Evaluación empírica ON vs OFF en InventoryHub implementada y certificada**. 7 escenarios representativos evaluados en sandbox aislado: 7/7 PASS (100.0 %) en Condición ON frente a 1/7 PASS (14.3 %) en Condición OFF. Exactitud de decisiones: +77.1 pp a favor de Evocara. Ahorro de contexto: -88.6 % tokens requeridos. Prevención demostrada de fallo en pruebas de negocio (evitó resurrección de JSON legado que rompe Phase 2C.4). Cero mutaciones en proyecto real. Suite `.work/experiments/test-g32-continuity-benchmark.js`, evidencia estructurada `docs/G32_TECHNICAL_REPORT.md` y `.work/evidence/g32-continuity-benchmark-results.json`. |
 | **G33** | **Promoción Controlada de v0.4.0 GA, Integración Local y Cierre de Continuidad** | **APROBADO (100 %)** | **Promoción formal de InventoryHub a `evocara@0.4.0` ejecutada y validada (34/34 pruebas PASS, cero regresiones)**. Integración local de `feat/g31-g32-continuity` en `master` con compilación limpia (`tsc`) y suites de regresión aprobadas al 100 %. Calificación previa en staging (34/34 tests) y reversibilidad total demostrada (rollback drill con 34/34 tests). Respaldo atómico en `InventoryHub/backups/backup_g33_promo_*/`. Remoto GitHub protegido (sin push). Informes `docs/G33_TECHNICAL_REPORT.md` y `docs/G33_CONTINUITY_HANDOFF.md`. |
 | **G34** | **Reconciliación Git con GitHub y Sincronización Remota de v0.4.0 GA** | **APROBADO (100 %)** | **Reconciliación Git no destructiva ejecutada exitosamente (-s ours)**. `origin/master` (OpenMemory v0.3.1) incorporado como ancestro legítimo preservando el 100% del código canónico de Evocara v0.4.0 GA. Push autorizado por el usuario y sincronizado a `https://github.com/Blueisazul/Evocara.git`. Compilación limpia (`tsc`), 34/34 pruebas de InventoryHub aprobadas y hashes de release certificados. Informes `docs/G34_TECHNICAL_REPORT.md` y `docs/G34_CONTINUITY_HANDOFF.md`. |
+| **G35** | **Release Formal de Evocara v0.4.0 GA (npm y GitHub Release)** | **PREPARADO / BLOQUEADO POR AUTORIZACIÓN** | **Certificación de release y cadena de suministro completada al 100 %**. Paridad total local-remoto en commit `1c18986`. Hashes SHA-256 de tarball (`70f31da...`), SBOM (`6621e53...`) y manifiesto SLSA v1.0 (`5edeb88...`) validados bit-a-bit. Smoke test de instalación aislada en sandbox (`test-g35-isolated-install.js`) 100 % PASS. 34/34 pruebas en consumidor InventoryHub aprobadas con `inventory-data.json` ausente. npm auditado (nombre `evocara` disponible, auth pendiente). Notas de release y assets listos. Publicación externa detenida a la espera de autorización humana explícita. Informes `docs/G35_TECHNICAL_REPORT.md` y `docs/G35_CONTINUITY_HANDOFF.md`. |
 
 ---
 
@@ -82,7 +83,7 @@
 
 ---
 
-## 2.4. Detalle de Logros y Preparación del Hito G34
+## 2.4. Detalle de Logros del Hito G34
 
 | Bloque | Objetivo G34 | Estado | Evidencia y Métricas |
 |---|---|---|---|
@@ -94,7 +95,19 @@
 
 ---
 
-## 3. Matriz de Seguimiento y Estado Real del Proyecto (Hito G34)
+## 2.5. Detalle de Logros y Preparación del Hito G35
+
+| Bloque | Objetivo G35 | Estado | Evidencia y Métricas |
+|---|---|---|---|
+| **Bloque A** | Preflight Mínimo y Verificación del Estado Real | **APROBADO (100 %)** | Paridad total confirmada entre `master` local y `origin/master` remoto en commit `1c18986` (ahead 0, behind 0). Inmutabilidad criptográfica certificada: tarball GA (`70f31da...`), SBOM CycloneDX (`6621e53...`) y manifiesto SLSA v1.0 (`5edeb88...`) coinciden bit-a-bit. Copia histórica de Downloads con 9,528 archivos preservada. |
+| **Bloque B** | Certificación Reproducible del Paquete | **APROBADO (100 %)** | Comparación exhaustiva contra `npm pack --dry-run`: 76/76 archivos exactos en tarball (0 sobrantes, 0 faltantes). Cero fugas de credenciales, secretos, tests o bases de datos locales. Binarios duales CLI (`evocara`, `openmemory`), 9 subpath exports y 45 exportaciones principales verificadas. Smoke test en sandbox aislado (`test-g35-isolated-install.js`) ejecutado con éxito al 100 %. |
+| **Bloque C** | Regresión Proporcional al Riesgo | **APROBADO (100 %)** | Compilación `npm run build` limpia (exit code 0). Validación de contratos (`test-g33-artifact-contract-validation.js`) aprobada. Consumidor InventoryHub ejecutado en vivo: 34/34 pruebas de negocio aprobadas (10/10 en Phase 2C.4 y 24/24 en Phase 2C.2) con `inventory-data.json` estrictamente ausente. |
+| **Bloque D** | Preparación de Publicación sin Efectos Externos | **APROBADO (100 %)** | Consulta al registro público de npm confirma que `evocara` está libre (404 Not Found). Auditoría de autenticación detecta `ENEEDAUTH` (sin sesión activa local). Borrador completo de notas de release v0.4.0 GA, procedimiento de etiquetado Git y manifiesto de assets estructurado en `.work/evidence/g35-release-validation-results.json`. |
+| **Bloque E** | Autorización y Cierre Controlado | **DETENIDO / BLOQUEADO** | Publicación externa en npm (`npm publish`) y creación de GitHub Release detenidas en estricto cumplimiento del protocolo de seguridad hasta autorización humana explícita y provisión de credenciales de autenticación. |
+
+---
+
+## 3. Matriz de Seguimiento y Estado Real del Proyecto (Hito G35)
 
 | Hito | Estado verificado | Evidencia | Pendientes | Siguiente acción |
 |---|---|---|---|---|
@@ -104,8 +117,8 @@
 | **G31** | **Completado al 100 %**. Linaje causal de decisiones, detección de contradicciones temporales y síntesis contextual MCP. | Informes `docs/G31_TECHNICAL_REPORT.md`, `docs/G31_EXECUTION_REPORT.md`, evidencia `docs/G31_TEST_EVIDENCE.json`, suite `test-g31-lineage-and-contradictions-suite.js` (18/18 PASS). | Ninguno para este hito. | Línea base para G32. |
 | **G32** | **Completado al 100 %**. Benchmark de continuidad entre sesiones y utilidad demostrada en InventoryHub. | Suite `test-g32-continuity-benchmark.js` (7/7 PASS ON vs 1/7 OFF), evidencia `g32-continuity-benchmark-results.json`, informe `docs/G32_TECHNICAL_REPORT.md`. | Ninguno para este hito. | Hito G33 completado con éxito. |
 | **G33** | **Completado al 100 %**. Promoción local controlada a Evocara v0.4.0 GA en InventoryHub e integración local en master. | Informes `docs/G33_TECHNICAL_REPORT.md`, `docs/G33_CONTINUITY_HANDOFF.md`, evidencia `g33-staging-promotion-results.json`, `g33-inventoryhub-promotion-results.json`, 34/34 tests aprobados. | Ninguno para este hito. | Línea base consolidada para G34. |
-| **G34** | **Completado al 100 %**. Reconciliación Git con GitHub ejecutada con éxito (`-s ours`, commit `461e356`); push autorizado por el usuario y sincronizado a `origin/master`. | Informes `docs/G34_TECHNICAL_REPORT.md`, `docs/G34_CONTINUITY_HANDOFF.md`, simulación `test-g34-reconcile-simulation.js`. | Ninguno para este hito. | Proceder a Hito G35 para publicación y release tag. |
-| **Siguiente hito funcional (G35)** | **Planificado**. Publicación Oficial de Evocara v0.4.0 GA en Registro Externo y GitHub Release. | Artefacto `.work/artifacts/evocara-0.4.0.tgz` y SBOM. | Aprobación de release y credenciales de publicación. | Ejecutar publicación tras sincronización remota completada. |
+| **G34** | **Completado al 100 %**. Reconciliación Git con GitHub ejecutada con éxito (`-s ours`, commit `461e356`); push autorizado por el usuario y sincronizado a `origin/master`. | Informes `docs/G34_TECHNICAL_REPORT.md`, `docs/G34_CONTINUITY_HANDOFF.md`, simulación `test-g34-reconcile-simulation.js`. | Ninguno para este hito. | Línea base consolidada para G35. |
+| **G35** | **Preparado / Bloqueado por Autorización**. Paquete certificado al 100%, paridad Git verificada, smoke tests en sandbox aprobados, consumidor InventoryHub pasando (34/34). Publicación externa detenida por protocolo de seguridad. | Informes `docs/G35_TECHNICAL_REPORT.md`, `docs/G35_CONTINUITY_HANDOFF.md`, evidencia `.work/evidence/g35-release-validation-results.json`. | Autorización explícita del propietario y provisión de credenciales/token npm. | Solicitar autorización humana para `npm publish` y GitHub Release. |
 
 ---
 
@@ -129,5 +142,5 @@
 16. [x] **Benchmark de continuidad inter-sesión y utilidad demostrada en consumidor real certificados (Hito G32 completado al 100 %).**
 17. [x] **Promoción en entorno de desarrollo local formalizada en `InventoryHub` bajo `evocara@0.4.0` con 34/34 pruebas aprobadas (Hito G33).**
 18. [x] **Sincronización controlada y push al repositorio remoto GitHub (Reconciliación Git ejecutada con `-s ours`, autorizada por el usuario y sincronizada a `origin/master` - Hito G34).**
-19. [ ] **Publicación formal en registro npm y GitHub Release v0.4.0 GA (Pendiente - Hito G35).**
+19. [ ] **Publicación formal en registro npm y GitHub Release v0.4.0 GA (Preparado al 100%, detenido a la espera de autorización humana y credenciales de publicación - Hito G35).**
 
