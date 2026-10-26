@@ -1,0 +1,70 @@
+{
+  "milestone": "G36",
+  "title": "Evocara v0.4.0 GA Final Closure and Adoption Validation Preflight",
+  "timestamp": "2026-10-25T20:31:00.000Z",
+  "status": "G35_PARTIALLY_COMPLETED_G36_BLOCKED_BY_DEPENDENCY",
+  "repository": {
+    "canonicalLocalPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\OpenMemory",
+    "remoteUrl": "https://github.com/Blueisazul/Evocara.git",
+    "branch": "master",
+    "headCommit": "799597c0418ec74cc4b3d4793e3cb04e4cccb927",
+    "remoteHeadCommit": "799597c0418ec74cc4b3d4793e3cb04e4cccb927",
+    "syncStatus": "UP_TO_DATE (ahead 0, behind 0)"
+  },
+  "gitTagStatus": {
+    "tagName": "v0.4.0",
+    "targetCommit": "be36171d7ba3f3b683953fbc593e6e0658fc28f5",
+    "remoteVerified": true,
+    "remoteUrl": "https://github.com/Blueisazul/Evocara/tree/v0.4.0",
+    "githubApiRef": "refs/tags/v0.4.0"
+  },
+  "protectedArtifacts": {
+    "tarball": {
+      "path": ".work/artifacts/evocara-0.4.0.tgz",
+      "sizeBytes": 209910,
+      "sha256": "70f31da7e822bfa8ece60395212e009cac9d39761d02af0325d6c3ee3b8a730a",
+      "integrityVerified": true
+    },
+    "sbom": {
+      "path": ".work/artifacts/evocara-0.4.0.cdx.json",
+      "sizeBytes": 41973,
+      "sha256": "6621e53a415cc7406c02bfcbf55a769c19e5591c338656baa876e23fe23bb0dc",
+      "integrityVerified": true
+    },
+    "manifest": {
+      "path": ".work/artifacts/evocara-0.4.0-manifest.json",
+      "sizeBytes": 3074,
+      "sha256": "5edeb88fd07cffa85c803fe1bd347205c019a91c6dbdca83d0e8859d76ed5108",
+      "integrityVerified": true
+    }
+  },
+  "externalRegistriesStatus": {
+    "npmRegistry": {
+      "packageName": "evocara",
+      "version": "0.4.0",
+      "status": "404 Not Found (Unpublished)",
+      "isPublished": false,
+      "localAuthStatus": "ENEEDAUTH",
+      "blocker": "Requires manual 'npm publish .work/artifacts/evocara-0.4.0.tgz --access public' by owner in authenticated terminal."
+    },
+    "gitHubReleases": {
+      "repoUrl": "https://github.com/Blueisazul/Evocara",
+      "releaseTag": "v0.4.0",
+      "status": "No release created (empty list)",
+      "isPublished": false,
+      "blocker": "Requires owner to create release at https://github.com/Blueisazul/Evocara/releases/new and attach the 3 certified artifacts."
+    }
+  },
+  "consumerIntegrity": {
+    "consumer": "InventoryHub",
+    "dependency": "evocara: file:../OpenMemory/.work/artifacts/evocara-0.4.0.tgz",
+    "testsPassed": "34/34 (100%)",
+    "legacyJsonAbsent": true,
+    "status": "HEALTHY_AND_VERIFIED"
+  },
+  "g36AdoptionValidationStatus": {
+    "cleanRegistryInstall": "BLOCKED (evocara@0.4.0 not yet available on registry.npmjs.org)",
+    "localTarballValidation": "COMPLETED (Verified in G35 via test-g35-isolated-install.js, 100% PASS)",
+    "nextAction": "Owner must complete manual npm publish and GitHub Release attachment, then G36 registry installation will be executed."
+  }
+}

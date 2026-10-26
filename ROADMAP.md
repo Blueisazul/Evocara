@@ -31,6 +31,7 @@
 | **G33** | **Promoción Controlada de v0.4.0 GA, Integración Local y Cierre de Continuidad** | **APROBADO (100 %)** | **Promoción formal de InventoryHub a `evocara@0.4.0` ejecutada y validada (34/34 pruebas PASS, cero regresiones)**. Integración local de `feat/g31-g32-continuity` en `master` con compilación limpia (`tsc`) y suites de regresión aprobadas al 100 %. Calificación previa en staging (34/34 tests) y reversibilidad total demostrada (rollback drill con 34/34 tests). Respaldo atómico en `InventoryHub/backups/backup_g33_promo_*/`. Remoto GitHub protegido (sin push). Informes `docs/G33_TECHNICAL_REPORT.md` y `docs/G33_CONTINUITY_HANDOFF.md`. |
 | **G34** | **Reconciliación Git con GitHub y Sincronización Remota de v0.4.0 GA** | **APROBADO (100 %)** | **Reconciliación Git no destructiva ejecutada exitosamente (-s ours)**. `origin/master` (OpenMemory v0.3.1) incorporado como ancestro legítimo preservando el 100% del código canónico de Evocara v0.4.0 GA. Push autorizado por el usuario y sincronizado a `https://github.com/Blueisazul/Evocara.git`. Compilación limpia (`tsc`), 34/34 pruebas de InventoryHub aprobadas y hashes de release certificados. Informes `docs/G34_TECHNICAL_REPORT.md` y `docs/G34_CONTINUITY_HANDOFF.md`. |
 | **G35** | **Release Formal de Evocara v0.4.0 GA (npm y GitHub Release)** | **TAG v0.4.0 PUBLICADO EN GITHUB** | **Certificación de release y tag oficial completados**. Paridad total local-remoto en commit `be36171`. Hashes SHA-256 de tarball (`70f31da...`), SBOM (`6621e53...`) y manifiesto SLSA v1.0 (`5edeb88...`) validados bit-a-bit. Smoke test de instalación aislada en sandbox (`test-g35-isolated-install.js`) 100 % PASS. 34/34 pruebas en consumidor InventoryHub aprobadas con `inventory-data.json` ausente. Tag `v0.4.0` creado y publicado en GitHub por autorización explícita. Publicación en npm y adjunto de assets en GitHub Release pendientes de ejecución manual por el propietario con sus credenciales personales. Informes `docs/G35_TECHNICAL_REPORT.md` y `docs/G35_CONTINUITY_HANDOFF.md`. |
+| **G36** | **Validación de Adopción Pública y Continuidad Operativa** | **BLOQUEADO POR DEPENDENCIA** | **Preflight completado y verificado**. Tag `v0.4.0` confirmado en GitHub. Validación de instalación limpia desde `registry.npmjs.org` en consumidor temporal aislada y en espera de `npm publish` manual por el propietario. InventoryHub verificado en vivo con 34/34 pruebas aprobadas (`inventory-data.json` ausente). Informes `docs/G36_PUBLIC_ADOPTION_REPORT.md` y `docs/G36_CONTINUITY_HANDOFF.md`. |
 
 ---
 
@@ -107,7 +108,17 @@
 
 ---
 
-## 3. Matriz de Seguimiento y Estado Real del Proyecto (Hito G35)
+## 2.6. Detalle del Hito G36 (Validación de Adopción Pública)
+
+| Bloque | Objetivo G36 | Estado | Evidencia y Métricas |
+|---|---|---|---|
+| **Bloque A** | Preflight del Registro y Disponibilidad Pública | **APROBADO (Preflight) / BLOQUEADO POR REGISTRO** | Preflight completado. `origin/master` sincronizado en commit `799597c` y tag `v0.4.0` verificado en GitHub. Registro npm consultado: `evocara@0.4.0` arrojó `404 Not Found` (no publicado aún). GitHub Releases: sin release formalizada todavía. |
+| **Bloque B** | Instalación Limpia desde el Registro npm | **DETENIDO / BLOQUEADO POR DEPENDENCIA** | Prohibida la simulación de adopción desde registro con artefactos locales. Ejecución detenida hasta que el propietario realice `npm publish .work/artifacts/evocara-0.4.0.tgz --access public` en su terminal autenticada. |
+| **Bloque C** | Verificación del Consumidor Real y Rollback | **APROBADO (100 %)** | `InventoryHub` verificado en vivo con 34/34 pruebas de negocio aprobadas (10/10 en Phase 2C.4 y 24/24 en Phase 2C.2) con `inventory-data.json` estrictamente ausente. Copia histórica de Downloads con 9,528 archivos preservada. |
+
+---
+
+## 3. Matriz de Seguimiento y Estado Real del Proyecto (Hitos G35 / G36)
 
 | Hito | Estado verificado | Evidencia | Pendientes | Siguiente acción |
 |---|---|---|---|---|
@@ -119,6 +130,7 @@
 | **G33** | **Completado al 100 %**. Promoción local controlada a Evocara v0.4.0 GA en InventoryHub e integración local en master. | Informes `docs/G33_TECHNICAL_REPORT.md`, `docs/G33_CONTINUITY_HANDOFF.md`, evidencia `g33-staging-promotion-results.json`, `g33-inventoryhub-promotion-results.json`, 34/34 tests aprobados. | Ninguno para este hito. | Línea base consolidada para G34. |
 | **G34** | **Completado al 100 %**. Reconciliación Git con GitHub ejecutada con éxito (`-s ours`, commit `461e356`); push autorizado por el usuario y sincronizado a `origin/master`. | Informes `docs/G34_TECHNICAL_REPORT.md`, `docs/G34_CONTINUITY_HANDOFF.md`, simulación `test-g34-reconcile-simulation.js`. | Ninguno para este hito. | Línea base consolidada para G35. |
 | **G35** | **Tag v0.4.0 Publicado en GitHub**. Certificación de release completada al 100 %, master sincronizado y Tag `v0.4.0` enviado a GitHub (`https://github.com/Blueisazul/Evocara/tree/v0.4.0`). Publicación en registro npm y adjunto de assets en GitHub Release listos para ejecución manual del propietario con sus credenciales personales. | Informes `docs/G35_TECHNICAL_REPORT.md`, `docs/G35_CONTINUITY_HANDOFF.md`, evidencia `.work/evidence/g35-release-validation-results.json`, API de GitHub (`refs/tags/v0.4.0`). | Publicación manual en npm (`npm publish`) y adjunto de archivos en release web por el propietario. | Ejecución manual del runbook por el propietario con sus credenciales. |
+| **G36** | **Bloqueado por Dependencia**. Tag `v0.4.0` publicado en GitHub; validación de instalación desde registro público en espera de publicación manual en npm por el propietario. | Informes `docs/G36_PUBLIC_ADOPTION_REPORT.md`, `docs/G36_CONTINUITY_HANDOFF.md`, evidencia `.work/evidence/g36-adoption-validation-results.json`. | Publicación manual en npm por el propietario. | Ejecutar suite de adopción desde npm una vez publicado. |
 
 ---
 
@@ -143,4 +155,5 @@
 17. [x] **Promoción en entorno de desarrollo local formalizada en `InventoryHub` bajo `evocara@0.4.0` con 34/34 pruebas aprobadas (Hito G33).**
 18. [x] **Sincronización controlada y push al repositorio remoto GitHub (Reconciliación Git ejecutada con `-s ours`, autorizada por el usuario y sincronizada a `origin/master` - Hito G34).**
 19. [x] **Publicación de Tag Oficial Git `v0.4.0` en GitHub y preparación de Release General (Tag `v0.4.0` publicado en `https://github.com/Blueisazul/Evocara/tree/v0.4.0`; npm y assets listos para ejecución manual del propietario - Hito G35).**
+20. [ ] **Validación de Adopción Limpia desde Registro npm en Consumidor Temporal (Bloqueado por dependencia hasta disponibilidad pública de evocara@0.4.0 en npm - Hito G36).**
 
