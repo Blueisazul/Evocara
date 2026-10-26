@@ -3,8 +3,8 @@
 
 - **Fecha:** 25 de octubre de 2026
 - **Autor / Rol:** Antigravity (Senior Software Architect & Release Manager)
-- **Hito Actual:** G35 PREPARADO — BLOQUEADO POR AUTORIZACIÓN EXTERNA Y AUTENTICACIÓN
-- **Próximo Paso:** Obtener autorización explícita y credenciales de autenticación para publicación externa en npm y GitHub Releases.
+- **Hito Actual:** G35 TAG v0.4.0 PUBLICADO EN GITHUB — PENDIENTE PUBLICACIÓN MANUAL EN npm Y RELEASE EN GITHUB
+- **Próximo Paso:** El propietario ejecutará `npm publish` y la formalización de la GitHub Release con sus credenciales personales.
 
 ---
 
@@ -12,9 +12,10 @@
 
 - **Repositorio Canónico Local:** `C:\Users\sant1\OneDrive\Documentos\ChatGPT\OpenMemory\OpenMemory`
 - **Rama Local:** `master`
-- **HEAD Local:** `1c18986cdb25ea1af0f1f336e1bfefb174abb52a`
+- **HEAD Local:** `be36171d7ba3f3b683953fbc593e6e0658fc28f5`
 - **Remoto Canónico:** `https://github.com/Blueisazul/Evocara.git`
-- **HEAD Remoto:** `1c18986cdb25ea1af0f1f336e1bfefb174abb52a` (`origin/master` en paridad exacta)
+- **HEAD Remoto:** `be36171d7ba3f3b683953fbc593e6e0658fc28f5` (`origin/master` sincronizado)
+- **Tag Oficial de Release:** `v0.4.0` publicado en GitHub (`https://github.com/Blueisazul/Evocara/tree/v0.4.0`)
 - **Copia Histórica Protegida:** `C:\Users\sant1\Downloads\OpenMemory` (9,528 archivos intactos)
 - **Consumidor Real InventoryHub:** `C:\Users\sant1\OneDrive\Documentos\ChatGPT\OpenMemory\InventoryHub`
   - Dependencia: `evocara@0.4.0` (vía tarball local)
@@ -45,46 +46,44 @@ Los artefactos están congelados y verificados bit-a-bit:
 
 - **Preparación de Release:** **COMPLETADA AL 100 %**.
 - **Smoke Tests en Sandbox:** **100 % APROBADOS** (`test-g35-isolated-install.js`).
+- **Tag Git Oficial:** `v0.4.0` creado y enviado con éxito a `https://github.com/Blueisazul/Evocara.git`.
 - **npm Registry:**
   - Nombre `evocara` libre (404 Not Found en registry).
   - Autenticación: `ENEEDAUTH` (No autenticado localmente).
-  - Publicación npm: **DETENIDA (Pendiente de autorización y credenciales)**.
+  - Publicación npm: **PENDIENTE DE EJECUCIÓN MANUAL POR EL PROPIETARIO**.
 - **GitHub Release:**
-  - Repositorio: `Blueisazul/Evocara`.
-  - Tags existentes: `v0.3.0`, `v0.3.1`.
-  - Tag propuesto: `v0.4.0`.
-  - Creación de Tag y Release: **DETENIDA (Pendiente de autorización)**.
+  - Tag existente en remoto: `v0.4.0`.
+  - Creación de Release y adjuntos: **PENDIENTE DE FORMALIZACIÓN MANUAL POR EL PROPIETARIO**.
 
 ---
 
-## 4. Procedimiento de Ejecución una vez Autorizado
+## 4. Runbook de Publicación Manual para el Propietario
 
-Una vez que el usuario otorgue autorización expresa y proporcione el método de autenticación:
+Conforme a la opción autorizada explícitamente por el propietario, las acciones pendientes a realizar manualmente con credenciales personales son:
 
 ```bash
-# 1. Autenticar en npm (interactivo o vía NPM_TOKEN)
+# 1. En una terminal personal, iniciar sesión en npm:
 npm login
-# O configurar NPM_TOKEN en .npmrc o entorno
 
-# 2. Publicar exactamente el tarball protegido verificado
+# 2. Publicar el paquete congelado verificado:
 npm publish .work/artifacts/evocara-0.4.0.tgz --access public
 
-# 3. Crear y subir el tag formal de release a GitHub
-git tag -a v0.4.0 -m "release: Evocara v0.4.0 GA"
-git push origin v0.4.0
-
-# 4. Crear la GitHub Release adjuntando los artefactos protegidos:
-# - evocara-0.4.0.tgz
-# - evocara-0.4.0.cdx.json
-# - evocara-0.4.0-manifest.json
+# 3. Crear la GitHub Release en:
+# https://github.com/Blueisazul/Evocara/releases/new
+# - Tag: v0.4.0 (ya existente en remoto)
+# - Título: Evocara v0.4.0 GA — Deterministic Operational Memory & Stage Governance
+# - Descripción: Copiar las notas de release de docs/G35_TECHNICAL_REPORT.md (Sección 6)
+# - Adjuntar los 3 archivos:
+#     * .work/artifacts/evocara-0.4.0.tgz
+#     * .work/artifacts/evocara-0.4.0.cdx.json
+#     * .work/artifacts/evocara-0.4.0-manifest.json
 ```
 
 ---
 
-## 5. Operaciones Estrictamente Prohibidas en este Estado
+## 5. Operaciones Estrictamente Prohibidas
 
-- **PROHIBIDO** ejecutar `npm publish` sin autorización y credenciales válidas.
-- **PROHIBIDO** crear o hacer push de tags a GitHub sin autorización.
 - **PROHIBIDO** alterar o regenerar el tarball o el SBOM protegidos.
 - **PROHIBIDO** recrear el archivo `inventory-data.json` en InventoryHub.
 - **PROHIBIDO** publicar tokens, contraseñas o claves en archivos de documentación o commits.
+- **PROHIBIDO** forzar (`--force`) pushes sobre master o tags existentes.

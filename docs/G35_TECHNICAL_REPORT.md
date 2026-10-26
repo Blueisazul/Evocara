@@ -1,29 +1,30 @@
 # INFORME TÉCNICO DE EJECUCIÓN — HITO G35
-## Certificación de Release y Preparación de Publicación Formal de Evocara v0.4.0 GA
+## Certificación de Release y Publicación Oficial de Evocara v0.4.0 GA
 
 - **Fecha:** 25 de octubre de 2026
 - **Responsable:** Senior Software Architect, Release Engineering & Supply Chain Assurance
-- **Estado del Hito:** PREPARADO — BLOQUEADO POR AUTORIZACIÓN EXTERNA Y CREDENCIALES
+- **Estado del Hito:** TAG v0.4.0 PUBLICADO EN GITHUB / PENDIENTE PUBLICACIÓN MANUAL EN npm Y ASSETS DE RELEASE
 - **Repositorio Canónico Local:** `C:\Users\sant1\OneDrive\Documentos\ChatGPT\OpenMemory\OpenMemory`
-- **Rama Canónica:** `master` (HEAD: `1c18986cdb25ea1af0f1f336e1bfefb174abb52a`)
+- **Rama Canónica:** `master` (HEAD: `be36171d7ba3f3b683953fbc593e6e0658fc28f5`)
 - **Repositorio Remoto:** `https://github.com/Blueisazul/Evocara.git`
-- **Estado de Sincronización Remota:** 100 % sincronizado (ahead 0, behind 0; HEAD remoto coincide con `1c18986`)
+- **Estado de Sincronización Remota:** 100 % sincronizado (ahead 0, behind 0; HEAD remoto coincide con `be36171`)
+- **Tag Oficial de Release:** `v0.4.0` (creado y publicado en GitHub, apuntando a `be36171`)
 - **Versión Objetivo:** `evocara@0.4.0`
 
 ---
 
 ## 1. Resumen Ejecutivo
 
-El Hito G35 constituye la etapa de ingeniería de release, aseguramiento de la cadena de suministro y preparación de la publicación formal de **Evocara v0.4.0 GA** (sucesor oficial y clean-room de OpenMemory).
+El Hito G35 constituye la etapa de ingeniería de release, aseguramiento de la cadena de suministro y publicación formal de **Evocara v0.4.0 GA** (sucesor oficial y clean-room de OpenMemory).
 
 Durante esta fase:
-1. Se verificó el preflight mínimo del repositorio local y remoto, confirmando paridad total entre `master` y `origin/master` en el commit `1c18986`.
+1. Se verificó el preflight mínimo del repositorio local y remoto, confirmando paridad total entre `master` y `origin/master`.
 2. Se certificó la inmutabilidad y los hashes criptográficos SHA-256 del tarball GA (`evocara-0.4.0.tgz`), SBOM CycloneDX (`evocara-0.4.0.cdx.json`) y el Manifiesto de Procedencia SLSA v1.0 (`evocara-0.4.0-manifest.json`).
 3. Se auditó el contenido del paquete (76 archivos de distribución exactos; cero archivos `.env`, cero claves privadas, cero datos sensibles o de desarrollo interno).
 4. Se ejecutó una validación en sandbox aislado instalando el tarball en un workspace limpio temporal (`test-g35-isolated-install.js`), certificando la ejecución limpia de los binarios CLI (`evocara` y `openmemory`), las 45 exportaciones del paquete y los adaptadores MCP.
 5. Se comprobó la integridad del consumidor de desarrollo `InventoryHub`, aprobando el 100 % de las pruebas de negocio (34/34 tests) con preservación absoluta de la ausencia del JSON legado (`inventory-data.json`).
-6. Se consultó el estado del registro público de npm para el paquete `evocara` (arrojando código 404, nombre disponible para registro inicial) y se auditó el entorno local de autenticación (`npm whoami` arrojó `ENEEDAUTH`).
-7. Se prepararon las notas de release formales, la especificación de tags Git y el procedimiento de publicación, deteniendo toda operación externa en cumplimiento estricto del protocolo de autorización.
+6. Se presentó la solicitud formal de autorización al propietario para las operaciones externas. El propietario autorizó expresamente la sincronización de `master` y el envío del tag Git `v0.4.0` a GitHub, acordando realizar el `npm publish` y el adjunto de artefactos en la GitHub Release manualmente en su terminal/navegador con sus credenciales personales.
+7. Se ejecutó `git tag -a v0.4.0` y `git push origin master v0.4.0`, verificándose remotamente vía Git y API de GitHub.
 
 ---
 
@@ -32,10 +33,10 @@ Durante esta fase:
 ### 2.1. Estado de Git y Grafo de Commits
 - **Ruta:** `C:\Users\sant1\OneDrive\Documentos\ChatGPT\OpenMemory\OpenMemory`
 - **Rama Local:** `master`
-- **HEAD Local:** `1c18986cdb25ea1af0f1f336e1bfefb174abb52a`
-- **HEAD Remoto (`origin/master`):** `1c18986cdb25ea1af0f1f336e1bfefb174abb52a`
+- **HEAD Local:** `be36171d7ba3f3b683953fbc593e6e0658fc28f5`
+- **HEAD Remoto (`origin/master`):** `be36171d7ba3f3b683953fbc593e6e0658fc28f5`
 - **Divergencia:** 0 commits ahead, 0 commits behind.
-- **Ramas y Tags Remotos:** `origin/master` activo; tags históricos existentes: `v0.3.0` y `v0.3.1` (OpenMemory legado). Ningún tag `v0.4.0` preexistente.
+- **Ramas y Tags Remotos:** `origin/master` sincronizado; tag oficial `v0.4.0` publicado junto con tags históricos `v0.3.0` y `v0.3.1`.
 - **Copia Histórica Protegida:** `C:\Users\sant1\Downloads\OpenMemory` verificada con 9,528 archivos intactos e inalterados.
 
 ### 2.2. Inventario Criptográfico de Artefactos GA Protegidos
@@ -179,24 +180,40 @@ Esta versión establece la identidad formal de **Evocara** con compatibilidad ha
 
 ---
 
+---
+
 ## 7. Distinción Rigurosa del Estado Actual del Proyecto
 
 - **Implementado:** SÍ (Evocara v0.4.0 GA completo, motor bi-temporal, linaje causal, BM25).
 - **Probado y Certificado:** SÍ (34/34 InventoryHub, 18/18 G31, 15/15 G30, 105/105 BM25, pruebas de instalación en sandbox aislada).
 - **Empaquetado:** SÍ (`.work/artifacts/evocara-0.4.0.tgz` inmutable y certificado).
-- **Integrado Localmente:** SÍ (`master` en commit `1c18986`).
-- **Sincronizado con GitHub:** SÍ (Rama `master` en paridad exacta con `https://github.com/Blueisazul/Evocara.git`).
-- **Preparado para Publicación:** **SÍ (Notas de release, artefactos, hashes y validaciones listos)**.
-- **Publicado en npm:** **NO (Detenido por protocolo de autorización y credenciales pendientes)**.
-- **Publicado como GitHub Release:** **NO (Detenido por protocolo de autorización)**.
-- **Desplegado:** **NO**.
+- **Integrado Localmente:** SÍ (`master` en commit `be36171`).
+- **Sincronizado con GitHub:** SÍ (Rama `master` sincronizada en `https://github.com/Blueisazul/Evocara.git` y Tag `v0.4.0` publicado).
+- **Preparado para Publicación:** SÍ (Notas de release, artefactos, hashes y validaciones listos).
+- **Publicado en npm:** **PENDIENTE DE PUBLICACIÓN MANUAL POR EL USUARIO** (Conforme a la opción autorizada por el propietario).
+- **Publicado como GitHub Release:** **PENDIENTE DE CARGA DE ASSETS POR EL USUARIO** (Tag `v0.4.0` publicado en GitHub; release web pendiente de adjuntos).
+- **Desplegado:** NO.
 
 ---
 
-## 8. Bloqueos y Acciones Pendientes para la Publicación
+## 8. Runbook de Publicación Manual para el Propietario
 
-1. **Autorización Humana Explícita:** Se requiere la aprobación formal del propietario para emitir comandos de publicación en npm y GitHub.
-2. **Autenticación en npm:** El registro requiere inicio de sesión interactivo (`npm login`) o provisión segura de un token de automatización de npm en la variable de entorno `NPM_TOKEN`.
-3. **Publicación Externa:**
-   - Comando npm: `npm publish .work/artifacts/evocara-0.4.0.tgz --access public`
-   - Creación de Tag y Release: `git tag -a v0.4.0 -m "release: Evocara v0.4.0 GA" && git push origin v0.4.0`.
+Conforme a la autorización otorgada por el propietario en la sesión interactiva, el tag Git `v0.4.0` y la rama `master` han sido publicados en GitHub. Las acciones restantes a ejecutar por el usuario son:
+
+1. **Publicación en el registro npm:**
+   Ejecutar en tu terminal personal autenticada:
+   ```bash
+   npm login
+   npm publish .work/artifacts/evocara-0.4.0.tgz --access public
+   ```
+
+2. **Formalización de la GitHub Release:**
+   Acceder a `https://github.com/Blueisazul/Evocara/releases/new`:
+   - Seleccionar el tag existente: `v0.4.0`
+   - Título de la Release: `Evocara v0.4.0 GA — Deterministic Operational Memory & Stage Governance`
+   - Pegar las notas de release preparadas en la Sección 6 de este documento.
+   - Adjuntar los tres archivos inmutables certificados:
+     - `.work/artifacts/evocara-0.4.0.tgz`
+     - `.work/artifacts/evocara-0.4.0.cdx.json`
+     - `.work/artifacts/evocara-0.4.0-manifest.json`
+   - Publicar la release.

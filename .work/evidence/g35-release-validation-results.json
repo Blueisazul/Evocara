@@ -1,14 +1,14 @@
 {
   "milestone": "G35",
   "title": "Evocara v0.4.0 GA Release Certification and Publication Readiness",
-  "timestamp": "2026-10-25T14:58:00.000Z",
-  "status": "PREPARED_AWAITING_AUTHORIZATION",
+  "timestamp": "2026-10-25T19:56:00.000Z",
+  "status": "TAG_PUBLISHED_AWAITING_MANUAL_REGISTRY_ACTION",
   "repository": {
     "canonicalLocalPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\OpenMemory",
     "remoteUrl": "https://github.com/Blueisazul/Evocara.git",
     "branch": "master",
-    "headCommit": "1c18986cdb25ea1af0f1f336e1bfefb174abb52a",
-    "remoteHeadCommit": "1c18986cdb25ea1af0f1f336e1bfefb174abb52a",
+    "headCommit": "be36171d7ba3f3b683953fbc593e6e0658fc28f5",
+    "remoteHeadCommit": "be36171d7ba3f3b683953fbc593e6e0658fc28f5",
     "syncStatus": "UP_TO_DATE (ahead 0, behind 0)"
   },
   "artifacts": {
@@ -104,20 +104,26 @@
     }
   },
   "publicationStatus": {
+    "gitTag": {
+      "tagName": "v0.4.0",
+      "targetCommit": "be36171d7ba3f3b683953fbc593e6e0658fc28f5",
+      "created": true,
+      "pushedToRemote": true,
+      "remoteVerified": true,
+      "remoteUrl": "https://github.com/Blueisazul/Evocara/tree/v0.4.0"
+    },
     "npmRegistry": {
       "packageName": "evocara",
       "currentRegistryStatus": "404 Not Found (Available for initial registration)",
-      "localAuthStatus": "ENEEDAUTH (No local npm login/token detected)",
+      "localAuthStatus": "ENEEDAUTH (Requires manual npm login or NPM_TOKEN)",
       "published": false,
-      "blockers": ["Awaiting human owner authorization", "Authentication credentials required"]
+      "action": "Awaiting manual publication by owner via 'npm publish .work/artifacts/evocara-0.4.0.tgz --access public'"
     },
     "gitHubRelease": {
       "repoUrl": "https://github.com/Blueisazul/Evocara",
-      "targetCommit": "1c18986cdb25ea1af0f1f336e1bfefb174abb52a",
-      "existingTags": ["v0.3.0", "v0.3.1"],
-      "proposedTag": "v0.4.0",
+      "targetTag": "v0.4.0",
       "releaseCreated": false,
-      "blockers": ["Awaiting human owner authorization"]
+      "action": "Awaiting manual asset attachment by owner at https://github.com/Blueisazul/Evocara/releases/new"
     }
   }
 }
