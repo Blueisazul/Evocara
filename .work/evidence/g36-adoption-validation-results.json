@@ -1,14 +1,14 @@
 {
   "milestone": "G36",
   "title": "Evocara v0.4.0 GA Final Closure and Adoption Validation Preflight",
-  "timestamp": "2026-10-25T20:42:00.000Z",
-  "status": "G35_PARCIAL_PENDIENTE_MANUAL__G36_BLOQUEADO_POR_DEPENDENCIA",
+  "timestamp": "2026-10-26T08:00:00.000Z",
+  "status": "G35_PENDIENTE_MANUAL__G36_BLOQUEADO_POR_DEPENDENCIA",
   "repository": {
     "canonicalLocalPath": "C:\\Users\\sant1\\OneDrive\\Documentos\\ChatGPT\\OpenMemory\\OpenMemory",
     "remoteUrl": "https://github.com/Blueisazul/Evocara.git",
     "branch": "master",
-    "headCommit": "84c742de6a428e7e734268ce740dcc3f246778be",
-    "remoteHeadCommit": "84c742de6a428e7e734268ce740dcc3f246778be",
+    "headCommit": "1f687e7a90f8dff14817e2867fd4696a0ce42971",
+    "remoteHeadCommit": "1f687e7a90f8dff14817e2867fd4696a0ce42971",
     "syncStatus": "UP_TO_DATE (ahead 0, behind 0)"
   },
   "gitTagStatus": {

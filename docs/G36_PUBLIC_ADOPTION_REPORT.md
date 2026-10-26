@@ -1,12 +1,12 @@
 # INFORME DE ADOPCIÓN PÚBLICA Y CIERRE TÉCNICO — HITO G36
 ## Validación de Adopción de Evocara v0.4.0 GA y Cierre de Publicación
 
-- **Fecha:** 25 de octubre de 2026
+- **Fecha:** 26 de octubre de 2026
 - **Responsable:** Senior Software Architect, Release Engineering & Supply Chain Assurance
-- **Estado de G35:** PARCIAL / PENDIENTE_MANUAL (TAG Git `v0.4.0` publicado en GitHub; `npm publish` y GitHub Release pendientes de ejecución manual por el propietario)
+- **Estado de G35:** G35_PENDIENTE_MANUAL (TAG Git `v0.4.0` publicado en GitHub; `npm publish` y GitHub Release pendientes de ejecución manual por el propietario)
 - **Estado de G36:** BLOQUEADO POR DEPENDENCIA (A la espera de publicación efectiva de `evocara@0.4.0` en el registro público de npm)
 - **Repositorio Canónico Local:** `C:\Users\sant1\OneDrive\Documentos\ChatGPT\OpenMemory\OpenMemory`
-- **Rama Canónica:** `master` (HEAD: `84c742de6a428e7e734268ce740dcc3f246778be`)
+- **Rama Canónica:** `master` (HEAD: `1f687e7a90f8dff14817e2867fd4696a0ce42971`)
 - **Repositorio Remoto:** `https://github.com/Blueisazul/Evocara.git`
 - **Tag Oficial de Release Verificado:** `v0.4.0` ([https://github.com/Blueisazul/Evocara/tree/v0.4.0](https://github.com/Blueisazul/Evocara/tree/v0.4.0))
 

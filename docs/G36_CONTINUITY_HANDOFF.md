@@ -1,9 +1,9 @@
 # DOCUMENTO DE CONTINUIDAD TÉCNICA — HITO G36
 ## Adopción Pública y Continuidad Operativa de Evocara v0.4.0 GA
 
-- **Fecha:** 25 de octubre de 2026
+- **Fecha:** 26 de octubre de 2026
 - **Autor / Rol:** Antigravity (Senior Software Architect & Release Manager)
-- **Hito G35:** PARCIAL / PENDIENTE_MANUAL (Tag Git `v0.4.0` publicado en GitHub; `npm publish` y release web pendientes de operaciones del propietario)
+- **Hito G35:** G35_PENDIENTE_MANUAL (Tag Git `v0.4.0` publicado en GitHub; `npm publish` y release web pendientes de operaciones del propietario)
 - **Hito G36:** BLOQUEADO POR DEPENDENCIA (A la espera de disponibilidad pública de `evocara@0.4.0` en npm)
 - **Próximo Paso Inmediato:** El propietario debe ejecutar el comando manual de publicación en npm y adjuntar los artefactos en GitHub Releases con sus credenciales personales.
 
@@ -13,9 +13,9 @@
 
 - **Repositorio Canónico Local:** `C:\Users\sant1\OneDrive\Documentos\ChatGPT\OpenMemory\OpenMemory`
 - **Rama Local:** `master`
-- **HEAD Local:** `84c742de6a428e7e734268ce740dcc3f246778be`
+- **HEAD Local:** `1f687e7a90f8dff14817e2867fd4696a0ce42971`
 - **Remoto Canónico:** `https://github.com/Blueisazul/Evocara.git`
-- **HEAD Remoto:** `84c742de6a428e7e734268ce740dcc3f246778be` (`origin/master` sincronizado)
+- **HEAD Remoto:** `1f687e7a90f8dff14817e2867fd4696a0ce42971` (`origin/master` sincronizado)
 - **Tag Oficial de Release:** `v0.4.0` verificado remotamente en GitHub ([https://github.com/Blueisazul/Evocara/tree/v0.4.0](https://github.com/Blueisazul/Evocara/tree/v0.4.0))
 - **Artefactos Locales Protegidos e Inmutables:**
   - Tarball: `.work/artifacts/evocara-0.4.0.tgz` (SHA-256: `70f31da7e822bfa8ece60395212e009cac9d39761d02af0325d6c3ee3b8a730a`, 209,910 bytes)
