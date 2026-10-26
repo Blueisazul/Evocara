@@ -3,10 +3,10 @@
 
 - **Fecha:** 25 de octubre de 2026
 - **Responsable:** Senior Software Architect, Release Engineering & Supply Chain Assurance
-- **Estado de G35:** PARCIALMENTE COMPLETADO (TAG Git `v0.4.0` publicado en GitHub; `npm publish` y GitHub Release pendientes de ejecución manual)
+- **Estado de G35:** PARCIAL / PENDIENTE_MANUAL (TAG Git `v0.4.0` publicado en GitHub; `npm publish` y GitHub Release pendientes de ejecución manual por el propietario)
 - **Estado de G36:** BLOQUEADO POR DEPENDENCIA (A la espera de publicación efectiva de `evocara@0.4.0` en el registro público de npm)
 - **Repositorio Canónico Local:** `C:\Users\sant1\OneDrive\Documentos\ChatGPT\OpenMemory\OpenMemory`
-- **Rama Canónica:** `master` (HEAD: `799597c0418ec74cc4b3d4793e3cb04e4cccb927`)
+- **Rama Canónica:** `master` (HEAD: `84c742de6a428e7e734268ce740dcc3f246778be`)
 - **Repositorio Remoto:** `https://github.com/Blueisazul/Evocara.git`
 - **Tag Oficial de Release Verificado:** `v0.4.0` ([https://github.com/Blueisazul/Evocara/tree/v0.4.0](https://github.com/Blueisazul/Evocara/tree/v0.4.0))
 
